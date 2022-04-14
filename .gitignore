@@ -8,8 +8,14 @@ session_data
 # virtualenv
 /env
 /env2
+.venv
 
 # IDE files
 *.sublime-*
 
 .DS_Store
+
+# packaging
+build
+dist
+*.egg-info

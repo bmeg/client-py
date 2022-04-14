@@ -1,3 +1,5 @@
+Workaround for FHIR R4: https://github.com/smart-on-fhir/client-py/issues/70
+
 SMART FHIR Client
 =================
 

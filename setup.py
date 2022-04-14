@@ -26,13 +26,14 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 setup(
-    name='fhirclient',
+    name='fhirclientr4',
     version=find_version("fhirclient/client.py"),
     description='A flexible client for FHIR servers supporting the SMART on FHIR protocol',
     long_description=(read('README.md') + '\n\n' +
                       read('AUTHORS.md')),
+    long_description_content_type="text/markdown",
     keywords='smart fhir healthcare medical-informatics clinical-informatics biomedical-informatics',
-    url='https://github.com/smart-on-fhir/client-py/',
+    url='https://github.com/gitpushdashf/client-py',
     license="APACHE2",
     author="SMART Platforms Team",
     author_email='support@smarthealthit.org',
