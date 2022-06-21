@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-20.
+#  2022, SMART Health IT.
 
-
-import os
 import io
-import unittest
 import json
+import logging
+import os
+import typing
+import unittest
+
 from . import valueset
+
 from .fhirdate import FHIRDate
+import logging
 
 
 class ValueSetTests(unittest.TestCase):
@@ -30,6 +34,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet1(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet1(self, inst):
         self.assertTrue(inst.compose.inactive)
@@ -83,6 +88,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet2(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet2(self, inst):
         self.assertEqual(inst.compose.include[0].concept[0].code, "invalid")
@@ -105,32 +111,32 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.compose.include[0].extension[1].extension[2].valueCode, "conflict")
         self.assertEqual(inst.compose.include[0].extension[1].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
         self.assertEqual(inst.compose.include[0].extension[2].extension[0].url, "code")
-        self.assertEqual(inst.compose.include[0].extension[2].extension[0].valueString, "processing")
+        self.assertEqual(inst.compose.include[0].extension[2].extension[0].valueCode, "processing")
         self.assertEqual(inst.compose.include[0].extension[2].extension[1].url, "member")
         self.assertEqual(inst.compose.include[0].extension[2].extension[1].valueCode, "duplicate")
         self.assertEqual(inst.compose.include[0].extension[2].extension[2].url, "member")
         self.assertEqual(inst.compose.include[0].extension[2].extension[2].valueCode, "not-found")
         self.assertEqual(inst.compose.include[0].extension[2].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
         self.assertEqual(inst.compose.include[0].extension[3].extension[0].url, "code")
-        self.assertEqual(inst.compose.include[0].extension[3].extension[0].valueString, "invalid")
+        self.assertEqual(inst.compose.include[0].extension[3].extension[0].valueCode, "invalid")
         self.assertEqual(inst.compose.include[0].extension[3].extension[1].url, "member")
         self.assertEqual(inst.compose.include[0].extension[3].extension[1].valueCode, "structure")
         self.assertEqual(inst.compose.include[0].extension[3].extension[2].url, "member")
         self.assertEqual(inst.compose.include[0].extension[3].extension[2].valueCode, "required")
-        self.assertEqual(inst.compose.include[0].extension[3].extension[3].url, "value")
-        self.assertEqual(inst.compose.include[0].extension[3].extension[3].valueCode, "required")
+        self.assertEqual(inst.compose.include[0].extension[3].extension[3].url, "member")
+        self.assertEqual(inst.compose.include[0].extension[3].extension[3].valueCode, "value")
         self.assertEqual(inst.compose.include[0].extension[3].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
         self.assertEqual(inst.compose.include[0].extension[4].extension[0].url, "code")
-        self.assertEqual(inst.compose.include[0].extension[4].extension[0].valueString, "transient")
+        self.assertEqual(inst.compose.include[0].extension[4].extension[0].valueCode, "transient")
         self.assertEqual(inst.compose.include[0].extension[4].extension[1].url, "member")
         self.assertEqual(inst.compose.include[0].extension[4].extension[1].valueCode, "lock")
         self.assertEqual(inst.compose.include[0].extension[4].extension[2].url, "member")
         self.assertEqual(inst.compose.include[0].extension[4].extension[2].valueCode, "exception")
-        self.assertEqual(inst.compose.include[0].extension[4].extension[3].url, "value")
+        self.assertEqual(inst.compose.include[0].extension[4].extension[3].url, "member")
         self.assertEqual(inst.compose.include[0].extension[4].extension[3].valueCode, "throttled")
         self.assertEqual(inst.compose.include[0].extension[4].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
         self.assertEqual(inst.compose.include[0].extension[5].extension[0].url, "code")
-        self.assertEqual(inst.compose.include[0].extension[5].extension[0].valueString, "security")
+        self.assertEqual(inst.compose.include[0].extension[5].extension[0].valueCode, "security")
         self.assertEqual(inst.compose.include[0].extension[5].extension[1].url, "member")
         self.assertEqual(inst.compose.include[0].extension[5].extension[1].valueCode, "login")
         self.assertEqual(inst.compose.include[0].extension[5].extension[2].url, "member")
@@ -209,7 +215,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.status, "draft")
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/example-hierarchical")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet3(self):
         inst = self.instantiate_from("valueset-example-expansion.json")
@@ -220,6 +226,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet3(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet3(self, inst):
         self.assertEqual(inst.compose.include[0].filter[0].op, "=")
@@ -296,6 +303,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet4(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet4(self, inst):
         self.assertTrue(inst.compose.inactive)
@@ -329,7 +337,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.title, "Example with inactive codes")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/inactive")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet5(self):
         inst = self.instantiate_from("valueset-example-filter.json")
@@ -340,6 +348,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet5(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet5(self, inst):
         self.assertEqual(inst.compose.include[0].filter[0].op, "=")
@@ -360,7 +369,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.title, "ACME Codes for Cholesterol: Plasma only")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/example-filter")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet6(self):
         inst = self.instantiate_from("valueset-example-yesnodontknow.json")
@@ -371,6 +380,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet6(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet6(self, inst):
         self.assertEqual(inst.compose.include[0].valueSet[0], "http://terminology.hl7.org/ValueSet/v2-0136")
@@ -395,7 +405,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.status, "draft")
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/yesnodontknow")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet7(self):
         inst = self.instantiate_from("valueset-examplescenario-actor-type.json")
@@ -406,6 +416,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet7(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet7(self, inst):
         self.assertEqual(inst.compose.include[0].system, "http://hl7.org/fhir/examplescenario-actor-type")
@@ -413,8 +424,8 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
         self.assertEqual(inst.contact[0].telecom[1].system, "email")
         self.assertEqual(inst.contact[0].telecom[1].value, "fhir@lists.hl7.org")
-        self.assertEqual(inst.date.date, FHIRDate("2018-12-27T22:37:54+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2018-12-27T22:37:54+11:00")
+        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
+        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
         self.assertEqual(inst.description, "The type of actor - system or human.")
         self.assertFalse(inst.experimental)
         self.assertEqual(inst.extension[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -427,8 +438,8 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
         self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.3.858")
         self.assertTrue(inst.immutable)
-        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2018-12-27T22:37:54.724+11:00").date)
-        self.assertEqual(inst.meta.lastUpdated.as_json(), "2018-12-27T22:37:54.724+11:00")
+        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date)
+        self.assertEqual(inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00")
         self.assertEqual(inst.meta.profile[0], "http://hl7.org/fhir/StructureDefinition/shareablevalueset")
         self.assertEqual(inst.name, "ExampleScenarioActorType")
         self.assertEqual(inst.publisher, "HL7 (FHIR Project)")
@@ -436,7 +447,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.title, "ExampleScenarioActorType")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/examplescenario-actor-type")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet8(self):
         inst = self.instantiate_from("valueset-list-example-codes.json")
@@ -447,13 +458,14 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet8(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet8(self, inst):
         self.assertEqual(inst.compose.include[0].system, "http://terminology.hl7.org/CodeSystem/list-example-use-codes")
         self.assertEqual(inst.contact[0].telecom[0].system, "url")
         self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
-        self.assertEqual(inst.date.date, FHIRDate("2018-12-27T22:37:54+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2018-12-27T22:37:54+11:00")
+        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
+        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
         self.assertEqual(inst.description, "Example use codes for the List resource - typical kinds of use.")
         self.assertFalse(inst.experimental)
         self.assertEqual(inst.extension[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -466,8 +478,8 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
         self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.3.316")
         self.assertTrue(inst.immutable)
-        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2018-12-27T22:37:54.724+11:00").date)
-        self.assertEqual(inst.meta.lastUpdated.as_json(), "2018-12-27T22:37:54.724+11:00")
+        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date)
+        self.assertEqual(inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00")
         self.assertEqual(inst.meta.profile[0], "http://hl7.org/fhir/StructureDefinition/shareablevalueset")
         self.assertEqual(inst.name, "ExampleUseCodesForList")
         self.assertEqual(inst.publisher, "FHIR Project")
@@ -475,7 +487,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.title, "Example Use Codes for List")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/list-example-codes")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testValueSet9(self):
         inst = self.instantiate_from("valueset-example-intensional.json")
@@ -486,6 +498,7 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual("ValueSet", js["resourceType"])
         inst2 = valueset.ValueSet(js)
         self.implValueSet9(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implValueSet9(self, inst):
         self.assertEqual(inst.compose.exclude[0].concept[0].code, "5932-9")
@@ -514,3 +527,75 @@ class ValueSetTests(unittest.TestCase):
         self.assertEqual(inst.url, "http://hl7.org/fhir/ValueSet/example-intensional")
         self.assertEqual(inst.version, "20150622")
 
+    def evaluate_simplified_json(self, inst):
+        """Ensure simplified json."""
+        simplified_js, simplified_schema = inst.as_simplified_json()
+        self.assertIsNotNone(simplified_js, "Must create simplified json")
+
+        # test simplify identifiers
+        if hasattr(inst, 'identifier'):
+            assert 'identifier' not in simplified_js
+            if inst.identifier:
+                simplified_identifiers = [k for k in simplified_js.keys() if k.startswith('identifier_')]
+                if isinstance(inst.identifier, typing.List):
+                    identifiers_with_values = [i for i in inst.identifier if i.value]
+                else:
+                    identifiers_with_values = [inst.identifier]
+                self.assertEqual(len(identifiers_with_values), len(simplified_identifiers), "Should simplify identifiers.")
+
+        # test simplify lists
+        for name in vars(inst):
+
+            if name == 'identifier':
+                continue
+
+            if name == 'extension':
+                continue
+
+            value = getattr(inst, name)
+            is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, typing.List) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            if is_coding:
+                continue
+
+            if isinstance(getattr(inst, name), typing.List) and len(getattr(inst, name)) == 1:
+                # Properties that need to be renamed because of language keyword conflicts
+                # see mapping
+                if name not in simplified_js:
+                    name = name.replace("_fhir", "")
+                self.assertFalse(isinstance(simplified_js[name], typing.List), "Should simplify lists {}".format(name))
+
+        # test simplify coding
+        # meta has known coding attribute 'tags'
+        if hasattr(inst, 'meta'):
+            if inst.meta and inst.meta.tag and len(inst.meta.tag) > 0:
+                simplified_tags = [k for k in simplified_js['meta'].keys() if k.startswith('tag_')]
+                self.assertEqual(len(inst.meta.tag), len(simplified_tags), "Should simplify meta tags.")
+                self.assertTrue('tag' not in simplified_js['meta'], "Should not have meta.tag")
+
+        # test simplify extensions
+        if hasattr(inst, 'extension'):
+            if inst.extension and len(inst.extension) > 0:
+                assert 'extension' not in simplified_js
+                simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
+                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+
+        # test simplify schema
+        for k in simplified_js:
+            assert k in simplified_schema, "Should have a schema definition for {}".format(k)
+
+        # test simplified, flattened
+        from flatten_json import flatten
+        flattened = flatten(simplified_js, separator='|')
+        for flattened_key in flattened:
+            dict_ = simplified_schema
+            for flattened_key_part in flattened_key.split('|'):
+                if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
+                    # traverse over list index
+                    continue
+                dict_ = dict_[flattened_key_part]
+                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                if 'docstring' not in dict_:
+                    logging.getLogger(__name__).warning(
+                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                            inst.resource_type, flattened_key, flattened_key_part, dict_))
+                    break

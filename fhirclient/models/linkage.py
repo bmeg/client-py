@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Linkage) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Linkage) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -15,7 +15,26 @@ class Linkage(domainresource.DomainResource):
     """
     
     resource_type = "Linkage"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['active'] = """Whether this linkage assertion is active or not."""
+    _attribute_docstrings['author'] = """Who is responsible for linkages."""
+    _attribute_docstrings['item'] = """Item to be linked."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -57,9 +76,31 @@ class LinkageItem(backboneelement.BackboneElement):
     occurrence as well as how the items should be evaluated within the
     collection of linked items.
     """
-    
-    resource_type = "LinkageItem"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['type'] = """Distinguishes which item is "source of truth" (if any) and which items are no longer considered to be current representations."""
+    _attribute_docstrings['resource'] = """Resource being linked."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['type'] = {
+        'url': 'http://hl7.org/fhir/linkage-type',
+        'restricted_to': ['source', 'alternate', 'historical'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -68,21 +109,22 @@ class LinkageItem(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
+        self.type = None
+        """ Distinguishes which item is "source of truth" (if any) and which
+        items are no longer considered to be current representations.
+        Type `str`. """
+        
         self.resource = None
         """ Resource being linked.
         Type `FHIRReference` (represented as `dict` in JSON). """
-        
-        self.type = None
-        """ source | alternate | historical.
-        Type `str`. """
         
         super(LinkageItem, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(LinkageItem, self).elementProperties()
         js.extend([
-            ("resource", "resource", fhirreference.FHIRReference, False, None, True),
             ("type", "type", str, False, None, True),
+            ("resource", "resource", fhirreference.FHIRReference, False, None, True),
         ])
         return js
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/VisionPrescription) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/VisionPrescription) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -15,7 +15,37 @@ class VisionPrescription(domainresource.DomainResource):
     """
     
     resource_type = "VisionPrescription"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """Business Identifier for vision prescription."""
+    _attribute_docstrings['status'] = """The status of the resource instance."""
+    _attribute_docstrings['created'] = """Response creation date."""
+    _attribute_docstrings['patient'] = """Who prescription is for."""
+    _attribute_docstrings['encounter'] = """Created during encounter / admission / stay."""
+    _attribute_docstrings['dateWritten'] = """When prescription was authorized."""
+    _attribute_docstrings['prescriber'] = """Who authorized the vision prescription."""
+    _attribute_docstrings['lensSpecification'] = """Vision lens authorization."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['status'] = {
+        'url': 'http://hl7.org/fhir/fm-status',
+        'restricted_to': ['active', 'cancelled', 'draft', 'entered-in-error'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,51 +54,51 @@ class VisionPrescription(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.created = None
-        """ Response creation date.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.dateWritten = None
-        """ When prescription was authorized.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.encounter = None
-        """ Created during encounter / admission / stay.
-        Type `FHIRReference` (represented as `dict` in JSON). """
-        
         self.identifier = None
         """ Business Identifier for vision prescription.
         List of `Identifier` items (represented as `dict` in JSON). """
         
-        self.lensSpecification = None
-        """ Vision lens authorization.
-        List of `VisionPrescriptionLensSpecification` items (represented as `dict` in JSON). """
+        self.status = None
+        """ The status of the resource instance.
+        Type `str`. """
+        
+        self.created = None
+        """ Response creation date.
+        Type `FHIRDate` (represented as `str` in JSON). """
         
         self.patient = None
         """ Who prescription is for.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
+        self.encounter = None
+        """ Created during encounter / admission / stay.
+        Type `FHIRReference` (represented as `dict` in JSON). """
+        
+        self.dateWritten = None
+        """ When prescription was authorized.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
         self.prescriber = None
         """ Who authorized the vision prescription.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.status = None
-        """ active | cancelled | draft | entered-in-error.
-        Type `str`. """
+        self.lensSpecification = None
+        """ Vision lens authorization.
+        List of `VisionPrescriptionLensSpecification` items (represented as `dict` in JSON). """
         
         super(VisionPrescription, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(VisionPrescription, self).elementProperties()
         js.extend([
-            ("created", "created", fhirdate.FHIRDate, False, None, True),
-            ("dateWritten", "dateWritten", fhirdate.FHIRDate, False, None, True),
-            ("encounter", "encounter", fhirreference.FHIRReference, False, None, False),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("lensSpecification", "lensSpecification", VisionPrescriptionLensSpecification, True, None, True),
-            ("patient", "patient", fhirreference.FHIRReference, False, None, True),
-            ("prescriber", "prescriber", fhirreference.FHIRReference, False, None, True),
             ("status", "status", str, False, None, True),
+            ("created", "created", fhirdate.FHIRDate, False, None, True),
+            ("patient", "patient", fhirreference.FHIRReference, False, None, True),
+            ("encounter", "encounter", fhirreference.FHIRReference, False, None, False),
+            ("dateWritten", "dateWritten", fhirdate.FHIRDate, False, None, True),
+            ("prescriber", "prescriber", fhirreference.FHIRReference, False, None, True),
+            ("lensSpecification", "lensSpecification", VisionPrescriptionLensSpecification, True, None, True),
         ])
         return js
 
@@ -81,9 +111,49 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     Contain the details of  the individual lens specifications and serves as
     the authorization for the fullfillment by certified professionals.
     """
-    
-    resource_type = "VisionPrescriptionLensSpecification"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['product'] = """Identifies the type of vision correction product which is required for the patient."""
+    _attribute_docstrings['eye'] = """The eye for which the lens specification applies."""
+    _attribute_docstrings['sphere'] = """Power of the lens."""
+    _attribute_docstrings['cylinder'] = """Lens power for astigmatism."""
+    _attribute_docstrings['axis'] = """Lens meridian which contain no power for astigmatism."""
+    _attribute_docstrings['prism'] = """Eye alignment compensation."""
+    _attribute_docstrings['add'] = """Added power for multifocal levels."""
+    _attribute_docstrings['power'] = """Contact lens power."""
+    _attribute_docstrings['backCurve'] = """Contact lens back curvature."""
+    _attribute_docstrings['diameter'] = """Contact lens diameter."""
+    _attribute_docstrings['duration'] = """Lens wear duration."""
+    _attribute_docstrings['color'] = """Color required."""
+    _attribute_docstrings['brand'] = """Brand required."""
+    _attribute_docstrings['note'] = """Notes for coatings."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['product'] = {
+        'url': 'http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct',
+        'restricted_to': ['lens', 'contact'],
+        'binding_strength': 'example',
+        'class_name': 'CodeableConcept'
+    }
+    _attribute_enums['eye'] = {
+        'url': 'http://hl7.org/fhir/vision-eye-codes',
+        'restricted_to': ['right', 'left'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -92,28 +162,41 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.add = None
-        """ Added power for multifocal levels.
+        self.product = None
+        """ Identifies the type of vision correction product which is required
+        for the patient.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.eye = None
+        """ The eye for which the lens specification applies.
+        Type `str`. """
+        
+        self.sphere = None
+        """ Power of the lens.
+        Type `float`. """
+        
+        self.cylinder = None
+        """ Lens power for astigmatism.
         Type `float`. """
         
         self.axis = None
         """ Lens meridian which contain no power for astigmatism.
         Type `int`. """
         
-        self.backCurve = None
-        """ Contact lens back curvature.
+        self.prism = None
+        """ Eye alignment compensation.
+        List of `VisionPrescriptionLensSpecificationPrism` items (represented as `dict` in JSON). """
+        
+        self.add = None
+        """ Added power for multifocal levels.
         Type `float`. """
         
-        self.brand = None
-        """ Brand required.
-        Type `str`. """
+        self.power = None
+        """ Contact lens power.
+        Type `float`. """
         
-        self.color = None
-        """ Color required.
-        Type `str`. """
-        
-        self.cylinder = None
-        """ Lens power for astigmatism.
+        self.backCurve = None
+        """ Contact lens back curvature.
         Type `float`. """
         
         self.diameter = None
@@ -124,49 +207,37 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         """ Lens wear duration.
         Type `Quantity` (represented as `dict` in JSON). """
         
-        self.eye = None
-        """ right | left.
+        self.color = None
+        """ Color required.
+        Type `str`. """
+        
+        self.brand = None
+        """ Brand required.
         Type `str`. """
         
         self.note = None
         """ Notes for coatings.
         List of `Annotation` items (represented as `dict` in JSON). """
         
-        self.power = None
-        """ Contact lens power.
-        Type `float`. """
-        
-        self.prism = None
-        """ Eye alignment compensation.
-        List of `VisionPrescriptionLensSpecificationPrism` items (represented as `dict` in JSON). """
-        
-        self.product = None
-        """ Product to be supplied.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
-        self.sphere = None
-        """ Power of the lens.
-        Type `float`. """
-        
         super(VisionPrescriptionLensSpecification, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(VisionPrescriptionLensSpecification, self).elementProperties()
         js.extend([
-            ("add", "add", float, False, None, False),
-            ("axis", "axis", int, False, None, False),
-            ("backCurve", "backCurve", float, False, None, False),
-            ("brand", "brand", str, False, None, False),
-            ("color", "color", str, False, None, False),
+            ("product", "product", codeableconcept.CodeableConcept, False, None, True),
+            ("eye", "eye", str, False, None, True),
+            ("sphere", "sphere", float, False, None, False),
             ("cylinder", "cylinder", float, False, None, False),
+            ("axis", "axis", int, False, None, False),
+            ("prism", "prism", VisionPrescriptionLensSpecificationPrism, True, None, False),
+            ("add", "add", float, False, None, False),
+            ("power", "power", float, False, None, False),
+            ("backCurve", "backCurve", float, False, None, False),
             ("diameter", "diameter", float, False, None, False),
             ("duration", "duration", quantity.Quantity, False, None, False),
-            ("eye", "eye", str, False, None, True),
+            ("color", "color", str, False, None, False),
+            ("brand", "brand", str, False, None, False),
             ("note", "note", annotation.Annotation, True, None, False),
-            ("power", "power", float, False, None, False),
-            ("prism", "prism", VisionPrescriptionLensSpecificationPrism, True, None, False),
-            ("product", "product", codeableconcept.CodeableConcept, False, None, True),
-            ("sphere", "sphere", float, False, None, False),
         ])
         return js
 
@@ -176,9 +247,31 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
     
     Allows for adjustment on two axis.
     """
-    
-    resource_type = "VisionPrescriptionLensSpecificationPrism"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['amount'] = """Amount of adjustment."""
+    _attribute_docstrings['base'] = """The relative base, or reference lens edge, for the prism."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['base'] = {
+        'url': 'http://hl7.org/fhir/vision-base-codes',
+        'restricted_to': ['up', 'down', 'in', 'out'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -192,7 +285,7 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         Type `float`. """
         
         self.base = None
-        """ up | down | in | out.
+        """ The relative base, or reference lens edge, for the prism.
         Type `str`. """
         
         super(VisionPrescriptionLensSpecificationPrism, self).__init__(jsondict=jsondict, strict=strict)

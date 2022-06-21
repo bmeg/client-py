@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -19,7 +19,93 @@ class MedicationRequest(domainresource.DomainResource):
     """
     
     resource_type = "MedicationRequest"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """External ids for this request."""
+    _attribute_docstrings['status'] = """A code specifying the current state of the order.  Generally, this will be active or completed state."""
+    _attribute_docstrings['statusReason'] = """Captures the reason for the current state of the MedicationRequest."""
+    _attribute_docstrings['intent'] = """Whether the request is a proposal, plan, or an original order."""
+    _attribute_docstrings['category'] = """Indicates the type of medication request (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient))."""
+    _attribute_docstrings['priority'] = """Indicates how quickly the Medication Request should be addressed with respect to other requests."""
+    _attribute_docstrings['doNotPerform'] = """True if request is prohibiting action."""
+    _attribute_docstrings['reportedBoolean'] = """Reported rather than primary record."""
+    _attribute_docstrings['reportedReference'] = """Reported rather than primary record."""
+    _attribute_docstrings['medicationCodeableConcept'] = """Medication to be taken."""
+    _attribute_docstrings['medicationReference'] = """Medication to be taken."""
+    _attribute_docstrings['subject'] = """Who or group medication request is for."""
+    _attribute_docstrings['encounter'] = """Encounter created as part of encounter/admission/stay."""
+    _attribute_docstrings['supportingInformation'] = """Information to support ordering of the medication."""
+    _attribute_docstrings['authoredOn'] = """When request was initially authored."""
+    _attribute_docstrings['requester'] = """Who/What requested the Request."""
+    _attribute_docstrings['performer'] = """Intended performer of administration."""
+    _attribute_docstrings['performerType'] = """Desired kind of performer of the medication administration."""
+    _attribute_docstrings['recorder'] = """Person who entered the request."""
+    _attribute_docstrings['reasonCode'] = """Reason or indication for ordering or not ordering the medication."""
+    _attribute_docstrings['reasonReference'] = """Condition or observation that supports why the prescription is being written."""
+    _attribute_docstrings['instantiatesCanonical'] = """Instantiates FHIR protocol or definition."""
+    _attribute_docstrings['instantiatesUri'] = """Instantiates external protocol or definition."""
+    _attribute_docstrings['basedOn'] = """What request fulfills."""
+    _attribute_docstrings['groupIdentifier'] = """Composite request this is part of."""
+    _attribute_docstrings['courseOfTherapyType'] = """The description of the overall patte3rn of the administration of the medication to the patient."""
+    _attribute_docstrings['insurance'] = """Associated insurance coverage."""
+    _attribute_docstrings['note'] = """Information about the prescription."""
+    _attribute_docstrings['dosageInstruction'] = """How the medication should be taken."""
+    _attribute_docstrings['dispenseRequest'] = """Medication supply authorization."""
+    _attribute_docstrings['substitution'] = """Any restrictions on medication substitution."""
+    _attribute_docstrings['priorPrescription'] = """An order/prescription that is being replaced."""
+    _attribute_docstrings['detectedIssue'] = """Clinical Issue with action."""
+    _attribute_docstrings['eventHistory'] = """A list of events of interest in the lifecycle."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['status'] = {
+        'url': 'http://hl7.org/fhir/CodeSystem/medicationrequest-status',
+        'restricted_to': ['active', 'on-hold', 'cancelled', 'completed', 'entered-in-error', 'stopped', 'draft', 'unknown'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['statusReason'] = {
+        'url': 'http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason',
+        'restricted_to': ['altchoice', 'clarif', 'drughigh', 'hospadm', 'labint', 'non-avail', 'preg', 'salg', 'sddi', 'sdupther', 'sintol', 'surg', 'washout'],
+        'binding_strength': 'example',
+        'class_name': 'CodeableConcept'
+    }
+    _attribute_enums['intent'] = {
+        'url': 'http://hl7.org/fhir/CodeSystem/medicationrequest-intent',
+        'restricted_to': ['proposal', 'plan', 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order', 'option'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['category'] = {
+        'url': 'http://terminology.hl7.org/CodeSystem/medicationrequest-category',
+        'restricted_to': ['inpatient', 'outpatient', 'community', 'discharge'],
+        'binding_strength': 'example',
+        'class_name': 'CodeableConcept'
+    }
+    _attribute_enums['priority'] = {
+        'url': 'http://hl7.org/fhir/request-priority',
+        'restricted_to': ['routine', 'urgent', 'asap', 'stat'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['courseOfTherapyType'] = {
+        'url': 'http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy',
+        'restricted_to': ['continuous', 'acute', 'seasonal'],
+        'binding_strength': 'example',
+        'class_name': 'CodeableConcept'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -28,69 +114,45 @@ class MedicationRequest(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.authoredOn = None
-        """ When request was initially authored.
-        Type `FHIRDate` (represented as `str` in JSON). """
+        self.identifier = None
+        """ External ids for this request.
+        List of `Identifier` items (represented as `dict` in JSON). """
         
-        self.basedOn = None
-        """ What request fulfills.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        self.status = None
+        """ A code specifying the current state of the order.  Generally, this
+        will be active or completed state.
+        Type `str`. """
         
-        self.category = None
-        """ Type of medication usage.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-        
-        self.courseOfTherapyType = None
-        """ Overall pattern of medication administration.
+        self.statusReason = None
+        """ Captures the reason for the current state of the MedicationRequest.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.detectedIssue = None
-        """ Clinical Issue with action.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        self.intent = None
+        """ Whether the request is a proposal, plan, or an original order.
+        Type `str`. """
         
-        self.dispenseRequest = None
-        """ Medication supply authorization.
-        Type `MedicationRequestDispenseRequest` (represented as `dict` in JSON). """
+        self.category = None
+        """ Indicates the type of medication request (for example, where the
+        medication is expected to be consumed or administered (i.e.
+        inpatient or outpatient)).
+        List of `CodeableConcept` items (represented as `dict` in JSON). """
+        
+        self.priority = None
+        """ Indicates how quickly the Medication Request should be addressed
+        with respect to other requests.
+        Type `str`. """
         
         self.doNotPerform = None
         """ True if request is prohibiting action.
         Type `bool`. """
         
-        self.dosageInstruction = None
-        """ How the medication should be taken.
-        List of `Dosage` items (represented as `dict` in JSON). """
+        self.reportedBoolean = None
+        """ Reported rather than primary record.
+        Type `bool`. """
         
-        self.encounter = None
-        """ Encounter created as part of encounter/admission/stay.
+        self.reportedReference = None
+        """ Reported rather than primary record.
         Type `FHIRReference` (represented as `dict` in JSON). """
-        
-        self.eventHistory = None
-        """ A list of events of interest in the lifecycle.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
-        
-        self.groupIdentifier = None
-        """ Composite request this is part of.
-        Type `Identifier` (represented as `dict` in JSON). """
-        
-        self.identifier = None
-        """ External ids for this request.
-        List of `Identifier` items (represented as `dict` in JSON). """
-        
-        self.instantiatesCanonical = None
-        """ Instantiates FHIR protocol or definition.
-        List of `str` items. """
-        
-        self.instantiatesUri = None
-        """ Instantiates external protocol or definition.
-        List of `str` items. """
-        
-        self.insurance = None
-        """ Associated insurance coverage.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
-        
-        self.intent = None
-        """ proposal | plan | order | original-order | instance-order | option.
-        Type `str`. """
         
         self.medicationCodeableConcept = None
         """ Medication to be taken.
@@ -100,9 +162,25 @@ class MedicationRequest(domainresource.DomainResource):
         """ Medication to be taken.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.note = None
-        """ Information about the prescription.
-        List of `Annotation` items (represented as `dict` in JSON). """
+        self.subject = None
+        """ Who or group medication request is for.
+        Type `FHIRReference` (represented as `dict` in JSON). """
+        
+        self.encounter = None
+        """ Encounter created as part of encounter/admission/stay.
+        Type `FHIRReference` (represented as `dict` in JSON). """
+        
+        self.supportingInformation = None
+        """ Information to support ordering of the medication.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
+        
+        self.authoredOn = None
+        """ When request was initially authored.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.requester = None
+        """ Who/What requested the Request.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.performer = None
         """ Intended performer of administration.
@@ -112,13 +190,9 @@ class MedicationRequest(domainresource.DomainResource):
         """ Desired kind of performer of the medication administration.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.priorPrescription = None
-        """ An order/prescription that is being replaced.
+        self.recorder = None
+        """ Person who entered the request.
         Type `FHIRReference` (represented as `dict` in JSON). """
-        
-        self.priority = None
-        """ routine | urgent | asap | stat.
-        Type `str`. """
         
         self.reasonCode = None
         """ Reason or indication for ordering or not ordering the medication.
@@ -129,41 +203,57 @@ class MedicationRequest(domainresource.DomainResource):
         being written.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.recorder = None
-        """ Person who entered the request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.instantiatesCanonical = None
+        """ Instantiates FHIR protocol or definition.
+        List of `str` items. """
         
-        self.reportedBoolean = None
-        """ Reported rather than primary record.
-        Type `bool`. """
+        self.instantiatesUri = None
+        """ Instantiates external protocol or definition.
+        List of `str` items. """
         
-        self.reportedReference = None
-        """ Reported rather than primary record.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.basedOn = None
+        """ What request fulfills.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.requester = None
-        """ Who/What requested the Request.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.groupIdentifier = None
+        """ Composite request this is part of.
+        Type `Identifier` (represented as `dict` in JSON). """
         
-        self.status = None
-        """ active | on-hold | cancelled | completed | entered-in-error |
-        stopped | draft | unknown.
-        Type `str`. """
-        
-        self.statusReason = None
-        """ Reason for current status.
+        self.courseOfTherapyType = None
+        """ The description of the overall patte3rn of the administration of
+        the medication to the patient.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.subject = None
-        """ Who or group medication request is for.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.insurance = None
+        """ Associated insurance coverage.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
+        
+        self.note = None
+        """ Information about the prescription.
+        List of `Annotation` items (represented as `dict` in JSON). """
+        
+        self.dosageInstruction = None
+        """ How the medication should be taken.
+        List of `Dosage` items (represented as `dict` in JSON). """
+        
+        self.dispenseRequest = None
+        """ Medication supply authorization.
+        Type `MedicationRequestDispenseRequest` (represented as `dict` in JSON). """
         
         self.substitution = None
         """ Any restrictions on medication substitution.
         Type `MedicationRequestSubstitution` (represented as `dict` in JSON). """
         
-        self.supportingInformation = None
-        """ Information to support ordering of the medication.
+        self.priorPrescription = None
+        """ An order/prescription that is being replaced.
+        Type `FHIRReference` (represented as `dict` in JSON). """
+        
+        self.detectedIssue = None
+        """ Clinical Issue with action.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
+        
+        self.eventHistory = None
+        """ A list of events of interest in the lifecycle.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
         super(MedicationRequest, self).__init__(jsondict=jsondict, strict=strict)
@@ -171,40 +261,40 @@ class MedicationRequest(domainresource.DomainResource):
     def elementProperties(self):
         js = super(MedicationRequest, self).elementProperties()
         js.extend([
-            ("authoredOn", "authoredOn", fhirdate.FHIRDate, False, None, False),
-            ("basedOn", "basedOn", fhirreference.FHIRReference, True, None, False),
-            ("category", "category", codeableconcept.CodeableConcept, True, None, False),
-            ("courseOfTherapyType", "courseOfTherapyType", codeableconcept.CodeableConcept, False, None, False),
-            ("detectedIssue", "detectedIssue", fhirreference.FHIRReference, True, None, False),
-            ("dispenseRequest", "dispenseRequest", MedicationRequestDispenseRequest, False, None, False),
-            ("doNotPerform", "doNotPerform", bool, False, None, False),
-            ("dosageInstruction", "dosageInstruction", dosage.Dosage, True, None, False),
-            ("encounter", "encounter", fhirreference.FHIRReference, False, None, False),
-            ("eventHistory", "eventHistory", fhirreference.FHIRReference, True, None, False),
-            ("groupIdentifier", "groupIdentifier", identifier.Identifier, False, None, False),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("instantiatesCanonical", "instantiatesCanonical", str, True, None, False),
-            ("instantiatesUri", "instantiatesUri", str, True, None, False),
-            ("insurance", "insurance", fhirreference.FHIRReference, True, None, False),
-            ("intent", "intent", str, False, None, True),
-            ("medicationCodeableConcept", "medicationCodeableConcept", codeableconcept.CodeableConcept, False, "medication", True),
-            ("medicationReference", "medicationReference", fhirreference.FHIRReference, False, "medication", True),
-            ("note", "note", annotation.Annotation, True, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, False, None, False),
-            ("performerType", "performerType", codeableconcept.CodeableConcept, False, None, False),
-            ("priorPrescription", "priorPrescription", fhirreference.FHIRReference, False, None, False),
-            ("priority", "priority", str, False, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, True, None, False),
-            ("recorder", "recorder", fhirreference.FHIRReference, False, None, False),
-            ("reportedBoolean", "reportedBoolean", bool, False, "reported", False),
-            ("reportedReference", "reportedReference", fhirreference.FHIRReference, False, "reported", False),
-            ("requester", "requester", fhirreference.FHIRReference, False, None, False),
             ("status", "status", str, False, None, True),
             ("statusReason", "statusReason", codeableconcept.CodeableConcept, False, None, False),
+            ("intent", "intent", str, False, None, True),
+            ("category", "category", codeableconcept.CodeableConcept, True, None, False),
+            ("priority", "priority", str, False, None, False),
+            ("doNotPerform", "doNotPerform", bool, False, None, False),
+            ("reportedBoolean", "reportedBoolean", bool, False, "reported", False),
+            ("reportedReference", "reportedReference", fhirreference.FHIRReference, False, "reported", False),
+            ("medicationCodeableConcept", "medicationCodeableConcept", codeableconcept.CodeableConcept, False, "medication", True),
+            ("medicationReference", "medicationReference", fhirreference.FHIRReference, False, "medication", True),
             ("subject", "subject", fhirreference.FHIRReference, False, None, True),
-            ("substitution", "substitution", MedicationRequestSubstitution, False, None, False),
+            ("encounter", "encounter", fhirreference.FHIRReference, False, None, False),
             ("supportingInformation", "supportingInformation", fhirreference.FHIRReference, True, None, False),
+            ("authoredOn", "authoredOn", fhirdate.FHIRDate, False, None, False),
+            ("requester", "requester", fhirreference.FHIRReference, False, None, False),
+            ("performer", "performer", fhirreference.FHIRReference, False, None, False),
+            ("performerType", "performerType", codeableconcept.CodeableConcept, False, None, False),
+            ("recorder", "recorder", fhirreference.FHIRReference, False, None, False),
+            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, True, None, False),
+            ("reasonReference", "reasonReference", fhirreference.FHIRReference, True, None, False),
+            ("instantiatesCanonical", "instantiatesCanonical", str, True, None, False),
+            ("instantiatesUri", "instantiatesUri", str, True, None, False),
+            ("basedOn", "basedOn", fhirreference.FHIRReference, True, None, False),
+            ("groupIdentifier", "groupIdentifier", identifier.Identifier, False, None, False),
+            ("courseOfTherapyType", "courseOfTherapyType", codeableconcept.CodeableConcept, False, None, False),
+            ("insurance", "insurance", fhirreference.FHIRReference, True, None, False),
+            ("note", "note", annotation.Annotation, True, None, False),
+            ("dosageInstruction", "dosageInstruction", dosage.Dosage, True, None, False),
+            ("dispenseRequest", "dispenseRequest", MedicationRequestDispenseRequest, False, None, False),
+            ("substitution", "substitution", MedicationRequestSubstitution, False, None, False),
+            ("priorPrescription", "priorPrescription", fhirreference.FHIRReference, False, None, False),
+            ("detectedIssue", "detectedIssue", fhirreference.FHIRReference, True, None, False),
+            ("eventHistory", "eventHistory", fhirreference.FHIRReference, True, None, False),
         ])
         return js
 
@@ -221,9 +311,30 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
     system support for completing the dispense details in the pharmacy
     department.
     """
-    
-    resource_type = "MedicationRequestDispenseRequest"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['initialFill'] = """First fill details."""
+    _attribute_docstrings['dispenseInterval'] = """Minimum period of time between dispenses."""
+    _attribute_docstrings['validityPeriod'] = """Time period supply is authorized for."""
+    _attribute_docstrings['numberOfRepeatsAllowed'] = """Number of refills authorized."""
+    _attribute_docstrings['quantity'] = """Amount of medication to supply per dispense."""
+    _attribute_docstrings['expectedSupplyDuration'] = """Number of days supply per dispense."""
+    _attribute_docstrings['performer'] = """Intended dispenser."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -232,46 +343,46 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
+        self.initialFill = None
+        """ First fill details.
+        Type `MedicationRequestDispenseRequestInitialFill` (represented as `dict` in JSON). """
+        
         self.dispenseInterval = None
         """ Minimum period of time between dispenses.
         Type `Duration` (represented as `dict` in JSON). """
         
-        self.expectedSupplyDuration = None
-        """ Number of days supply per dispense.
-        Type `Duration` (represented as `dict` in JSON). """
-        
-        self.initialFill = None
-        """ First fill details.
-        Type `MedicationRequestDispenseRequestInitialFill` (represented as `dict` in JSON). """
+        self.validityPeriod = None
+        """ Time period supply is authorized for.
+        Type `Period` (represented as `dict` in JSON). """
         
         self.numberOfRepeatsAllowed = None
         """ Number of refills authorized.
         Type `int`. """
         
-        self.performer = None
-        """ Intended dispenser.
-        Type `FHIRReference` (represented as `dict` in JSON). """
-        
         self.quantity = None
         """ Amount of medication to supply per dispense.
         Type `Quantity` (represented as `dict` in JSON). """
         
-        self.validityPeriod = None
-        """ Time period supply is authorized for.
-        Type `Period` (represented as `dict` in JSON). """
+        self.expectedSupplyDuration = None
+        """ Number of days supply per dispense.
+        Type `Duration` (represented as `dict` in JSON). """
+        
+        self.performer = None
+        """ Intended dispenser.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         super(MedicationRequestDispenseRequest, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(MedicationRequestDispenseRequest, self).elementProperties()
         js.extend([
-            ("dispenseInterval", "dispenseInterval", duration.Duration, False, None, False),
-            ("expectedSupplyDuration", "expectedSupplyDuration", duration.Duration, False, None, False),
             ("initialFill", "initialFill", MedicationRequestDispenseRequestInitialFill, False, None, False),
-            ("numberOfRepeatsAllowed", "numberOfRepeatsAllowed", int, False, None, False),
-            ("performer", "performer", fhirreference.FHIRReference, False, None, False),
-            ("quantity", "quantity", quantity.Quantity, False, None, False),
+            ("dispenseInterval", "dispenseInterval", duration.Duration, False, None, False),
             ("validityPeriod", "validityPeriod", period.Period, False, None, False),
+            ("numberOfRepeatsAllowed", "numberOfRepeatsAllowed", int, False, None, False),
+            ("quantity", "quantity", quantity.Quantity, False, None, False),
+            ("expectedSupplyDuration", "expectedSupplyDuration", duration.Duration, False, None, False),
+            ("performer", "performer", fhirreference.FHIRReference, False, None, False),
         ])
         return js
 
@@ -282,9 +393,25 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
     Indicates the quantity or duration for the first dispense of the
     medication.
     """
-    
-    resource_type = "MedicationRequestDispenseRequestInitialFill"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['quantity'] = """First fill quantity."""
+    _attribute_docstrings['duration'] = """First fill duration."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -293,21 +420,21 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.duration = None
-        """ First fill duration.
-        Type `Duration` (represented as `dict` in JSON). """
-        
         self.quantity = None
         """ First fill quantity.
         Type `Quantity` (represented as `dict` in JSON). """
+        
+        self.duration = None
+        """ First fill duration.
+        Type `Duration` (represented as `dict` in JSON). """
         
         super(MedicationRequestDispenseRequestInitialFill, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(MedicationRequestDispenseRequestInitialFill, self).elementProperties()
         js.extend([
-            ("duration", "duration", duration.Duration, False, None, False),
             ("quantity", "quantity", quantity.Quantity, False, None, False),
+            ("duration", "duration", duration.Duration, False, None, False),
         ])
         return js
 
@@ -320,9 +447,26 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
     substitution must not happen. This block explains the prescriber's intent.
     If nothing is specified substitution may be done.
     """
-    
-    resource_type = "MedicationRequestSubstitution"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['allowedBoolean'] = """Whether substitution is allowed or not."""
+    _attribute_docstrings['allowedCodeableConcept'] = """Whether substitution is allowed or not."""
+    _attribute_docstrings['reason'] = """Why should (not) substitution be made."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         

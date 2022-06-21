@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-20.
+#  2022, SMART Health IT.
 
-
-import os
 import io
-import unittest
 import json
+import logging
+import os
+import typing
+import unittest
+
 from . import codesystem
+
 from .fhirdate import FHIRDate
+import logging
 
 
 class CodeSystemTests(unittest.TestCase):
@@ -30,6 +34,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual("CodeSystem", js["resourceType"])
         inst2 = codesystem.CodeSystem(js)
         self.implCodeSystem1(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implCodeSystem1(self, inst):
         self.assertEqual(inst.concept[0].code, "chol-mmol")
@@ -69,6 +74,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual("CodeSystem", js["resourceType"])
         inst2 = codesystem.CodeSystem(js)
         self.implCodeSystem2(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implCodeSystem2(self, inst):
         self.assertTrue(inst.caseSensitive)
@@ -112,9 +118,9 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.extension[2].valueInteger, 1)
         self.assertEqual(inst.id, "list-example-codes")
         self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.1.1105")
-        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2018-12-27T22:37:54.724+11:00").date)
-        self.assertEqual(inst.meta.lastUpdated.as_json(), "2018-12-27T22:37:54.724+11:00")
+        self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.4.1105")
+        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date)
+        self.assertEqual(inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00")
         self.assertEqual(inst.meta.profile[0], "http://hl7.org/fhir/StructureDefinition/shareablecodesystem")
         self.assertEqual(inst.name, "ExampleUseCodesForList")
         self.assertEqual(inst.publisher, "FHIR Project")
@@ -123,7 +129,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.title, "Example Use Codes for List")
         self.assertEqual(inst.url, "http://terminology.hl7.org/CodeSystem/list-example-use-codes")
         self.assertEqual(inst.valueSet, "http://hl7.org/fhir/ValueSet/list-example-codes")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testCodeSystem3(self):
         inst = self.instantiate_from("codesystem-examplescenario-actor-type.json")
@@ -134,6 +140,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual("CodeSystem", js["resourceType"])
         inst2 = codesystem.CodeSystem(js)
         self.implCodeSystem3(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implCodeSystem3(self, inst):
         self.assertTrue(inst.caseSensitive)
@@ -148,8 +155,8 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.contact[0].telecom[1].system, "email")
         self.assertEqual(inst.contact[0].telecom[1].value, "fhir@lists.hl7.org")
         self.assertEqual(inst.content, "complete")
-        self.assertEqual(inst.date.date, FHIRDate("2018-12-27T22:37:54+11:00").date)
-        self.assertEqual(inst.date.as_json(), "2018-12-27T22:37:54+11:00")
+        self.assertEqual(inst.date.date, FHIRDate("2019-11-01T09:29:23+11:00").date)
+        self.assertEqual(inst.date.as_json(), "2019-11-01T09:29:23+11:00")
         self.assertEqual(inst.description, "The type of actor - system or human.")
         self.assertFalse(inst.experimental)
         self.assertEqual(inst.extension[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -160,9 +167,9 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.extension[2].valueInteger, 0)
         self.assertEqual(inst.id, "examplescenario-actor-type")
         self.assertEqual(inst.identifier[0].system, "urn:ietf:rfc:3986")
-        self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.1.859")
-        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2018-12-27T22:37:54.724+11:00").date)
-        self.assertEqual(inst.meta.lastUpdated.as_json(), "2018-12-27T22:37:54.724+11:00")
+        self.assertEqual(inst.identifier[0].value, "urn:oid:2.16.840.1.113883.4.642.4.859")
+        self.assertEqual(inst.meta.lastUpdated.date, FHIRDate("2019-11-01T09:29:23.356+11:00").date)
+        self.assertEqual(inst.meta.lastUpdated.as_json(), "2019-11-01T09:29:23.356+11:00")
         self.assertEqual(inst.name, "ExampleScenarioActorType")
         self.assertEqual(inst.publisher, "HL7 (FHIR Project)")
         self.assertEqual(inst.status, "draft")
@@ -170,7 +177,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.title, "ExampleScenarioActorType")
         self.assertEqual(inst.url, "http://hl7.org/fhir/examplescenario-actor-type")
         self.assertEqual(inst.valueSet, "http://hl7.org/fhir/ValueSet/examplescenario-actor-type")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testCodeSystem4(self):
         inst = self.instantiate_from("codesystem-example-summary.json")
@@ -181,6 +188,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual("CodeSystem", js["resourceType"])
         inst2 = codesystem.CodeSystem(js)
         self.implCodeSystem4(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implCodeSystem4(self, inst):
         self.assertTrue(inst.caseSensitive)
@@ -204,7 +212,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.useContext[0].valueCodeableConcept.coding[0].code, "337915000")
         self.assertEqual(inst.useContext[0].valueCodeableConcept.coding[0].display, "Homo sapiens (organism)")
         self.assertEqual(inst.useContext[0].valueCodeableConcept.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testCodeSystem5(self):
         inst = self.instantiate_from("codesystem-example.json")
@@ -215,6 +223,7 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual("CodeSystem", js["resourceType"])
         inst2 = codesystem.CodeSystem(js)
         self.implCodeSystem5(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implCodeSystem5(self, inst):
         self.assertTrue(inst.caseSensitive)
@@ -260,3 +269,75 @@ class CodeSystemTests(unittest.TestCase):
         self.assertEqual(inst.url, "http://hl7.org/fhir/CodeSystem/example")
         self.assertEqual(inst.version, "20160128")
 
+    def evaluate_simplified_json(self, inst):
+        """Ensure simplified json."""
+        simplified_js, simplified_schema = inst.as_simplified_json()
+        self.assertIsNotNone(simplified_js, "Must create simplified json")
+
+        # test simplify identifiers
+        if hasattr(inst, 'identifier'):
+            assert 'identifier' not in simplified_js
+            if inst.identifier:
+                simplified_identifiers = [k for k in simplified_js.keys() if k.startswith('identifier_')]
+                if isinstance(inst.identifier, typing.List):
+                    identifiers_with_values = [i for i in inst.identifier if i.value]
+                else:
+                    identifiers_with_values = [inst.identifier]
+                self.assertEqual(len(identifiers_with_values), len(simplified_identifiers), "Should simplify identifiers.")
+
+        # test simplify lists
+        for name in vars(inst):
+
+            if name == 'identifier':
+                continue
+
+            if name == 'extension':
+                continue
+
+            value = getattr(inst, name)
+            is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, typing.List) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            if is_coding:
+                continue
+
+            if isinstance(getattr(inst, name), typing.List) and len(getattr(inst, name)) == 1:
+                # Properties that need to be renamed because of language keyword conflicts
+                # see mapping
+                if name not in simplified_js:
+                    name = name.replace("_fhir", "")
+                self.assertFalse(isinstance(simplified_js[name], typing.List), "Should simplify lists {}".format(name))
+
+        # test simplify coding
+        # meta has known coding attribute 'tags'
+        if hasattr(inst, 'meta'):
+            if inst.meta and inst.meta.tag and len(inst.meta.tag) > 0:
+                simplified_tags = [k for k in simplified_js['meta'].keys() if k.startswith('tag_')]
+                self.assertEqual(len(inst.meta.tag), len(simplified_tags), "Should simplify meta tags.")
+                self.assertTrue('tag' not in simplified_js['meta'], "Should not have meta.tag")
+
+        # test simplify extensions
+        if hasattr(inst, 'extension'):
+            if inst.extension and len(inst.extension) > 0:
+                assert 'extension' not in simplified_js
+                simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
+                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+
+        # test simplify schema
+        for k in simplified_js:
+            assert k in simplified_schema, "Should have a schema definition for {}".format(k)
+
+        # test simplified, flattened
+        from flatten_json import flatten
+        flattened = flatten(simplified_js, separator='|')
+        for flattened_key in flattened:
+            dict_ = simplified_schema
+            for flattened_key_part in flattened_key.split('|'):
+                if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
+                    # traverse over list index
+                    continue
+                dict_ = dict_[flattened_key_part]
+                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                if 'docstring' not in dict_:
+                    logging.getLogger(__name__).warning(
+                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                            inst.resource_type, flattened_key, flattened_key_part, dict_))
+                    break

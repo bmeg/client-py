@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-20.
+#  2022, SMART Health IT.
 
-
-import os
 import io
-import unittest
 import json
+import logging
+import os
+import typing
+import unittest
+
 from . import observation
+
 from .fhirdate import FHIRDate
+import logging
 
 
 class ObservationTests(unittest.TestCase):
@@ -30,6 +34,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation1(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation1(self, inst):
         self.assertEqual(inst.code.coding[0].code, "55233-1")
@@ -66,6 +71,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation2(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation2(self, inst):
         self.assertEqual(inst.bodySite.coding[0].code, "71341001:272741003=7771000")
@@ -95,6 +101,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation3(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation3(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "vital-signs")
@@ -128,6 +135,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation4(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation4(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "vital-signs")
@@ -167,6 +175,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation5(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation5(self, inst):
         self.assertEqual(inst.code.coding[0].code, "55233-1")
@@ -197,6 +206,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation6(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation6(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "vital-signs")
@@ -229,6 +239,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation7(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation7(self, inst):
         self.assertEqual(inst.code.coding[0].code, "59041-4")
@@ -258,6 +269,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation8(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation8(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "vital-signs")
@@ -291,6 +303,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation9(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation9(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "vital-signs")
@@ -324,6 +337,7 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual("Observation", js["resourceType"])
         inst2 = observation.Observation(js)
         self.implObservation10(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implObservation10(self, inst):
         self.assertEqual(inst.code.text, "eye color")
@@ -337,3 +351,75 @@ class ObservationTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.valueString, "blue")
 
+    def evaluate_simplified_json(self, inst):
+        """Ensure simplified json."""
+        simplified_js, simplified_schema = inst.as_simplified_json()
+        self.assertIsNotNone(simplified_js, "Must create simplified json")
+
+        # test simplify identifiers
+        if hasattr(inst, 'identifier'):
+            assert 'identifier' not in simplified_js
+            if inst.identifier:
+                simplified_identifiers = [k for k in simplified_js.keys() if k.startswith('identifier_')]
+                if isinstance(inst.identifier, typing.List):
+                    identifiers_with_values = [i for i in inst.identifier if i.value]
+                else:
+                    identifiers_with_values = [inst.identifier]
+                self.assertEqual(len(identifiers_with_values), len(simplified_identifiers), "Should simplify identifiers.")
+
+        # test simplify lists
+        for name in vars(inst):
+
+            if name == 'identifier':
+                continue
+
+            if name == 'extension':
+                continue
+
+            value = getattr(inst, name)
+            is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, typing.List) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            if is_coding:
+                continue
+
+            if isinstance(getattr(inst, name), typing.List) and len(getattr(inst, name)) == 1:
+                # Properties that need to be renamed because of language keyword conflicts
+                # see mapping
+                if name not in simplified_js:
+                    name = name.replace("_fhir", "")
+                self.assertFalse(isinstance(simplified_js[name], typing.List), "Should simplify lists {}".format(name))
+
+        # test simplify coding
+        # meta has known coding attribute 'tags'
+        if hasattr(inst, 'meta'):
+            if inst.meta and inst.meta.tag and len(inst.meta.tag) > 0:
+                simplified_tags = [k for k in simplified_js['meta'].keys() if k.startswith('tag_')]
+                self.assertEqual(len(inst.meta.tag), len(simplified_tags), "Should simplify meta tags.")
+                self.assertTrue('tag' not in simplified_js['meta'], "Should not have meta.tag")
+
+        # test simplify extensions
+        if hasattr(inst, 'extension'):
+            if inst.extension and len(inst.extension) > 0:
+                assert 'extension' not in simplified_js
+                simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
+                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+
+        # test simplify schema
+        for k in simplified_js:
+            assert k in simplified_schema, "Should have a schema definition for {}".format(k)
+
+        # test simplified, flattened
+        from flatten_json import flatten
+        flattened = flatten(simplified_js, separator='|')
+        for flattened_key in flattened:
+            dict_ = simplified_schema
+            for flattened_key_part in flattened_key.split('|'):
+                if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
+                    # traverse over list index
+                    continue
+                dict_ = dict_[flattened_key_part]
+                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                if 'docstring' not in dict_:
+                    logging.getLogger(__name__).warning(
+                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                            inst.resource_type, flattened_key, flattened_key_part, dict_))
+                    break

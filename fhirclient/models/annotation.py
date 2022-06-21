@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Annotation) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Annotation) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import element
@@ -13,9 +13,27 @@ class Annotation(element.Element):
     A  text note which also  contains information about who made the statement
     and when.
     """
-    
-    resource_type = "Annotation"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['authorReference'] = """Individual responsible for the annotation."""
+    _attribute_docstrings['authorString'] = """Individual responsible for the annotation."""
+    _attribute_docstrings['time'] = """When the annotation was made."""
+    _attribute_docstrings['text'] = """The annotation  - text content (as markdown)."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -32,13 +50,13 @@ class Annotation(element.Element):
         """ Individual responsible for the annotation.
         Type `str`. """
         
-        self.text = None
-        """ The annotation  - text content (as markdown).
-        Type `str`. """
-        
         self.time = None
         """ When the annotation was made.
         Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.text = None
+        """ The annotation  - text content (as markdown).
+        Type `str`. """
         
         super(Annotation, self).__init__(jsondict=jsondict, strict=strict)
     
@@ -47,8 +65,8 @@ class Annotation(element.Element):
         js.extend([
             ("authorReference", "authorReference", fhirreference.FHIRReference, False, "author", False),
             ("authorString", "authorString", str, False, "author", False),
-            ("text", "text", str, False, None, True),
             ("time", "time", fhirdate.FHIRDate, False, None, False),
+            ("text", "text", str, False, None, True),
         ])
         return js
 

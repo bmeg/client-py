@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Contributor) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Contributor) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import element
@@ -13,9 +13,32 @@ class Contributor(element.Element):
     A contributor to the content of a knowledge asset, including authors,
     editors, reviewers, and endorsers.
     """
-    
-    resource_type = "Contributor"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['type'] = """The type of contributor."""
+    _attribute_docstrings['name'] = """Who contributed the content."""
+    _attribute_docstrings['contact'] = """Contact details of the contributor."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['type'] = {
+        'url': 'http://hl7.org/fhir/contributor-type',
+        'restricted_to': ['author', 'editor', 'reviewer', 'endorser'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,26 +47,26 @@ class Contributor(element.Element):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.contact = None
-        """ Contact details of the contributor.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
+        self.type = None
+        """ The type of contributor.
+        Type `str`. """
         
         self.name = None
         """ Who contributed the content.
         Type `str`. """
         
-        self.type = None
-        """ author | editor | reviewer | endorser.
-        Type `str`. """
+        self.contact = None
+        """ Contact details of the contributor.
+        List of `ContactDetail` items (represented as `dict` in JSON). """
         
         super(Contributor, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(Contributor, self).elementProperties()
         js.extend([
-            ("contact", "contact", contactdetail.ContactDetail, True, None, False),
-            ("name", "name", str, False, None, True),
             ("type", "type", str, False, None, True),
+            ("name", "name", str, False, None, True),
+            ("contact", "contact", contactdetail.ContactDetail, True, None, False),
         ])
         return js
 

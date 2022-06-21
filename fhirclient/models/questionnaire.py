@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -17,7 +17,57 @@ class Questionnaire(domainresource.DomainResource):
     """
     
     resource_type = "Questionnaire"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['url'] = """Canonical identifier for this questionnaire, represented as a URI (globally unique)."""
+    _attribute_docstrings['identifier'] = """Additional identifier for the questionnaire."""
+    _attribute_docstrings['version'] = """Business version of the questionnaire."""
+    _attribute_docstrings['name'] = """Name for this questionnaire (computer friendly)."""
+    _attribute_docstrings['title'] = """Name for this questionnaire (human friendly)."""
+    _attribute_docstrings['derivedFrom'] = """Instantiates protocol or definition."""
+    _attribute_docstrings['status'] = """The status of this questionnaire. Enables tracking the life-cycle of the content."""
+    _attribute_docstrings['experimental'] = """For testing purposes, not real usage."""
+    _attribute_docstrings['subjectType'] = """The types of subjects that can be the subject of responses created for the questionnaire."""
+    _attribute_docstrings['date'] = """Date last changed."""
+    _attribute_docstrings['publisher'] = """Name of the publisher (organization or individual)."""
+    _attribute_docstrings['contact'] = """Contact details for the publisher."""
+    _attribute_docstrings['description'] = """Natural language description of the questionnaire."""
+    _attribute_docstrings['useContext'] = """The context that the content is intended to support."""
+    _attribute_docstrings['jurisdiction'] = """Intended jurisdiction for questionnaire (if applicable)."""
+    _attribute_docstrings['purpose'] = """Why this questionnaire is defined."""
+    _attribute_docstrings['copyright'] = """Use and/or publishing restrictions."""
+    _attribute_docstrings['approvalDate'] = """When the questionnaire was approved by publisher."""
+    _attribute_docstrings['lastReviewDate'] = """When the questionnaire was last reviewed."""
+    _attribute_docstrings['effectivePeriod'] = """When the questionnaire is expected to be used."""
+    _attribute_docstrings['code'] = """Concept that represents the overall questionnaire."""
+    _attribute_docstrings['item'] = """Questions and sections within the Questionnaire."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['status'] = {
+        'url': 'http://hl7.org/fhir/publication-status',
+        'restricted_to': ['draft', 'active', 'retired', 'unknown'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['subjectType'] = {
+        'url': 'http://hl7.org/fhir/resource-types',
+        'restricted_to': ['Account', 'ActivityDefinition', 'AdverseEvent', 'AllergyIntolerance', 'Appointment', 'AppointmentResponse', 'AuditEvent', 'Basic', 'Binary', 'BiologicallyDerivedProduct', 'BodyStructure', 'Bundle', 'CapabilityStatement', 'CarePlan', 'CareTeam', 'CatalogEntry', 'ChargeItem', 'ChargeItemDefinition', 'Claim', 'ClaimResponse', 'ClinicalImpression', 'CodeSystem', 'Communication', 'CommunicationRequest', 'CompartmentDefinition', 'Composition', 'ConceptMap', 'Condition', 'Consent', 'Contract', 'Coverage', 'CoverageEligibilityRequest', 'CoverageEligibilityResponse', 'DetectedIssue', 'Device', 'DeviceDefinition', 'DeviceMetric', 'DeviceRequest', 'DeviceUseStatement', 'DiagnosticReport', 'DocumentManifest', 'DocumentReference', 'DomainResource', 'EffectEvidenceSynthesis', 'Encounter', 'Endpoint', 'EnrollmentRequest', 'EnrollmentResponse', 'EpisodeOfCare', 'EventDefinition', 'Evidence', 'EvidenceVariable', 'ExampleScenario', 'ExplanationOfBenefit', 'FamilyMemberHistory', 'Flag', 'Goal', 'GraphDefinition', 'Group', 'GuidanceResponse', 'HealthcareService', 'ImagingStudy', 'Immunization', 'ImmunizationEvaluation', 'ImmunizationRecommendation', 'ImplementationGuide', 'InsurancePlan', 'Invoice', 'Library', 'Linkage', 'List', 'Location', 'Measure', 'MeasureReport', 'Media', 'Medication', 'MedicationAdministration', 'MedicationDispense', 'MedicationKnowledge', 'MedicationRequest', 'MedicationStatement', 'MedicinalProduct', 'MedicinalProductAuthorization', 'MedicinalProductContraindication', 'MedicinalProductIndication', 'MedicinalProductIngredient', 'MedicinalProductInteraction', 'MedicinalProductManufactured', 'MedicinalProductPackaged', 'MedicinalProductPharmaceutical', 'MedicinalProductUndesirableEffect', 'MessageDefinition', 'MessageHeader', 'MolecularSequence', 'NamingSystem', 'NutritionOrder', 'Observation', 'ObservationDefinition', 'OperationDefinition', 'OperationOutcome', 'Organization', 'OrganizationAffiliation', 'Parameters', 'Patient', 'PaymentNotice', 'PaymentReconciliation', 'Person', 'PlanDefinition', 'Practitioner', 'PractitionerRole', 'Procedure', 'Provenance', 'Questionnaire', 'QuestionnaireResponse', 'RelatedPerson', 'RequestGroup', 'ResearchDefinition', 'ResearchElementDefinition', 'ResearchStudy', 'ResearchSubject', 'Resource', 'RiskAssessment', 'RiskEvidenceSynthesis', 'Schedule', 'SearchParameter', 'ServiceRequest', 'Slot', 'Specimen', 'SpecimenDefinition', 'StructureDefinition', 'StructureMap', 'Subscription', 'Substance', 'SubstanceNucleicAcid', 'SubstancePolymer', 'SubstanceProtein', 'SubstanceReferenceInformation', 'SubstanceSourceMaterial', 'SubstanceSpecification', 'SupplyDelivery', 'SupplyRequest', 'Task', 'TerminologyCapabilities', 'TestReport', 'TestScript', 'ValueSet', 'VerificationResult', 'VisionPrescription'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -26,122 +76,124 @@ class Questionnaire(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.approvalDate = None
-        """ When the questionnaire was approved by publisher.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.code = None
-        """ Concept that represents the overall questionnaire.
-        List of `Coding` items (represented as `dict` in JSON). """
-        
-        self.contact = None
-        """ Contact details for the publisher.
-        List of `ContactDetail` items (represented as `dict` in JSON). """
-        
-        self.copyright = None
-        """ Use and/or publishing restrictions.
+        self.url = None
+        """ Canonical identifier for this questionnaire, represented as a URI
+        (globally unique).
         Type `str`. """
-        
-        self.date = None
-        """ Date last changed.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.derivedFrom = None
-        """ Instantiates protocol or definition.
-        List of `str` items. """
-        
-        self.description = None
-        """ Natural language description of the questionnaire.
-        Type `str`. """
-        
-        self.effectivePeriod = None
-        """ When the questionnaire is expected to be used.
-        Type `Period` (represented as `dict` in JSON). """
-        
-        self.experimental = None
-        """ For testing purposes, not real usage.
-        Type `bool`. """
         
         self.identifier = None
         """ Additional identifier for the questionnaire.
         List of `Identifier` items (represented as `dict` in JSON). """
         
-        self.item = None
-        """ Questions and sections within the Questionnaire.
-        List of `QuestionnaireItem` items (represented as `dict` in JSON). """
-        
-        self.jurisdiction = None
-        """ Intended jurisdiction for questionnaire (if applicable).
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-        
-        self.lastReviewDate = None
-        """ When the questionnaire was last reviewed.
-        Type `FHIRDate` (represented as `str` in JSON). """
+        self.version = None
+        """ Business version of the questionnaire.
+        Type `str`. """
         
         self.name = None
         """ Name for this questionnaire (computer friendly).
         Type `str`. """
         
-        self.publisher = None
-        """ Name of the publisher (organization or individual).
-        Type `str`. """
-        
-        self.purpose = None
-        """ Why this questionnaire is defined.
-        Type `str`. """
-        
-        self.status = None
-        """ draft | active | retired | unknown.
-        Type `str`. """
-        
-        self.subjectType = None
-        """ Resource that can be subject of QuestionnaireResponse.
-        List of `str` items. """
-        
         self.title = None
         """ Name for this questionnaire (human friendly).
         Type `str`. """
         
-        self.url = None
-        """ Canonical identifier for this questionnaire, represented as a URI
-        (globally unique).
+        self.derivedFrom = None
+        """ Instantiates protocol or definition.
+        List of `str` items. """
+        
+        self.status = None
+        """ The status of this questionnaire. Enables tracking the life-cycle
+        of the content.
+        Type `str`. """
+        
+        self.experimental = None
+        """ For testing purposes, not real usage.
+        Type `bool`. """
+        
+        self.subjectType = None
+        """ The types of subjects that can be the subject of responses created
+        for the questionnaire.
+        List of `str` items. """
+        
+        self.date = None
+        """ Date last changed.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.publisher = None
+        """ Name of the publisher (organization or individual).
+        Type `str`. """
+        
+        self.contact = None
+        """ Contact details for the publisher.
+        List of `ContactDetail` items (represented as `dict` in JSON). """
+        
+        self.description = None
+        """ Natural language description of the questionnaire.
         Type `str`. """
         
         self.useContext = None
         """ The context that the content is intended to support.
         List of `UsageContext` items (represented as `dict` in JSON). """
         
-        self.version = None
-        """ Business version of the questionnaire.
+        self.jurisdiction = None
+        """ Intended jurisdiction for questionnaire (if applicable).
+        List of `CodeableConcept` items (represented as `dict` in JSON). """
+        
+        self.purpose = None
+        """ Why this questionnaire is defined.
         Type `str`. """
+        
+        self.copyright = None
+        """ Use and/or publishing restrictions.
+        Type `str`. """
+        
+        self.approvalDate = None
+        """ When the questionnaire was approved by publisher.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.lastReviewDate = None
+        """ When the questionnaire was last reviewed.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.effectivePeriod = None
+        """ When the questionnaire is expected to be used.
+        Type `Period` (represented as `dict` in JSON). """
+        
+        self.code = None
+        """ Concept that represents the overall questionnaire.
+        List of `Coding` items (represented as `dict` in JSON). """
+        
+        self.item = None
+        """ Questions and sections within the Questionnaire.
+        List of `QuestionnaireItem` items (represented as `dict` in JSON). """
         
         super(Questionnaire, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(Questionnaire, self).elementProperties()
         js.extend([
-            ("approvalDate", "approvalDate", fhirdate.FHIRDate, False, None, False),
-            ("code", "code", coding.Coding, True, None, False),
-            ("contact", "contact", contactdetail.ContactDetail, True, None, False),
-            ("copyright", "copyright", str, False, None, False),
-            ("date", "date", fhirdate.FHIRDate, False, None, False),
-            ("derivedFrom", "derivedFrom", str, True, None, False),
-            ("description", "description", str, False, None, False),
-            ("effectivePeriod", "effectivePeriod", period.Period, False, None, False),
-            ("experimental", "experimental", bool, False, None, False),
-            ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("item", "item", QuestionnaireItem, True, None, False),
-            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, True, None, False),
-            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, False, None, False),
-            ("name", "name", str, False, None, False),
-            ("publisher", "publisher", str, False, None, False),
-            ("purpose", "purpose", str, False, None, False),
-            ("status", "status", str, False, None, True),
-            ("subjectType", "subjectType", str, True, None, False),
-            ("title", "title", str, False, None, False),
             ("url", "url", str, False, None, False),
-            ("useContext", "useContext", usagecontext.UsageContext, True, None, False),
+            ("identifier", "identifier", identifier.Identifier, True, None, False),
             ("version", "version", str, False, None, False),
+            ("name", "name", str, False, None, False),
+            ("title", "title", str, False, None, False),
+            ("derivedFrom", "derivedFrom", str, True, None, False),
+            ("status", "status", str, False, None, True),
+            ("experimental", "experimental", bool, False, None, False),
+            ("subjectType", "subjectType", str, True, None, False),
+            ("date", "date", fhirdate.FHIRDate, False, None, False),
+            ("publisher", "publisher", str, False, None, False),
+            ("contact", "contact", contactdetail.ContactDetail, True, None, False),
+            ("description", "description", str, False, None, False),
+            ("useContext", "useContext", usagecontext.UsageContext, True, None, False),
+            ("jurisdiction", "jurisdiction", codeableconcept.CodeableConcept, True, None, False),
+            ("purpose", "purpose", str, False, None, False),
+            ("copyright", "copyright", str, False, None, False),
+            ("approvalDate", "approvalDate", fhirdate.FHIRDate, False, None, False),
+            ("lastReviewDate", "lastReviewDate", fhirdate.FHIRDate, False, None, False),
+            ("effectivePeriod", "effectivePeriod", period.Period, False, None, False),
+            ("code", "code", coding.Coding, True, None, False),
+            ("item", "item", QuestionnaireItem, True, None, False),
         ])
         return js
 
@@ -154,9 +206,51 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     A particular question, question grouping or display text that is part of
     the questionnaire.
     """
-    
-    resource_type = "QuestionnaireItem"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['linkId'] = """Unique id for item in questionnaire."""
+    _attribute_docstrings['definition'] = """ElementDefinition - details for the item."""
+    _attribute_docstrings['code'] = """Corresponding concept for this item in a terminology."""
+    _attribute_docstrings['prefix'] = """E.g. "1(a)", "2.5.3"."""
+    _attribute_docstrings['text'] = """Primary text for the item."""
+    _attribute_docstrings['type'] = """The type of questionnaire item this is - whether text for display, a grouping of other items or a particular type of data to be captured (string, integer, coded choice, etc.)."""
+    _attribute_docstrings['enableWhen'] = """Only allow data when."""
+    _attribute_docstrings['enableBehavior'] = """Controls how multiple enableWhen values are interpreted -  whether all or any must be true."""
+    _attribute_docstrings['required'] = """Whether the item must be included in data results."""
+    _attribute_docstrings['repeats'] = """Whether the item may repeat."""
+    _attribute_docstrings['readOnly'] = """Don't allow human editing."""
+    _attribute_docstrings['maxLength'] = """No more than this many characters."""
+    _attribute_docstrings['answerValueSet'] = """Valueset containing permitted answers."""
+    _attribute_docstrings['answerOption'] = """Permitted answer."""
+    _attribute_docstrings['initial'] = """Initial value(s) when item is first rendered."""
+    _attribute_docstrings['item'] = """Nested questionnaire items."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['type'] = {
+        'url': 'http://hl7.org/fhir/item-type',
+        'restricted_to': ['group', 'display', 'question', 'boolean', 'decimal', 'integer', 'date', 'dateTime', 'time', 'string', 'text', 'url', 'choice', 'open-choice', 'attachment', 'reference', 'quantity'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['enableBehavior'] = {
+        'url': 'http://hl7.org/fhir/questionnaire-enable-behavior',
+        'restricted_to': ['all', 'any'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -165,29 +259,64 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.answerOption = None
-        """ Permitted answer.
-        List of `QuestionnaireItemAnswerOption` items (represented as `dict` in JSON). """
+        self.linkId = None
+        """ Unique id for item in questionnaire.
+        Type `str`. """
         
-        self.answerValueSet = None
-        """ Valueset containing permitted answers.
+        self.definition = None
+        """ ElementDefinition - details for the item.
         Type `str`. """
         
         self.code = None
         """ Corresponding concept for this item in a terminology.
         List of `Coding` items (represented as `dict` in JSON). """
         
-        self.definition = None
-        """ ElementDefinition - details for the item.
+        self.prefix = None
+        """ E.g. "1(a)", "2.5.3".
         Type `str`. """
         
-        self.enableBehavior = None
-        """ all | any.
+        self.text = None
+        """ Primary text for the item.
+        Type `str`. """
+        
+        self.type = None
+        """ The type of questionnaire item this is - whether text for display,
+        a grouping of other items or a particular type of data to be
+        captured (string, integer, coded choice, etc.).
         Type `str`. """
         
         self.enableWhen = None
         """ Only allow data when.
         List of `QuestionnaireItemEnableWhen` items (represented as `dict` in JSON). """
+        
+        self.enableBehavior = None
+        """ Controls how multiple enableWhen values are interpreted -  whether
+        all or any must be true.
+        Type `str`. """
+        
+        self.required = None
+        """ Whether the item must be included in data results.
+        Type `bool`. """
+        
+        self.repeats = None
+        """ Whether the item may repeat.
+        Type `bool`. """
+        
+        self.readOnly = None
+        """ Don't allow human editing.
+        Type `bool`. """
+        
+        self.maxLength = None
+        """ No more than this many characters.
+        Type `int`. """
+        
+        self.answerValueSet = None
+        """ Valueset containing permitted answers.
+        Type `str`. """
+        
+        self.answerOption = None
+        """ Permitted answer.
+        List of `QuestionnaireItemAnswerOption` items (represented as `dict` in JSON). """
         
         self.initial = None
         """ Initial value(s) when item is first rendered.
@@ -197,59 +326,27 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         """ Nested questionnaire items.
         List of `QuestionnaireItem` items (represented as `dict` in JSON). """
         
-        self.linkId = None
-        """ Unique id for item in questionnaire.
-        Type `str`. """
-        
-        self.maxLength = None
-        """ No more than this many characters.
-        Type `int`. """
-        
-        self.prefix = None
-        """ E.g. "1(a)", "2.5.3".
-        Type `str`. """
-        
-        self.readOnly = None
-        """ Don't allow human editing.
-        Type `bool`. """
-        
-        self.repeats = None
-        """ Whether the item may repeat.
-        Type `bool`. """
-        
-        self.required = None
-        """ Whether the item must be included in data results.
-        Type `bool`. """
-        
-        self.text = None
-        """ Primary text for the item.
-        Type `str`. """
-        
-        self.type = None
-        """ group | display | boolean | decimal | integer | date | dateTime +.
-        Type `str`. """
-        
         super(QuestionnaireItem, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(QuestionnaireItem, self).elementProperties()
         js.extend([
-            ("answerOption", "answerOption", QuestionnaireItemAnswerOption, True, None, False),
-            ("answerValueSet", "answerValueSet", str, False, None, False),
-            ("code", "code", coding.Coding, True, None, False),
-            ("definition", "definition", str, False, None, False),
-            ("enableBehavior", "enableBehavior", str, False, None, False),
-            ("enableWhen", "enableWhen", QuestionnaireItemEnableWhen, True, None, False),
-            ("initial", "initial", QuestionnaireItemInitial, True, None, False),
-            ("item", "item", QuestionnaireItem, True, None, False),
             ("linkId", "linkId", str, False, None, True),
-            ("maxLength", "maxLength", int, False, None, False),
+            ("definition", "definition", str, False, None, False),
+            ("code", "code", coding.Coding, True, None, False),
             ("prefix", "prefix", str, False, None, False),
-            ("readOnly", "readOnly", bool, False, None, False),
-            ("repeats", "repeats", bool, False, None, False),
-            ("required", "required", bool, False, None, False),
             ("text", "text", str, False, None, False),
             ("type", "type", str, False, None, True),
+            ("enableWhen", "enableWhen", QuestionnaireItemEnableWhen, True, None, False),
+            ("enableBehavior", "enableBehavior", str, False, None, False),
+            ("required", "required", bool, False, None, False),
+            ("repeats", "repeats", bool, False, None, False),
+            ("readOnly", "readOnly", bool, False, None, False),
+            ("maxLength", "maxLength", int, False, None, False),
+            ("answerValueSet", "answerValueSet", str, False, None, False),
+            ("answerOption", "answerOption", QuestionnaireItemAnswerOption, True, None, False),
+            ("initial", "initial", QuestionnaireItemInitial, True, None, False),
+            ("item", "item", QuestionnaireItem, True, None, False),
         ])
         return js
 
@@ -259,9 +356,30 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     
     One of the permitted answers for a "choice" or "open-choice" question.
     """
-    
-    resource_type = "QuestionnaireItemAnswerOption"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['valueInteger'] = """Answer value."""
+    _attribute_docstrings['valueDate'] = """Answer value."""
+    _attribute_docstrings['valueTime'] = """Answer value."""
+    _attribute_docstrings['valueString'] = """Answer value."""
+    _attribute_docstrings['valueCoding'] = """Answer value."""
+    _attribute_docstrings['valueReference'] = """Answer value."""
+    _attribute_docstrings['initialSelected'] = """Whether option is selected by default."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -270,46 +388,46 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.initialSelected = None
-        """ Whether option is selected by default.
-        Type `bool`. """
-        
-        self.valueCoding = None
+        self.valueInteger = None
         """ Answer value.
-        Type `Coding` (represented as `dict` in JSON). """
+        Type `int`. """
         
         self.valueDate = None
         """ Answer value.
         Type `FHIRDate` (represented as `str` in JSON). """
         
-        self.valueInteger = None
+        self.valueTime = None
         """ Answer value.
-        Type `int`. """
-        
-        self.valueReference = None
-        """ Answer value.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        Type `FHIRDate` (represented as `str` in JSON). """
         
         self.valueString = None
         """ Answer value.
         Type `str`. """
         
-        self.valueTime = None
+        self.valueCoding = None
         """ Answer value.
-        Type `FHIRDate` (represented as `str` in JSON). """
+        Type `Coding` (represented as `dict` in JSON). """
+        
+        self.valueReference = None
+        """ Answer value.
+        Type `FHIRReference` (represented as `dict` in JSON). """
+        
+        self.initialSelected = None
+        """ Whether option is selected by default.
+        Type `bool`. """
         
         super(QuestionnaireItemAnswerOption, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(QuestionnaireItemAnswerOption, self).elementProperties()
         js.extend([
-            ("initialSelected", "initialSelected", bool, False, None, False),
-            ("valueCoding", "valueCoding", coding.Coding, False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, False, "value", True),
             ("valueInteger", "valueInteger", int, False, "value", True),
-            ("valueReference", "valueReference", fhirreference.FHIRReference, False, "value", True),
-            ("valueString", "valueString", str, False, "value", True),
+            ("valueDate", "valueDate", fhirdate.FHIRDate, False, "value", True),
             ("valueTime", "valueTime", fhirdate.FHIRDate, False, "value", True),
+            ("valueString", "valueString", str, False, "value", True),
+            ("valueCoding", "valueCoding", coding.Coding, False, "value", True),
+            ("valueReference", "valueReference", fhirreference.FHIRReference, False, "value", True),
+            ("initialSelected", "initialSelected", bool, False, None, False),
         ])
         return js
 
@@ -321,9 +439,41 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     (displayed/allow answers to be captured) when the specified condition is
     true.
     """
-    
-    resource_type = "QuestionnaireItemEnableWhen"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['question'] = """Question that determines whether item is enabled."""
+    _attribute_docstrings['operator'] = """Specifies the criteria by which the question is enabled."""
+    _attribute_docstrings['answerBoolean'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerDecimal'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerInteger'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerDate'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerDateTime'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerTime'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerString'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerCoding'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerQuantity'] = """Value for question comparison based on operator."""
+    _attribute_docstrings['answerReference'] = """Value for question comparison based on operator."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['operator'] = {
+        'url': 'http://hl7.org/fhir/questionnaire-enable-operator',
+        'restricted_to': ['exists', '=', '!=', '>', '<', '>=', '<='],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -332,21 +482,17 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
+        self.question = None
+        """ Question that determines whether item is enabled.
+        Type `str`. """
+        
+        self.operator = None
+        """ Specifies the criteria by which the question is enabled.
+        Type `str`. """
+        
         self.answerBoolean = None
         """ Value for question comparison based on operator.
         Type `bool`. """
-        
-        self.answerCoding = None
-        """ Value for question comparison based on operator.
-        Type `Coding` (represented as `dict` in JSON). """
-        
-        self.answerDate = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.answerDateTime = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
         
         self.answerDecimal = None
         """ Value for question comparison based on operator.
@@ -356,6 +502,26 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         """ Value for question comparison based on operator.
         Type `int`. """
         
+        self.answerDate = None
+        """ Value for question comparison based on operator.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.answerDateTime = None
+        """ Value for question comparison based on operator.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.answerTime = None
+        """ Value for question comparison based on operator.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.answerString = None
+        """ Value for question comparison based on operator.
+        Type `str`. """
+        
+        self.answerCoding = None
+        """ Value for question comparison based on operator.
+        Type `Coding` (represented as `dict` in JSON). """
+        
         self.answerQuantity = None
         """ Value for question comparison based on operator.
         Type `Quantity` (represented as `dict` in JSON). """
@@ -364,39 +530,23 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         """ Value for question comparison based on operator.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.answerString = None
-        """ Value for question comparison based on operator.
-        Type `str`. """
-        
-        self.answerTime = None
-        """ Value for question comparison based on operator.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.operator = None
-        """ exists | = | != | > | < | >= | <=.
-        Type `str`. """
-        
-        self.question = None
-        """ Question that determines whether item is enabled.
-        Type `str`. """
-        
         super(QuestionnaireItemEnableWhen, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(QuestionnaireItemEnableWhen, self).elementProperties()
         js.extend([
+            ("question", "question", str, False, None, True),
+            ("operator", "operator", str, False, None, True),
             ("answerBoolean", "answerBoolean", bool, False, "answer", True),
-            ("answerCoding", "answerCoding", coding.Coding, False, "answer", True),
-            ("answerDate", "answerDate", fhirdate.FHIRDate, False, "answer", True),
-            ("answerDateTime", "answerDateTime", fhirdate.FHIRDate, False, "answer", True),
             ("answerDecimal", "answerDecimal", float, False, "answer", True),
             ("answerInteger", "answerInteger", int, False, "answer", True),
+            ("answerDate", "answerDate", fhirdate.FHIRDate, False, "answer", True),
+            ("answerDateTime", "answerDateTime", fhirdate.FHIRDate, False, "answer", True),
+            ("answerTime", "answerTime", fhirdate.FHIRDate, False, "answer", True),
+            ("answerString", "answerString", str, False, "answer", True),
+            ("answerCoding", "answerCoding", coding.Coding, False, "answer", True),
             ("answerQuantity", "answerQuantity", quantity.Quantity, False, "answer", True),
             ("answerReference", "answerReference", fhirreference.FHIRReference, False, "answer", True),
-            ("answerString", "answerString", str, False, "answer", True),
-            ("answerTime", "answerTime", fhirdate.FHIRDate, False, "answer", True),
-            ("operator", "operator", str, False, None, True),
-            ("question", "question", str, False, None, True),
         ])
         return js
 
@@ -407,9 +557,35 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     One or more values that should be pre-populated in the answer when
     initially rendering the questionnaire for user input.
     """
-    
-    resource_type = "QuestionnaireItemInitial"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['valueBoolean'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueDecimal'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueInteger'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueDate'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueDateTime'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueTime'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueString'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueUri'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueAttachment'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueCoding'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueQuantity'] = """Actual value for initializing the question."""
+    _attribute_docstrings['valueReference'] = """Actual value for initializing the question."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -418,25 +594,9 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.valueAttachment = None
-        """ Actual value for initializing the question.
-        Type `Attachment` (represented as `dict` in JSON). """
-        
         self.valueBoolean = None
         """ Actual value for initializing the question.
         Type `bool`. """
-        
-        self.valueCoding = None
-        """ Actual value for initializing the question.
-        Type `Coding` (represented as `dict` in JSON). """
-        
-        self.valueDate = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.valueDateTime = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
         
         self.valueDecimal = None
         """ Actual value for initializing the question.
@@ -446,6 +606,34 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         """ Actual value for initializing the question.
         Type `int`. """
         
+        self.valueDate = None
+        """ Actual value for initializing the question.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.valueDateTime = None
+        """ Actual value for initializing the question.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.valueTime = None
+        """ Actual value for initializing the question.
+        Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.valueString = None
+        """ Actual value for initializing the question.
+        Type `str`. """
+        
+        self.valueUri = None
+        """ Actual value for initializing the question.
+        Type `str`. """
+        
+        self.valueAttachment = None
+        """ Actual value for initializing the question.
+        Type `Attachment` (represented as `dict` in JSON). """
+        
+        self.valueCoding = None
+        """ Actual value for initializing the question.
+        Type `Coding` (represented as `dict` in JSON). """
+        
         self.valueQuantity = None
         """ Actual value for initializing the question.
         Type `Quantity` (represented as `dict` in JSON). """
@@ -454,35 +642,23 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         """ Actual value for initializing the question.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.valueString = None
-        """ Actual value for initializing the question.
-        Type `str`. """
-        
-        self.valueTime = None
-        """ Actual value for initializing the question.
-        Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.valueUri = None
-        """ Actual value for initializing the question.
-        Type `str`. """
-        
         super(QuestionnaireItemInitial, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(QuestionnaireItemInitial, self).elementProperties()
         js.extend([
-            ("valueAttachment", "valueAttachment", attachment.Attachment, False, "value", True),
             ("valueBoolean", "valueBoolean", bool, False, "value", True),
-            ("valueCoding", "valueCoding", coding.Coding, False, "value", True),
-            ("valueDate", "valueDate", fhirdate.FHIRDate, False, "value", True),
-            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, False, "value", True),
             ("valueDecimal", "valueDecimal", float, False, "value", True),
             ("valueInteger", "valueInteger", int, False, "value", True),
+            ("valueDate", "valueDate", fhirdate.FHIRDate, False, "value", True),
+            ("valueDateTime", "valueDateTime", fhirdate.FHIRDate, False, "value", True),
+            ("valueTime", "valueTime", fhirdate.FHIRDate, False, "value", True),
+            ("valueString", "valueString", str, False, "value", True),
+            ("valueUri", "valueUri", str, False, "value", True),
+            ("valueAttachment", "valueAttachment", attachment.Attachment, False, "value", True),
+            ("valueCoding", "valueCoding", coding.Coding, False, "value", True),
             ("valueQuantity", "valueQuantity", quantity.Quantity, False, "value", True),
             ("valueReference", "valueReference", fhirreference.FHIRReference, False, "value", True),
-            ("valueString", "valueString", str, False, "value", True),
-            ("valueTime", "valueTime", fhirdate.FHIRDate, False, "value", True),
-            ("valueUri", "valueUri", str, False, "value", True),
         ])
         return js
 

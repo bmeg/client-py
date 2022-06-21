@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Practitioner) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Practitioner) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -16,7 +16,39 @@ class Practitioner(domainresource.DomainResource):
     """
     
     resource_type = "Practitioner"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """An identifier for the person as this agent."""
+    _attribute_docstrings['active'] = """Whether this practitioner's record is in active use."""
+    _attribute_docstrings['name'] = """The name(s) associated with the practitioner."""
+    _attribute_docstrings['telecom'] = """A contact detail for the practitioner (that apply to all roles)."""
+    _attribute_docstrings['address'] = """Address(es) of the practitioner that are not role specific (typically home address)."""
+    _attribute_docstrings['gender'] = """Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes."""
+    _attribute_docstrings['birthDate'] = """The date  on which the practitioner was born."""
+    _attribute_docstrings['photo'] = """Image of the person."""
+    _attribute_docstrings['qualification'] = """Certification, licenses, or training pertaining to the provision of care."""
+    _attribute_docstrings['communication'] = """A language the practitioner can use in patient communication."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['gender'] = {
+        'url': 'http://hl7.org/fhir/administrative-gender',
+        'restricted_to': ['male', 'female', 'other', 'unknown'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -25,34 +57,35 @@ class Practitioner(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
+        self.identifier = None
+        """ An identifier for the person as this agent.
+        List of `Identifier` items (represented as `dict` in JSON). """
+        
         self.active = None
         """ Whether this practitioner's record is in active use.
         Type `bool`. """
+        
+        self.name = None
+        """ The name(s) associated with the practitioner.
+        List of `HumanName` items (represented as `dict` in JSON). """
+        
+        self.telecom = None
+        """ A contact detail for the practitioner (that apply to all roles).
+        List of `ContactPoint` items (represented as `dict` in JSON). """
         
         self.address = None
         """ Address(es) of the practitioner that are not role specific
         (typically home address).
         List of `Address` items (represented as `dict` in JSON). """
         
+        self.gender = None
+        """ Administrative Gender - the gender that the person is considered to
+        have for administration and record keeping purposes.
+        Type `str`. """
+        
         self.birthDate = None
         """ The date  on which the practitioner was born.
         Type `FHIRDate` (represented as `str` in JSON). """
-        
-        self.communication = None
-        """ A language the practitioner can use in patient communication.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-        
-        self.gender = None
-        """ male | female | other | unknown.
-        Type `str`. """
-        
-        self.identifier = None
-        """ An identifier for the person as this agent.
-        List of `Identifier` items (represented as `dict` in JSON). """
-        
-        self.name = None
-        """ The name(s) associated with the practitioner.
-        List of `HumanName` items (represented as `dict` in JSON). """
         
         self.photo = None
         """ Image of the person.
@@ -63,25 +96,25 @@ class Practitioner(domainresource.DomainResource):
         care.
         List of `PractitionerQualification` items (represented as `dict` in JSON). """
         
-        self.telecom = None
-        """ A contact detail for the practitioner (that apply to all roles).
-        List of `ContactPoint` items (represented as `dict` in JSON). """
+        self.communication = None
+        """ A language the practitioner can use in patient communication.
+        List of `CodeableConcept` items (represented as `dict` in JSON). """
         
         super(Practitioner, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(Practitioner, self).elementProperties()
         js.extend([
-            ("active", "active", bool, False, None, False),
-            ("address", "address", address.Address, True, None, False),
-            ("birthDate", "birthDate", fhirdate.FHIRDate, False, None, False),
-            ("communication", "communication", codeableconcept.CodeableConcept, True, None, False),
-            ("gender", "gender", str, False, None, False),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
+            ("active", "active", bool, False, None, False),
             ("name", "name", humanname.HumanName, True, None, False),
+            ("telecom", "telecom", contactpoint.ContactPoint, True, None, False),
+            ("address", "address", address.Address, True, None, False),
+            ("gender", "gender", str, False, None, False),
+            ("birthDate", "birthDate", fhirdate.FHIRDate, False, None, False),
             ("photo", "photo", attachment.Attachment, True, None, False),
             ("qualification", "qualification", PractitionerQualification, True, None, False),
-            ("telecom", "telecom", contactpoint.ContactPoint, True, None, False),
+            ("communication", "communication", codeableconcept.CodeableConcept, True, None, False),
         ])
         return js
 
@@ -96,9 +129,27 @@ class PractitionerQualification(backboneelement.BackboneElement):
     example, a medical license issued by a medical board authorizing the
     practitioner to practice medicine within a certian locality.
     """
-    
-    resource_type = "PractitionerQualification"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """An identifier for this qualification for the practitioner."""
+    _attribute_docstrings['code'] = """Coded representation of the qualification."""
+    _attribute_docstrings['period'] = """Period during which the qualification is valid."""
+    _attribute_docstrings['issuer'] = """Organization that regulates and issues the qualification."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -107,31 +158,31 @@ class PractitionerQualification(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.code = None
-        """ Coded representation of the qualification.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
         self.identifier = None
         """ An identifier for this qualification for the practitioner.
         List of `Identifier` items (represented as `dict` in JSON). """
         
-        self.issuer = None
-        """ Organization that regulates and issues the qualification.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.code = None
+        """ Coded representation of the qualification.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.period = None
         """ Period during which the qualification is valid.
         Type `Period` (represented as `dict` in JSON). """
+        
+        self.issuer = None
+        """ Organization that regulates and issues the qualification.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         super(PractitionerQualification, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(PractitionerQualification, self).elementProperties()
         js.extend([
-            ("code", "code", codeableconcept.CodeableConcept, False, None, True),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("issuer", "issuer", fhirreference.FHIRReference, False, None, False),
+            ("code", "code", codeableconcept.CodeableConcept, False, None, True),
             ("period", "period", period.Period, False, None, False),
+            ("issuer", "issuer", fhirreference.FHIRReference, False, None, False),
         ])
         return js
 

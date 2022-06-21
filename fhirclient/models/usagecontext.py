@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/UsageContext) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/UsageContext) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import element
@@ -15,9 +15,28 @@ class UsageContext(element.Element):
     to the applicable population (e.g., age category, DRG) or the specific
     context of care (e.g., venue, care setting, provider of care).
     """
-    
-    resource_type = "UsageContext"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['code'] = """Type of context being specified."""
+    _attribute_docstrings['valueCodeableConcept'] = """Value that defines the context."""
+    _attribute_docstrings['valueQuantity'] = """Value that defines the context."""
+    _attribute_docstrings['valueRange'] = """Value that defines the context."""
+    _attribute_docstrings['valueReference'] = """Value that defines the context."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         

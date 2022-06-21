@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DetectedIssue) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DetectedIssue) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -17,7 +17,48 @@ class DetectedIssue(domainresource.DomainResource):
     """
     
     resource_type = "DetectedIssue"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """Unique id for the detected issue."""
+    _attribute_docstrings['status'] = """Indicates the status of the detected issue."""
+    _attribute_docstrings['code'] = """Issue Category, e.g. drug-drug, duplicate therapy, etc.."""
+    _attribute_docstrings['severity'] = """Indicates the degree of importance associated with the identified issue based on the potential impact on the patient."""
+    _attribute_docstrings['patient'] = """Associated patient."""
+    _attribute_docstrings['identifiedDateTime'] = """When identified."""
+    _attribute_docstrings['identifiedPeriod'] = """When identified."""
+    _attribute_docstrings['author'] = """The provider or device that identified the issue."""
+    _attribute_docstrings['implicated'] = """Problem resource."""
+    _attribute_docstrings['evidence'] = """Supporting evidence."""
+    _attribute_docstrings['detail'] = """Description and context."""
+    _attribute_docstrings['reference'] = """Authority for issue."""
+    _attribute_docstrings['mitigation'] = """Step taken to address."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['status'] = {
+        'url': 'http://hl7.org/fhir/observation-status',
+        'restricted_to': ['registered', 'preliminary', 'final', 'amended', 'corrected', 'cancelled', 'entered-in-error', 'unknown'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+    _attribute_enums['severity'] = {
+        'url': 'http://hl7.org/fhir/detectedissue-severity',
+        'restricted_to': ['high', 'moderate', 'low'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -26,21 +67,26 @@ class DetectedIssue(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.author = None
-        """ The provider or device that identified the issue.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.identifier = None
+        """ Unique id for the detected issue.
+        List of `Identifier` items (represented as `dict` in JSON). """
         
-        self.code = None
-        """ Issue Category, e.g. drug-drug, duplicate therapy, etc..
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
-        self.detail = None
-        """ Description and context.
+        self.status = None
+        """ Indicates the status of the detected issue.
         Type `str`. """
         
-        self.evidence = None
-        """ Supporting evidence.
-        List of `DetectedIssueEvidence` items (represented as `dict` in JSON). """
+        self.code = None
+        """ Issue Category, e.g. drug-drug, duplicate therapy, etc.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.severity = None
+        """ Indicates the degree of importance associated with the identified
+        issue based on the potential impact on the patient.
+        Type `str`. """
+        
+        self.patient = None
+        """ Associated patient.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.identifiedDateTime = None
         """ When identified.
@@ -50,52 +96,48 @@ class DetectedIssue(domainresource.DomainResource):
         """ When identified.
         Type `Period` (represented as `dict` in JSON). """
         
-        self.identifier = None
-        """ Unique id for the detected issue.
-        List of `Identifier` items (represented as `dict` in JSON). """
+        self.author = None
+        """ The provider or device that identified the issue.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.implicated = None
         """ Problem resource.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.mitigation = None
-        """ Step taken to address.
-        List of `DetectedIssueMitigation` items (represented as `dict` in JSON). """
+        self.evidence = None
+        """ Supporting evidence.
+        List of `DetectedIssueEvidence` items (represented as `dict` in JSON). """
         
-        self.patient = None
-        """ Associated patient.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.detail = None
+        """ Description and context.
+        Type `str`. """
         
         self.reference = None
         """ Authority for issue.
         Type `str`. """
         
-        self.severity = None
-        """ high | moderate | low.
-        Type `str`. """
-        
-        self.status = None
-        """ registered | preliminary | final | amended +.
-        Type `str`. """
+        self.mitigation = None
+        """ Step taken to address.
+        List of `DetectedIssueMitigation` items (represented as `dict` in JSON). """
         
         super(DetectedIssue, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(DetectedIssue, self).elementProperties()
         js.extend([
-            ("author", "author", fhirreference.FHIRReference, False, None, False),
+            ("identifier", "identifier", identifier.Identifier, True, None, False),
+            ("status", "status", str, False, None, True),
             ("code", "code", codeableconcept.CodeableConcept, False, None, False),
-            ("detail", "detail", str, False, None, False),
-            ("evidence", "evidence", DetectedIssueEvidence, True, None, False),
+            ("severity", "severity", str, False, None, False),
+            ("patient", "patient", fhirreference.FHIRReference, False, None, False),
             ("identifiedDateTime", "identifiedDateTime", fhirdate.FHIRDate, False, "identified", False),
             ("identifiedPeriod", "identifiedPeriod", period.Period, False, "identified", False),
-            ("identifier", "identifier", identifier.Identifier, True, None, False),
+            ("author", "author", fhirreference.FHIRReference, False, None, False),
             ("implicated", "implicated", fhirreference.FHIRReference, True, None, False),
-            ("mitigation", "mitigation", DetectedIssueMitigation, True, None, False),
-            ("patient", "patient", fhirreference.FHIRReference, False, None, False),
+            ("evidence", "evidence", DetectedIssueEvidence, True, None, False),
+            ("detail", "detail", str, False, None, False),
             ("reference", "reference", str, False, None, False),
-            ("severity", "severity", str, False, None, False),
-            ("status", "status", str, False, None, True),
+            ("mitigation", "mitigation", DetectedIssueMitigation, True, None, False),
         ])
         return js
 
@@ -108,9 +150,25 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
     Supporting evidence or manifestations that provide the basis for
     identifying the detected issue such as a GuidanceResponse or MeasureReport.
     """
-    
-    resource_type = "DetectedIssueEvidence"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['code'] = """Manifestation."""
+    _attribute_docstrings['detail'] = """Supporting information."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -146,9 +204,26 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     manifesting.  Can also reflect an observation of known mitigating factors
     that may reduce/eliminate the need for any action.
     """
-    
-    resource_type = "DetectedIssueMitigation"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['action'] = """What mitigation?."""
+    _attribute_docstrings['date'] = """Date committed."""
+    _attribute_docstrings['author'] = """Who is committing?."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -161,13 +236,13 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         """ What mitigation?.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.author = None
-        """ Who is committing?.
-        Type `FHIRReference` (represented as `dict` in JSON). """
-        
         self.date = None
         """ Date committed.
         Type `FHIRDate` (represented as `str` in JSON). """
+        
+        self.author = None
+        """ Who is committing?.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         super(DetectedIssueMitigation, self).__init__(jsondict=jsondict, strict=strict)
     
@@ -175,8 +250,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         js = super(DetectedIssueMitigation, self).elementProperties()
         js.extend([
             ("action", "action", codeableconcept.CodeableConcept, False, None, True),
-            ("author", "author", fhirreference.FHIRReference, False, None, False),
             ("date", "date", fhirdate.FHIRDate, False, None, False),
+            ("author", "author", fhirreference.FHIRReference, False, None, False),
         ])
         return js
 

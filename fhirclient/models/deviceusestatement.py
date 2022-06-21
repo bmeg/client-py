@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/DeviceUseStatement) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DeviceUseStatement) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -15,7 +15,44 @@ class DeviceUseStatement(domainresource.DomainResource):
     """
     
     resource_type = "DeviceUseStatement"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """External identifier for this record."""
+    _attribute_docstrings['basedOn'] = """Fulfills plan, proposal or order."""
+    _attribute_docstrings['status'] = """A code representing the patient or other source's judgment about the state of the device used that this statement is about.  Generally this will be active or completed."""
+    _attribute_docstrings['subject'] = """Patient using device."""
+    _attribute_docstrings['derivedFrom'] = """Supporting information."""
+    _attribute_docstrings['timingTiming'] = """How often  the device was used."""
+    _attribute_docstrings['timingPeriod'] = """How often  the device was used."""
+    _attribute_docstrings['timingDateTime'] = """How often  the device was used."""
+    _attribute_docstrings['recordedOn'] = """When statement was recorded."""
+    _attribute_docstrings['source'] = """Who made the statement."""
+    _attribute_docstrings['device'] = """Reference to device used."""
+    _attribute_docstrings['reasonCode'] = """Why device was used."""
+    _attribute_docstrings['reasonReference'] = """Why was DeviceUseStatement performed?."""
+    _attribute_docstrings['bodySite'] = """Target body site."""
+    _attribute_docstrings['note'] = """Addition details (comments, instructions)."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['status'] = {
+        'url': 'http://hl7.org/fhir/device-statement-status',
+        'restricted_to': ['active', 'completed', 'entered-in-error', 'intended', 'stopped', 'on-hold'],
+        'binding_strength': 'required',
+        'class_name': 'str'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,37 +61,39 @@ class DeviceUseStatement(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
+        self.identifier = None
+        """ External identifier for this record.
+        List of `Identifier` items (represented as `dict` in JSON). """
+        
         self.basedOn = None
         """ Fulfills plan, proposal or order.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.bodySite = None
-        """ Target body site.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
+        self.status = None
+        """ A code representing the patient or other source's judgment about
+        the state of the device used that this statement is about.
+        Generally this will be active or completed.
+        Type `str`. """
+        
+        self.subject = None
+        """ Patient using device.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.derivedFrom = None
         """ Supporting information.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.device = None
-        """ Reference to device used.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.timingTiming = None
+        """ How often  the device was used.
+        Type `Timing` (represented as `dict` in JSON). """
         
-        self.identifier = None
-        """ External identifier for this record.
-        List of `Identifier` items (represented as `dict` in JSON). """
+        self.timingPeriod = None
+        """ How often  the device was used.
+        Type `Period` (represented as `dict` in JSON). """
         
-        self.note = None
-        """ Addition details (comments, instructions).
-        List of `Annotation` items (represented as `dict` in JSON). """
-        
-        self.reasonCode = None
-        """ Why device was used.
-        List of `CodeableConcept` items (represented as `dict` in JSON). """
-        
-        self.reasonReference = None
-        """ Why was DeviceUseStatement performed?.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        self.timingDateTime = None
+        """ How often  the device was used.
+        Type `FHIRDate` (represented as `str` in JSON). """
         
         self.recordedOn = None
         """ When statement was recorded.
@@ -64,46 +103,46 @@ class DeviceUseStatement(domainresource.DomainResource):
         """ Who made the statement.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.status = None
-        """ active | completed | entered-in-error +.
-        Type `str`. """
-        
-        self.subject = None
-        """ Patient using device.
+        self.device = None
+        """ Reference to device used.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
-        self.timingDateTime = None
-        """ How often  the device was used.
-        Type `FHIRDate` (represented as `str` in JSON). """
+        self.reasonCode = None
+        """ Why device was used.
+        List of `CodeableConcept` items (represented as `dict` in JSON). """
         
-        self.timingPeriod = None
-        """ How often  the device was used.
-        Type `Period` (represented as `dict` in JSON). """
+        self.reasonReference = None
+        """ Why was DeviceUseStatement performed?.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.timingTiming = None
-        """ How often  the device was used.
-        Type `Timing` (represented as `dict` in JSON). """
+        self.bodySite = None
+        """ Target body site.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.note = None
+        """ Addition details (comments, instructions).
+        List of `Annotation` items (represented as `dict` in JSON). """
         
         super(DeviceUseStatement, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(DeviceUseStatement, self).elementProperties()
         js.extend([
-            ("basedOn", "basedOn", fhirreference.FHIRReference, True, None, False),
-            ("bodySite", "bodySite", codeableconcept.CodeableConcept, False, None, False),
-            ("derivedFrom", "derivedFrom", fhirreference.FHIRReference, True, None, False),
-            ("device", "device", fhirreference.FHIRReference, False, None, True),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
-            ("note", "note", annotation.Annotation, True, None, False),
-            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, True, None, False),
-            ("reasonReference", "reasonReference", fhirreference.FHIRReference, True, None, False),
-            ("recordedOn", "recordedOn", fhirdate.FHIRDate, False, None, False),
-            ("source", "source", fhirreference.FHIRReference, False, None, False),
+            ("basedOn", "basedOn", fhirreference.FHIRReference, True, None, False),
             ("status", "status", str, False, None, True),
             ("subject", "subject", fhirreference.FHIRReference, False, None, True),
-            ("timingDateTime", "timingDateTime", fhirdate.FHIRDate, False, "timing", False),
-            ("timingPeriod", "timingPeriod", period.Period, False, "timing", False),
+            ("derivedFrom", "derivedFrom", fhirreference.FHIRReference, True, None, False),
             ("timingTiming", "timingTiming", timing.Timing, False, "timing", False),
+            ("timingPeriod", "timingPeriod", period.Period, False, "timing", False),
+            ("timingDateTime", "timingDateTime", fhirdate.FHIRDate, False, "timing", False),
+            ("recordedOn", "recordedOn", fhirdate.FHIRDate, False, None, False),
+            ("source", "source", fhirreference.FHIRReference, False, None, False),
+            ("device", "device", fhirreference.FHIRReference, False, None, True),
+            ("reasonCode", "reasonCode", codeableconcept.CodeableConcept, True, None, False),
+            ("reasonReference", "reasonReference", fhirreference.FHIRReference, True, None, False),
+            ("bodySite", "bodySite", codeableconcept.CodeableConcept, False, None, False),
+            ("note", "note", annotation.Annotation, True, None, False),
         ])
         return js
 

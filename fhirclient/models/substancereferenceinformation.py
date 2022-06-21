@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -12,7 +12,28 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     """
     
     resource_type = "SubstanceReferenceInformation"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['comment'] = """Todo."""
+    _attribute_docstrings['gene'] = """Todo."""
+    _attribute_docstrings['geneElement'] = """Todo."""
+    _attribute_docstrings['classification'] = """Todo."""
+    _attribute_docstrings['target'] = """Todo."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -20,10 +41,6 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
-        
-        self.classification = None
-        """ Todo.
-        List of `SubstanceReferenceInformationClassification` items (represented as `dict` in JSON). """
         
         self.comment = None
         """ Todo.
@@ -37,6 +54,10 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         """ Todo.
         List of `SubstanceReferenceInformationGeneElement` items (represented as `dict` in JSON). """
         
+        self.classification = None
+        """ Todo.
+        List of `SubstanceReferenceInformationClassification` items (represented as `dict` in JSON). """
+        
         self.target = None
         """ Todo.
         List of `SubstanceReferenceInformationTarget` items (represented as `dict` in JSON). """
@@ -46,10 +67,10 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     def elementProperties(self):
         js = super(SubstanceReferenceInformation, self).elementProperties()
         js.extend([
-            ("classification", "classification", SubstanceReferenceInformationClassification, True, None, False),
             ("comment", "comment", str, False, None, False),
             ("gene", "gene", SubstanceReferenceInformationGene, True, None, False),
             ("geneElement", "geneElement", SubstanceReferenceInformationGeneElement, True, None, False),
+            ("classification", "classification", SubstanceReferenceInformationClassification, True, None, False),
             ("target", "target", SubstanceReferenceInformationTarget, True, None, False),
         ])
         return js
@@ -60,9 +81,27 @@ from . import backboneelement
 class SubstanceReferenceInformationClassification(backboneelement.BackboneElement):
     """ Todo.
     """
-    
-    resource_type = "SubstanceReferenceInformationClassification"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['domain'] = """Todo."""
+    _attribute_docstrings['classification'] = """Todo."""
+    _attribute_docstrings['subtype'] = """Todo."""
+    _attribute_docstrings['source'] = """Todo."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -71,31 +110,31 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.classification = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
         self.domain = None
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.source = None
+        self.classification = None
         """ Todo.
-        List of `FHIRReference` items (represented as `dict` in JSON). """
+        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.subtype = None
         """ Todo.
         List of `CodeableConcept` items (represented as `dict` in JSON). """
+        
+        self.source = None
+        """ Todo.
+        List of `FHIRReference` items (represented as `dict` in JSON). """
         
         super(SubstanceReferenceInformationClassification, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(SubstanceReferenceInformationClassification, self).elementProperties()
         js.extend([
-            ("classification", "classification", codeableconcept.CodeableConcept, False, None, False),
             ("domain", "domain", codeableconcept.CodeableConcept, False, None, False),
-            ("source", "source", fhirreference.FHIRReference, True, None, False),
+            ("classification", "classification", codeableconcept.CodeableConcept, False, None, False),
             ("subtype", "subtype", codeableconcept.CodeableConcept, True, None, False),
+            ("source", "source", fhirreference.FHIRReference, True, None, False),
         ])
         return js
 
@@ -103,9 +142,26 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
 class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     """ Todo.
     """
-    
-    resource_type = "SubstanceReferenceInformationGene"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['geneSequenceOrigin'] = """Todo."""
+    _attribute_docstrings['gene'] = """Todo."""
+    _attribute_docstrings['source'] = """Todo."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -114,11 +170,11 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.gene = None
+        self.geneSequenceOrigin = None
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.geneSequenceOrigin = None
+        self.gene = None
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
@@ -131,8 +187,8 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     def elementProperties(self):
         js = super(SubstanceReferenceInformationGene, self).elementProperties()
         js.extend([
-            ("gene", "gene", codeableconcept.CodeableConcept, False, None, False),
             ("geneSequenceOrigin", "geneSequenceOrigin", codeableconcept.CodeableConcept, False, None, False),
+            ("gene", "gene", codeableconcept.CodeableConcept, False, None, False),
             ("source", "source", fhirreference.FHIRReference, True, None, False),
         ])
         return js
@@ -141,9 +197,26 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     """ Todo.
     """
-    
-    resource_type = "SubstanceReferenceInformationGeneElement"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['type'] = """Todo."""
+    _attribute_docstrings['element'] = """Todo."""
+    _attribute_docstrings['source'] = """Todo."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -151,6 +224,10 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
+        
+        self.type = None
+        """ Todo.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.element = None
         """ Todo.
@@ -160,18 +237,14 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         """ Todo.
         List of `FHIRReference` items (represented as `dict` in JSON). """
         
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
         super(SubstanceReferenceInformationGeneElement, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(SubstanceReferenceInformationGeneElement, self).elementProperties()
         js.extend([
+            ("type", "type", codeableconcept.CodeableConcept, False, None, False),
             ("element", "element", identifier.Identifier, False, None, False),
             ("source", "source", fhirreference.FHIRReference, True, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, False, None, False),
         ])
         return js
 
@@ -179,9 +252,33 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
 class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     """ Todo.
     """
-    
-    resource_type = "SubstanceReferenceInformationTarget"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['target'] = """Todo."""
+    _attribute_docstrings['type'] = """Todo."""
+    _attribute_docstrings['interaction'] = """Todo."""
+    _attribute_docstrings['organism'] = """Todo."""
+    _attribute_docstrings['organismType'] = """Todo."""
+    _attribute_docstrings['amountQuantity'] = """Todo."""
+    _attribute_docstrings['amountRange'] = """Todo."""
+    _attribute_docstrings['amountString'] = """Todo."""
+    _attribute_docstrings['amountType'] = """Todo."""
+    _attribute_docstrings['source'] = """Todo."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -189,6 +286,26 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
+        
+        self.target = None
+        """ Todo.
+        Type `Identifier` (represented as `dict` in JSON). """
+        
+        self.type = None
+        """ Todo.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.interaction = None
+        """ Todo.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.organism = None
+        """ Todo.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.organismType = None
+        """ Todo.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.amountQuantity = None
         """ Todo.
@@ -206,45 +323,25 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         """ Todo.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.interaction = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
-        self.organism = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
-        self.organismType = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
         self.source = None
         """ Todo.
         List of `FHIRReference` items (represented as `dict` in JSON). """
-        
-        self.target = None
-        """ Todo.
-        Type `Identifier` (represented as `dict` in JSON). """
-        
-        self.type = None
-        """ Todo.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         super(SubstanceReferenceInformationTarget, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(SubstanceReferenceInformationTarget, self).elementProperties()
         js.extend([
+            ("target", "target", identifier.Identifier, False, None, False),
+            ("type", "type", codeableconcept.CodeableConcept, False, None, False),
+            ("interaction", "interaction", codeableconcept.CodeableConcept, False, None, False),
+            ("organism", "organism", codeableconcept.CodeableConcept, False, None, False),
+            ("organismType", "organismType", codeableconcept.CodeableConcept, False, None, False),
             ("amountQuantity", "amountQuantity", quantity.Quantity, False, "amount", False),
             ("amountRange", "amountRange", range.Range, False, "amount", False),
             ("amountString", "amountString", str, False, "amount", False),
             ("amountType", "amountType", codeableconcept.CodeableConcept, False, None, False),
-            ("interaction", "interaction", codeableconcept.CodeableConcept, False, None, False),
-            ("organism", "organism", codeableconcept.CodeableConcept, False, None, False),
-            ("organismType", "organismType", codeableconcept.CodeableConcept, False, None, False),
             ("source", "source", fhirreference.FHIRReference, True, None, False),
-            ("target", "target", identifier.Identifier, False, None, False),
-            ("type", "type", codeableconcept.CodeableConcept, False, None, False),
         ])
         return js
 

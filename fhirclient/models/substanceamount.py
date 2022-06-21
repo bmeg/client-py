@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SubstanceAmount) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceAmount) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import backboneelement
@@ -16,9 +16,29 @@ class SubstanceAmount(backboneelement.BackboneElement):
     the definition of a chemical substance or in the assignment of a Substance
     ID.
     """
-    
-    resource_type = "SubstanceAmount"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['amountQuantity'] = """Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."""
+    _attribute_docstrings['amountRange'] = """Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."""
+    _attribute_docstrings['amountString'] = """Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."""
+    _attribute_docstrings['amountType'] = """Most elements that require a quantitative value will also have a field called amount type. Amount type should always be specified because the actual value of the amount is often dependent on it. EXAMPLE: In capturing the actual relative amounts of substances or molecular fragments it is essential to indicate whether the amount refers to a mole ratio or weight ratio. For any given element an effort should be made to use same the amount type for all related definitional elements."""
+    _attribute_docstrings['amountText'] = """A textual comment on a numeric value."""
+    _attribute_docstrings['referenceRange'] = """Reference range of possible or expected values."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -48,10 +68,6 @@ class SubstanceAmount(backboneelement.BackboneElement):
         be captured in this field.
         Type `str`. """
         
-        self.amountText = None
-        """ A textual comment on a numeric value.
-        Type `str`. """
-        
         self.amountType = None
         """ Most elements that require a quantitative value will also have a
         field called amount type. Amount type should always be specified
@@ -62,6 +78,10 @@ class SubstanceAmount(backboneelement.BackboneElement):
         effort should be made to use same the amount type for all related
         definitional elements.
         Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.amountText = None
+        """ A textual comment on a numeric value.
+        Type `str`. """
         
         self.referenceRange = None
         """ Reference range of possible or expected values.
@@ -75,8 +95,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
             ("amountQuantity", "amountQuantity", quantity.Quantity, False, "amount", False),
             ("amountRange", "amountRange", range.Range, False, "amount", False),
             ("amountString", "amountString", str, False, "amount", False),
-            ("amountText", "amountText", str, False, None, False),
             ("amountType", "amountType", codeableconcept.CodeableConcept, False, None, False),
+            ("amountText", "amountText", str, False, None, False),
             ("referenceRange", "referenceRange", SubstanceAmountReferenceRange, False, None, False),
         ])
         return js
@@ -87,9 +107,25 @@ from . import element
 class SubstanceAmountReferenceRange(element.Element):
     """ Reference range of possible or expected values.
     """
-    
-    resource_type = "SubstanceAmountReferenceRange"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['lowLimit'] = """Lower limit possible or expected."""
+    _attribute_docstrings['highLimit'] = """Upper limit possible or expected."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -98,12 +134,12 @@ class SubstanceAmountReferenceRange(element.Element):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.highLimit = None
-        """ Upper limit possible or expected.
-        Type `Quantity` (represented as `dict` in JSON). """
-        
         self.lowLimit = None
         """ Lower limit possible or expected.
+        Type `Quantity` (represented as `dict` in JSON). """
+        
+        self.highLimit = None
+        """ Upper limit possible or expected.
         Type `Quantity` (represented as `dict` in JSON). """
         
         super(SubstanceAmountReferenceRange, self).__init__(jsondict=jsondict, strict=strict)
@@ -111,8 +147,8 @@ class SubstanceAmountReferenceRange(element.Element):
     def elementProperties(self):
         js = super(SubstanceAmountReferenceRange, self).elementProperties()
         js.extend([
-            ("highLimit", "highLimit", quantity.Quantity, False, None, False),
             ("lowLimit", "lowLimit", quantity.Quantity, False, None, False),
+            ("highLimit", "highLimit", quantity.Quantity, False, None, False),
         ])
         return js
 

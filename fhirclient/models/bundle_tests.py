@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-20.
+#  2022, SMART Health IT.
 
-
-import os
 import io
-import unittest
 import json
+import logging
+import os
+import typing
+import unittest
+
 from . import bundle
+
 from .fhirdate import FHIRDate
+import logging
 
 
 class BundleTests(unittest.TestCase):
@@ -30,6 +34,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle1(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle1(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/f202")
@@ -51,6 +56,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle2(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle2(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "urn:uuid:3fdc72f4-a11d-4a9d-9260-a9f745779e1d")
@@ -100,6 +106,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle3(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle3(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/ghp")
@@ -139,6 +146,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle4(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle4(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/Practitioner/1")
@@ -196,6 +204,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle5(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle5(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/lipids")
@@ -223,6 +232,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle6(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle6(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "urn:uuid:b0a4b18e-94e7-4b1b-8031-c7ae4bdd8db9")
@@ -270,6 +280,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle7(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle7(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/PractitionerRole/f003-0")
@@ -307,6 +318,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle8(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle8(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/f001")
@@ -328,6 +340,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle9(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle9(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://fhir.healthintersections.com.au/open/Composition/180f219f-97a8-486d-99d9-ed631fe4fc57")
@@ -368,6 +381,8 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(inst.signature.type[0].system, "urn:iso-astm:E1762-95:2013")
         self.assertEqual(inst.signature.when.date, FHIRDate("2015-08-31T07:42:33+10:00").date)
         self.assertEqual(inst.signature.when.as_json(), "2015-08-31T07:42:33+10:00")
+        self.assertEqual(inst.timestamp.date, FHIRDate("2013-05-28T22:12:21Z").date)
+        self.assertEqual(inst.timestamp.as_json(), "2013-05-28T22:12:21Z")
         self.assertEqual(inst.type, "document")
     
     def testBundle10(self):
@@ -379,6 +394,7 @@ class BundleTests(unittest.TestCase):
         self.assertEqual("Bundle", js["resourceType"])
         inst2 = bundle.Bundle(js)
         self.implBundle10(inst2)
+        self.evaluate_simplified_json(inst2)
     
     def implBundle10(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/Location/2")
@@ -391,3 +407,75 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
         self.assertEqual(inst.type, "collection")
 
+    def evaluate_simplified_json(self, inst):
+        """Ensure simplified json."""
+        simplified_js, simplified_schema = inst.as_simplified_json()
+        self.assertIsNotNone(simplified_js, "Must create simplified json")
+
+        # test simplify identifiers
+        if hasattr(inst, 'identifier'):
+            assert 'identifier' not in simplified_js
+            if inst.identifier:
+                simplified_identifiers = [k for k in simplified_js.keys() if k.startswith('identifier_')]
+                if isinstance(inst.identifier, typing.List):
+                    identifiers_with_values = [i for i in inst.identifier if i.value]
+                else:
+                    identifiers_with_values = [inst.identifier]
+                self.assertEqual(len(identifiers_with_values), len(simplified_identifiers), "Should simplify identifiers.")
+
+        # test simplify lists
+        for name in vars(inst):
+
+            if name == 'identifier':
+                continue
+
+            if name == 'extension':
+                continue
+
+            value = getattr(inst, name)
+            is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, typing.List) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            if is_coding:
+                continue
+
+            if isinstance(getattr(inst, name), typing.List) and len(getattr(inst, name)) == 1:
+                # Properties that need to be renamed because of language keyword conflicts
+                # see mapping
+                if name not in simplified_js:
+                    name = name.replace("_fhir", "")
+                self.assertFalse(isinstance(simplified_js[name], typing.List), "Should simplify lists {}".format(name))
+
+        # test simplify coding
+        # meta has known coding attribute 'tags'
+        if hasattr(inst, 'meta'):
+            if inst.meta and inst.meta.tag and len(inst.meta.tag) > 0:
+                simplified_tags = [k for k in simplified_js['meta'].keys() if k.startswith('tag_')]
+                self.assertEqual(len(inst.meta.tag), len(simplified_tags), "Should simplify meta tags.")
+                self.assertTrue('tag' not in simplified_js['meta'], "Should not have meta.tag")
+
+        # test simplify extensions
+        if hasattr(inst, 'extension'):
+            if inst.extension and len(inst.extension) > 0:
+                assert 'extension' not in simplified_js
+                simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
+                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+
+        # test simplify schema
+        for k in simplified_js:
+            assert k in simplified_schema, "Should have a schema definition for {}".format(k)
+
+        # test simplified, flattened
+        from flatten_json import flatten
+        flattened = flatten(simplified_js, separator='|')
+        for flattened_key in flattened:
+            dict_ = simplified_schema
+            for flattened_key_part in flattened_key.split('|'):
+                if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
+                    # traverse over list index
+                    continue
+                dict_ = dict_[flattened_key_part]
+                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                if 'docstring' not in dict_:
+                    logging.getLogger(__name__).warning(
+                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                            inst.resource_type, flattened_key, flattened_key_part, dict_))
+                    break

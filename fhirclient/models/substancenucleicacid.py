@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/SubstanceNucleicAcid) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceNucleicAcid) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -15,7 +15,28 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     """
     
     resource_type = "SubstanceNucleicAcid"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['sequenceType'] = """The type of the sequence shall be specified based on a controlled vocabulary."""
+    _attribute_docstrings['numberOfSubunits'] = """The number of linear sequences of nucleotides linked through phosphodiester bonds shall be described. Subunits would be strands of nucleic acids that are tightly associated typically through Watson-Crick base pairing. NOTE: If not specified in the reference source, the assumption is that there is 1 subunit."""
+    _attribute_docstrings['areaOfHybridisation'] = """The area of hybridisation shall be described if applicable for double stranded RNA or DNA. The number associated with the subunit followed by the number associated to the residue shall be specified in increasing order. The underscore “” shall be used as separator as follows: “Subunitnumber Residue”."""
+    _attribute_docstrings['oligoNucleotideType'] = """(TBC)."""
+    _attribute_docstrings['subunit'] = """Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -24,13 +45,10 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.areaOfHybridisation = None
-        """ The area of hybridisation shall be described if applicable for
-        double stranded RNA or DNA. The number associated with the subunit
-        followed by the number associated to the residue shall be specified
-        in increasing order. The underscore “” shall be used as separator
-        as follows: “Subunitnumber Residue”.
-        Type `str`. """
+        self.sequenceType = None
+        """ The type of the sequence shall be specified based on a controlled
+        vocabulary.
+        Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.numberOfSubunits = None
         """ The number of linear sequences of nucleotides linked through
@@ -40,13 +58,16 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         source, the assumption is that there is 1 subunit.
         Type `int`. """
         
+        self.areaOfHybridisation = None
+        """ The area of hybridisation shall be described if applicable for
+        double stranded RNA or DNA. The number associated with the subunit
+        followed by the number associated to the residue shall be specified
+        in increasing order. The underscore “” shall be used as separator
+        as follows: “Subunitnumber Residue”.
+        Type `str`. """
+        
         self.oligoNucleotideType = None
         """ (TBC).
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-        
-        self.sequenceType = None
-        """ The type of the sequence shall be specified based on a controlled
-        vocabulary.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
         self.subunit = None
@@ -60,10 +81,10 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     def elementProperties(self):
         js = super(SubstanceNucleicAcid, self).elementProperties()
         js.extend([
-            ("areaOfHybridisation", "areaOfHybridisation", str, False, None, False),
-            ("numberOfSubunits", "numberOfSubunits", int, False, None, False),
-            ("oligoNucleotideType", "oligoNucleotideType", codeableconcept.CodeableConcept, False, None, False),
             ("sequenceType", "sequenceType", codeableconcept.CodeableConcept, False, None, False),
+            ("numberOfSubunits", "numberOfSubunits", int, False, None, False),
+            ("areaOfHybridisation", "areaOfHybridisation", str, False, None, False),
+            ("oligoNucleotideType", "oligoNucleotideType", codeableconcept.CodeableConcept, False, None, False),
             ("subunit", "subunit", SubstanceNucleicAcidSubunit, True, None, False),
         ])
         return js
@@ -76,9 +97,31 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     length will be ordered by molecular weight; subunits that have identical
     sequences will be repeated multiple times.
     """
-    
-    resource_type = "SubstanceNucleicAcidSubunit"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['subunit'] = """Index of linear sequences of nucleic acids in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts."""
+    _attribute_docstrings['sequence'] = """Actual nucleotide sequence notation from 5' to 3' end using standard single letter codes. In addition to the base sequence, sugar and type of phosphate or non-phosphate linkage should also be captured."""
+    _attribute_docstrings['length'] = """The length of the sequence shall be captured."""
+    _attribute_docstrings['sequenceAttachment'] = """(TBC)."""
+    _attribute_docstrings['fivePrime'] = """The nucleotide present at the 5’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the first position in the sequence. A separate representation would be redundant."""
+    _attribute_docstrings['threePrime'] = """The nucleotide present at the 3’ terminal shall be specified based on a controlled vocabulary. Since the sequence is represented from the 5' to the 3' end, the 5’ prime nucleotide is the letter at the last position in the sequence. A separate representation would be redundant."""
+    _attribute_docstrings['linkage'] = """The linkages between sugar residues will also be captured."""
+    _attribute_docstrings['sugar'] = """5.3.6.8.1 Sugar ID (Mandatory)."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -86,6 +129,28 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         :param dict jsondict: A JSON dictionary to use for initialization
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
+        
+        self.subunit = None
+        """ Index of linear sequences of nucleic acids in order of decreasing
+        length. Sequences of the same length will be ordered by molecular
+        weight. Subunits that have identical sequences will be repeated and
+        have sequential subscripts.
+        Type `int`. """
+        
+        self.sequence = None
+        """ Actual nucleotide sequence notation from 5' to 3' end using
+        standard single letter codes. In addition to the base sequence,
+        sugar and type of phosphate or non-phosphate linkage should also be
+        captured.
+        Type `str`. """
+        
+        self.length = None
+        """ The length of the sequence shall be captured.
+        Type `int`. """
+        
+        self.sequenceAttachment = None
+        """ (TBC).
+        Type `Attachment` (represented as `dict` in JSON). """
         
         self.fivePrime = None
         """ The nucleotide present at the 5’ terminal shall be specified based
@@ -95,36 +160,6 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         redundant.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
-        self.length = None
-        """ The length of the sequence shall be captured.
-        Type `int`. """
-        
-        self.linkage = None
-        """ The linkages between sugar residues will also be captured.
-        List of `SubstanceNucleicAcidSubunitLinkage` items (represented as `dict` in JSON). """
-        
-        self.sequence = None
-        """ Actual nucleotide sequence notation from 5' to 3' end using
-        standard single letter codes. In addition to the base sequence,
-        sugar and type of phosphate or non-phosphate linkage should also be
-        captured.
-        Type `str`. """
-        
-        self.sequenceAttachment = None
-        """ (TBC).
-        Type `Attachment` (represented as `dict` in JSON). """
-        
-        self.subunit = None
-        """ Index of linear sequences of nucleic acids in order of decreasing
-        length. Sequences of the same length will be ordered by molecular
-        weight. Subunits that have identical sequences will be repeated and
-        have sequential subscripts.
-        Type `int`. """
-        
-        self.sugar = None
-        """ 5.3.6.8.1 Sugar ID (Mandatory).
-        List of `SubstanceNucleicAcidSubunitSugar` items (represented as `dict` in JSON). """
-        
         self.threePrime = None
         """ The nucleotide present at the 3’ terminal shall be specified based
         on a controlled vocabulary. Since the sequence is represented from
@@ -133,19 +168,27 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         redundant.
         Type `CodeableConcept` (represented as `dict` in JSON). """
         
+        self.linkage = None
+        """ The linkages between sugar residues will also be captured.
+        List of `SubstanceNucleicAcidSubunitLinkage` items (represented as `dict` in JSON). """
+        
+        self.sugar = None
+        """ 5.3.6.8.1 Sugar ID (Mandatory).
+        List of `SubstanceNucleicAcidSubunitSugar` items (represented as `dict` in JSON). """
+        
         super(SubstanceNucleicAcidSubunit, self).__init__(jsondict=jsondict, strict=strict)
     
     def elementProperties(self):
         js = super(SubstanceNucleicAcidSubunit, self).elementProperties()
         js.extend([
-            ("fivePrime", "fivePrime", codeableconcept.CodeableConcept, False, None, False),
-            ("length", "length", int, False, None, False),
-            ("linkage", "linkage", SubstanceNucleicAcidSubunitLinkage, True, None, False),
-            ("sequence", "sequence", str, False, None, False),
-            ("sequenceAttachment", "sequenceAttachment", attachment.Attachment, False, None, False),
             ("subunit", "subunit", int, False, None, False),
-            ("sugar", "sugar", SubstanceNucleicAcidSubunitSugar, True, None, False),
+            ("sequence", "sequence", str, False, None, False),
+            ("length", "length", int, False, None, False),
+            ("sequenceAttachment", "sequenceAttachment", attachment.Attachment, False, None, False),
+            ("fivePrime", "fivePrime", codeableconcept.CodeableConcept, False, None, False),
             ("threePrime", "threePrime", codeableconcept.CodeableConcept, False, None, False),
+            ("linkage", "linkage", SubstanceNucleicAcidSubunitLinkage, True, None, False),
+            ("sugar", "sugar", SubstanceNucleicAcidSubunitSugar, True, None, False),
         ])
         return js
 
@@ -153,9 +196,27 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
 class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     """ The linkages between sugar residues will also be captured.
     """
-    
-    resource_type = "SubstanceNucleicAcidSubunitLinkage"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['connectivity'] = """The entity that links the sugar residues together should also be captured for nearly all naturally occurring nucleic acid the linkage is a phosphate group. For many synthetic oligonucleotides phosphorothioate linkages are often seen. Linkage connectivity is assumed to be 3’-5’. If the linkage is either 3’-3’ or 5’-5’ this should be specified."""
+    _attribute_docstrings['identifier'] = """Each linkage will be registered as a fragment and have an ID."""
+    _attribute_docstrings['name'] = """Each linkage will be registered as a fragment and have at least one name. A single name shall be assigned to each linkage."""
+    _attribute_docstrings['residueSite'] = """Residues shall be captured as described in 5.3.6.8.3."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -202,9 +263,26 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
 class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     """ 5.3.6.8.1 Sugar ID (Mandatory).
     """
-    
-    resource_type = "SubstanceNucleicAcidSubunitSugar"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """The Substance ID of the sugar or sugar-like component that make up the nucleotide."""
+    _attribute_docstrings['name'] = """The name of the sugar or sugar-like component that make up the nucleotide."""
+    _attribute_docstrings['residueSite'] = """The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5‘-3‘direction consistent with the base sequences listed above."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         

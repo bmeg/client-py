@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b (http://hl7.org/fhir/StructureDefinition/Basic) on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Basic) on 2022-06-20.
+#  2022, SMART Health IT.
 
 
 from . import domainresource
@@ -16,7 +16,34 @@ class Basic(domainresource.DomainResource):
     """
     
     resource_type = "Basic"
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+    _attribute_docstrings['identifier'] = """Business identifier."""
+    _attribute_docstrings['code'] = """Identifies the 'type' of resource - equivalent to the resource name for other resources."""
+    _attribute_docstrings['subject'] = """Identifies the focus of this resource."""
+    _attribute_docstrings['created'] = """When created."""
+    _attribute_docstrings['author'] = """Who created."""
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+    _attribute_enums['code'] = {
+        'url': 'http://terminology.hl7.org/CodeSystem/basic-resource-type',
+        'restricted_to': ['consent', 'referral', 'advevent', 'aptmtreq', 'transfer', 'diet', 'adminact', 'exposure', 'investigation', 'account', 'invoice', 'adjudicat', 'predetreq', 'predetermine', 'study', 'protocol'],
+        'binding_strength': 'example',
+        'class_name': 'CodeableConcept'
+    }
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -25,24 +52,25 @@ class Basic(domainresource.DomainResource):
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
         
-        self.author = None
-        """ Who created.
-        Type `FHIRReference` (represented as `dict` in JSON). """
+        self.identifier = None
+        """ Business identifier.
+        List of `Identifier` items (represented as `dict` in JSON). """
         
         self.code = None
-        """ Kind of Resource.
+        """ Identifies the 'type' of resource - equivalent to the resource name
+        for other resources.
         Type `CodeableConcept` (represented as `dict` in JSON). """
+        
+        self.subject = None
+        """ Identifies the focus of this resource.
+        Type `FHIRReference` (represented as `dict` in JSON). """
         
         self.created = None
         """ When created.
         Type `FHIRDate` (represented as `str` in JSON). """
         
-        self.identifier = None
-        """ Business identifier.
-        List of `Identifier` items (represented as `dict` in JSON). """
-        
-        self.subject = None
-        """ Identifies the focus of this resource.
+        self.author = None
+        """ Who created.
         Type `FHIRReference` (represented as `dict` in JSON). """
         
         super(Basic, self).__init__(jsondict=jsondict, strict=strict)
@@ -50,11 +78,11 @@ class Basic(domainresource.DomainResource):
     def elementProperties(self):
         js = super(Basic, self).elementProperties()
         js.extend([
-            ("author", "author", fhirreference.FHIRReference, False, None, False),
-            ("code", "code", codeableconcept.CodeableConcept, False, None, True),
-            ("created", "created", fhirdate.FHIRDate, False, None, False),
             ("identifier", "identifier", identifier.Identifier, True, None, False),
+            ("code", "code", codeableconcept.CodeableConcept, False, None, True),
             ("subject", "subject", fhirreference.FHIRReference, False, None, False),
+            ("created", "created", fhirdate.FHIRDate, False, None, False),
+            ("author", "author", fhirreference.FHIRReference, False, None, False),
         ])
         return js
 
