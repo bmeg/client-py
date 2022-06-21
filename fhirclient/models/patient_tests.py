@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-20.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-21.
 #  2022, SMART Health IT.
 
 import io
@@ -198,7 +198,7 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.text.status, "generated")
     
     def testPatient5(self):
-        inst = self.instantiate_from("patient-example-infant-mom.json")
+        inst = self.instantiate_from("patient-example-ncpi-ig-3.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
         self.implPatient5(inst)
         
@@ -209,6 +209,77 @@ class PatientTests(unittest.TestCase):
         self.evaluate_simplified_json(inst2)
     
     def implPatient5(self, inst):
+        self.assertEqual(inst.address[0].city, "Philadelphia")
+        self.assertEqual(inst.address[0].line[0], "3401 Civic Center Blvd.")
+        self.assertEqual(inst.address[0].postalCode, "19104")
+        self.assertEqual(inst.address[0].state, "PA")
+        self.assertEqual(inst.address[0].text, "3401 Civic Center Blvd., Philadelphia, PA 19104")
+        self.assertEqual(inst.address[0].type, "both")
+        self.assertEqual(inst.address[0].use, "home")
+        self.assertEqual(inst.contact[0].address.city, "Philadelphia")
+        self.assertEqual(inst.contact[0].address.line[0], "3401 Civic Center Blvd.")
+        self.assertEqual(inst.contact[0].address.postalCode, "19104")
+        self.assertEqual(inst.contact[0].address.state, "PA")
+        self.assertEqual(inst.contact[0].address.text, "3401 Civic Center Blvd., Philadelphia, PA 19104")
+        self.assertEqual(inst.contact[0].address.type, "both")
+        self.assertEqual(inst.contact[0].address.use, "home")
+        self.assertEqual(inst.contact[0].gender, "female")
+        self.assertEqual(inst.contact[0].name.family, "Smith")
+        self.assertEqual(inst.contact[0].name.given[0], "Jane")
+        self.assertEqual(inst.contact[0].name.given[1], "Samantha")
+        self.assertEqual(inst.contact[0].name.text, "Jane Samantha Smith")
+        self.assertEqual(inst.contact[0].name.use, "official")
+        self.assertEqual(inst.contact[0].relationship[0].coding[0].code, "C")
+        self.assertEqual(inst.contact[0].relationship[0].coding[0].display, "Emergency Contact")
+        self.assertEqual(inst.contact[0].relationship[0].coding[0].system, "http://terminology.hl7.org/CodeSystem/v2-0131")
+        self.assertEqual(inst.contact[0].relationship[0].text, "Spouse")
+        self.assertEqual(inst.contact[0].telecom[0].rank, 1)
+        self.assertEqual(inst.contact[0].telecom[0].system, "phone")
+        self.assertEqual(inst.contact[0].telecom[0].use, "home")
+        self.assertEqual(inst.contact[0].telecom[0].value, "(555) 555-5555")
+        self.assertEqual(inst.extension[0].extension[0].url, "ombCategory")
+        self.assertEqual(inst.extension[0].extension[0].valueCoding.code, "2106-3")
+        self.assertEqual(inst.extension[0].extension[0].valueCoding.display, "White")
+        self.assertEqual(inst.extension[0].extension[0].valueCoding.system, "urn:oid:2.16.840.1.113883.6.238")
+        self.assertEqual(inst.extension[0].extension[1].url, "detailed")
+        self.assertEqual(inst.extension[0].extension[1].valueCoding.code, "2113-9")
+        self.assertEqual(inst.extension[0].extension[1].valueCoding.display, "Irish")
+        self.assertEqual(inst.extension[0].extension[1].valueCoding.system, "urn:oid:2.16.840.1.113883.6.238")
+        self.assertEqual(inst.extension[0].extension[2].url, "text")
+        self.assertEqual(inst.extension[0].extension[2].valueString, "White")
+        self.assertEqual(inst.extension[0].url, "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race")
+        self.assertEqual(inst.extension[1].extension[0].url, "ombCategory")
+        self.assertEqual(inst.extension[1].extension[0].valueCoding.code, "2186-5")
+        self.assertEqual(inst.extension[1].extension[0].valueCoding.display, "Not Hispanic or Latino")
+        self.assertEqual(inst.extension[1].extension[0].valueCoding.system, "urn:oid:2.16.840.1.113883.6.238")
+        self.assertEqual(inst.extension[1].extension[1].url, "text")
+        self.assertEqual(inst.extension[1].extension[1].valueString, "Not Hispanic or Latino")
+        self.assertEqual(inst.extension[1].url, "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity")
+        self.assertEqual(inst.gender, "male")
+        self.assertEqual(inst.id, "patient-example-3")
+        self.assertEqual(inst.name[0].family, "Smith")
+        self.assertEqual(inst.name[0].given[0], "Jone")
+        self.assertEqual(inst.name[0].given[1], "Samuel")
+        self.assertEqual(inst.name[0].text, "John Samuel Smith")
+        self.assertEqual(inst.name[0].use, "official")
+        self.assertEqual(inst.telecom[0].rank, 1)
+        self.assertEqual(inst.telecom[0].system, "phone")
+        self.assertEqual(inst.telecom[0].use, "home")
+        self.assertEqual(inst.telecom[0].value, "(555) 555-5555")
+        self.assertEqual(inst.text.status, "extensions")
+    
+    def testPatient6(self):
+        inst = self.instantiate_from("patient-example-infant-mom.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
+        self.implPatient6(inst)
+        
+        js = inst.as_json()
+        self.assertEqual("Patient", js["resourceType"])
+        inst2 = patient.Patient(js)
+        self.implPatient6(inst2)
+        self.evaluate_simplified_json(inst2)
+    
+    def implPatient6(self, inst):
         self.assertEqual(inst.birthDate.date, FHIRDate("1995-10-12").date)
         self.assertEqual(inst.birthDate.as_json(), "1995-10-12")
         self.assertEqual(inst.gender, "female")
@@ -227,18 +298,18 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.name[1].use, "maiden")
         self.assertEqual(inst.text.status, "generated")
     
-    def testPatient6(self):
+    def testPatient7(self):
         inst = self.instantiate_from("patient-example-newborn.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
-        self.implPatient6(inst)
+        self.implPatient7(inst)
         
         js = inst.as_json()
         self.assertEqual("Patient", js["resourceType"])
         inst2 = patient.Patient(js)
-        self.implPatient6(inst2)
+        self.implPatient7(inst2)
         self.evaluate_simplified_json(inst2)
     
-    def implPatient6(self, inst):
+    def implPatient7(self, inst):
         self.assertEqual(inst.birthDate.date, FHIRDate("2017-09-05").date)
         self.assertEqual(inst.birthDate.as_json(), "2017-09-05")
         self.assertEqual(inst.extension[0].url, "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName")
@@ -251,18 +322,18 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.multipleBirthInteger, 2)
         self.assertEqual(inst.text.status, "generated")
     
-    def testPatient7(self):
+    def testPatient8(self):
         inst = self.instantiate_from("patient-example-infant-fetal.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
-        self.implPatient7(inst)
+        self.implPatient8(inst)
         
         js = inst.as_json()
         self.assertEqual("Patient", js["resourceType"])
         inst2 = patient.Patient(js)
-        self.implPatient7(inst2)
+        self.implPatient8(inst2)
         self.evaluate_simplified_json(inst2)
     
-    def implPatient7(self, inst):
+    def implPatient8(self, inst):
         self.assertEqual(inst.contact[0].name.family, "Organa")
         self.assertEqual(inst.contact[0].name.given[0], "Leia")
         self.assertEqual(inst.contact[0].name.use, "maiden")
@@ -289,18 +360,18 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
         self.assertEqual(inst.text.status, "generated")
     
-    def testPatient8(self):
+    def testPatient9(self):
         inst = self.instantiate_from("patient-genetics-example1.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
-        self.implPatient8(inst)
+        self.implPatient9(inst)
         
         js = inst.as_json()
         self.assertEqual("Patient", js["resourceType"])
         inst2 = patient.Patient(js)
-        self.implPatient8(inst2)
+        self.implPatient9(inst2)
         self.evaluate_simplified_json(inst2)
     
-    def implPatient8(self, inst):
+    def implPatient9(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].line[0], "2222 Home Street")
         self.assertEqual(inst.address[0].use, "home")
@@ -325,18 +396,18 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.telecom[0].value, "555-555-2003")
         self.assertEqual(inst.text.status, "generated")
     
-    def testPatient9(self):
+    def testPatient10(self):
         inst = self.instantiate_from("patient-example-b.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
-        self.implPatient9(inst)
+        self.implPatient10(inst)
         
         js = inst.as_json()
         self.assertEqual("Patient", js["resourceType"])
         inst2 = patient.Patient(js)
-        self.implPatient9(inst2)
+        self.implPatient10(inst2)
         self.evaluate_simplified_json(inst2)
     
-    def implPatient9(self, inst):
+    def implPatient10(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.gender, "other")
         self.assertEqual(inst.id, "pat2")
@@ -354,38 +425,6 @@ class PatientTests(unittest.TestCase):
         self.assertEqual(inst.name[0].given[1], "D")
         self.assertEqual(inst.name[0].use, "official")
         self.assertEqual(inst.photo[0].contentType, "image/gif")
-        self.assertEqual(inst.text.status, "generated")
-    
-    def testPatient10(self):
-        inst = self.instantiate_from("patient-example-c.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
-        self.implPatient10(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Patient", js["resourceType"])
-        inst2 = patient.Patient(js)
-        self.implPatient10(inst2)
-        self.evaluate_simplified_json(inst2)
-    
-    def implPatient10(self, inst):
-        self.assertTrue(inst.active)
-        self.assertEqual(inst.birthDate.date, FHIRDate("1982-01-23").date)
-        self.assertEqual(inst.birthDate.as_json(), "1982-01-23")
-        self.assertEqual(inst.deceasedDateTime.date, FHIRDate("2015-02-14T13:42:00+10:00").date)
-        self.assertEqual(inst.deceasedDateTime.as_json(), "2015-02-14T13:42:00+10:00")
-        self.assertEqual(inst.gender, "male")
-        self.assertEqual(inst.id, "pat3")
-        self.assertEqual(inst.identifier[0].system, "urn:oid:0.1.2.3.4.5.6.7")
-        self.assertEqual(inst.identifier[0].type.coding[0].code, "MR")
-        self.assertEqual(inst.identifier[0].type.coding[0].system, "http://terminology.hl7.org/CodeSystem/v2-0203")
-        self.assertEqual(inst.identifier[0].use, "usual")
-        self.assertEqual(inst.identifier[0].value, "123457")
-        self.assertEqual(inst.meta.tag[0].code, "HTEST")
-        self.assertEqual(inst.meta.tag[0].display, "test health data")
-        self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
-        self.assertEqual(inst.name[0].family, "Notsowell")
-        self.assertEqual(inst.name[0].given[0], "Simon")
-        self.assertEqual(inst.name[0].use, "official")
         self.assertEqual(inst.text.status, "generated")
 
     def evaluate_simplified_json(self, inst):
@@ -439,7 +478,13 @@ class PatientTests(unittest.TestCase):
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
                 self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
-
+                for simplified_extension in simplified_extensions:
+                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
+                    if simplified_js[simplified_extension] == 'NA':
+                        logging.getLogger(__name__).warning(
+                            "Extension.value is NA for resource_type:{} simplified_extension:{}".format(
+                                inst.resource_type, simplified_extension))
         # test simplify schema
         for k in simplified_js:
             assert k in simplified_schema, "Should have a schema definition for {}".format(k)

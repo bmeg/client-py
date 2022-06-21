@@ -1,8 +1,15 @@
 import codecs
 import os
 import re
+from os import path
 
 from setuptools import setup, find_packages
+
+here = path.abspath(path.dirname(__file__))
+# Get the requirements from the requirements.txt file
+with open(path.join(here, "requirements.txt"), encoding='utf-8') as f:
+    requirements = f.read().splitlines()
+
 
 def read(*parts):
     """
@@ -25,15 +32,18 @@ def find_version(*file_paths):
         return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
 
+
+
+
 setup(
-    name='fhirclientr4',
+    name='fhirclientr4e',
     version=find_version("fhirclient/client.py"),
     description='A flexible client for FHIR servers supporting the SMART on FHIR protocol',
     long_description=(read('README.md') + '\n\n' +
                       read('AUTHORS.md')),
     long_description_content_type="text/markdown",
     keywords='smart fhir healthcare medical-informatics clinical-informatics biomedical-informatics',
-    url='https://github.com/gitpushdashf/client-py',
+    url='https://github.com/bmeg/client-py',
     license="APACHE2",
     author="SMART Platforms Team",
     author_email='support@smarthealthit.org',

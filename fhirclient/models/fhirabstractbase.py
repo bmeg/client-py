@@ -271,7 +271,7 @@ class FHIRAbstractBase(object):
         if len(errs) > 0:
             raise FHIRValidationError(errs)
 
-    def as_simplified_json(self):
+    def as_simplified_json(self, filtered_names=None):
         """ Serializes to JSON by inspecting `elementProperties()` and creating
         a JSON dictionary of all registered properties. Performs no checks.  Simplifies:
 
@@ -287,6 +287,12 @@ class FHIRAbstractBase(object):
         for name, jsname, typ, is_list, of_many, not_optional in self.elementProperties():
             value = getattr(self, name)
 
+            if value is None:
+                continue
+
+            if filtered_names and name not in filtered_names:
+                continue
+
             def _set_schema(key):
                 schema[key] = {'docstring': self.attribute_docstrings().get(name),
                                'enum': self.attribute_enums().get(name),
@@ -297,9 +303,6 @@ class FHIRAbstractBase(object):
                                'of_many': of_many,
                                'not_optional': not_optional,
                                }
-
-            if value is None:
-                continue
 
             is_identifier = jsname == 'identifier' and not isinstance(value, str)
 
@@ -316,6 +319,22 @@ class FHIRAbstractBase(object):
                     assert extension.url
                     simplified_key = "extension_{}".format(extension.url.split('/')[-1])
                     simplified_value = next(iter([v for k, v in extension.__dict__.items() if k.startswith('value') and v]), None)
+                    if not simplified_value:
+                        # look in the extension's extensions, concatenate with | separator
+                        simplified_values = []
+                        if extension.extension:
+                            for sub_extension in extension.extension:
+                                for k, v in sub_extension.__dict__.items():
+                                    if not v:
+                                        continue
+                                    if not k.startswith('value'):
+                                        continue
+                                    simple_value_, _ = sub_extension.as_simplified_json([k])
+                                    simplified_values.append(list(simple_value_.values())[0])
+                            simplified_values = [str(item) for item in simplified_values if item]
+                            simplified_value = '|'.join(simplified_values)
+                        else:
+                            simplified_value = 'NA'
                     js[simplified_key] = simplified_value
                     _set_schema(simplified_key)
 
@@ -375,7 +394,8 @@ class FHIRAbstractBase(object):
                 _set_schema(jsname)
                 if hasattr(value, 'as_simplified_json'):
                     simple_value, simple_schema = value.as_simplified_json()
-                    schema[jsname] = schema[jsname] | simple_schema
+                    # python > 3.5 merge
+                    schema[jsname] = {**schema[jsname], **simple_schema}
                 else:
                     simple_value = value
                 js[jsname] = simple_value

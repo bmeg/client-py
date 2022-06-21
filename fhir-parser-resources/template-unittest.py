@@ -110,7 +110,13 @@ class {{ class.name }}Tests(unittest.TestCase):
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
                 self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
-
+                for simplified_extension in simplified_extensions:
+                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
+                    if simplified_js[simplified_extension] == 'NA':
+                        logging.getLogger(__name__).warning(
+                            "Extension.value is NA for resource_type:{} simplified_extension:{}".format(
+                                inst.resource_type, simplified_extension))
         # test simplify schema
         for k in simplified_js:
             assert k in simplified_schema, "Should have a schema definition for {}".format(k)
