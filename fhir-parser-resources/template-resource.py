@@ -25,7 +25,34 @@ class {{ klass.name }}({% if klass.superclass in imports %}{{ klass.superclass.m
     
     resource_type = "{{ klass.resource_type }}"
 {%- endif %}
-    
+
+    _attribute_docstrings = {}
+    """ Dictionary of attribute documentation."""
+{%- for prop in klass.properties %}
+    _attribute_docstrings['{{ prop.name }}'] = """{{ prop.formal if prop.enum else prop.short + '.' }}"""
+{%- endfor %}
+
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_docstrings
+
+    _attribute_enums = {}
+    """ Dictionary of enum configuration."""
+{%- for prop in klass.properties if prop.enum  %}
+    _attribute_enums['{{ prop.name }}'] = {
+        'url': '{{ prop.enum.definition.definition.compose["include"][0]["system"] }}',
+        'restricted_to': {{ prop.enum.restricted_to | rejectattr("code", "undefined") | map(attribute='code') | list }},
+        'binding_strength': '{{ prop.binding.strength }}',
+        'class_name': '{{ prop.class_name }}'
+    }
+{%- endfor %}
+
+    @classmethod
+    def attribute_enums(cls):
+        """Get dict of attributes with enums, Code or CodeableConcept."""
+        return cls._attribute_enums
+
     def __init__(self, jsondict=None, strict=True):
         """ Initialize all valid properties.
         
@@ -34,9 +61,9 @@ class {{ klass.name }}({% if klass.superclass in imports %}{{ klass.superclass.m
         :param bool strict: If True (the default), invalid variables will raise a TypeError
         """
     {%- for prop in klass.properties %}
-        
+        {% set docstring = prop.formal if prop.enum else prop.short %}
         self.{{ prop.name }} = None
-        """ {{ prop.short|wordwrap(67, wrapstring="\n        ") }}.
+        """ {{ docstring | trim(chars=".") | wordwrap(67, wrapstring="\n        ") }}.
         {% if prop.is_array %}List of{% else %}Type{% endif %} `{{ prop.class_name }}`{% if prop.is_array %} items{% endif %}
         {%- if prop.reference_to_names|length > 0 %} referencing `{{ prop.reference_to_names|join(', ') }}`{% endif %}
         {%- if prop.json_class != prop.class_name %} (represented as `{{ prop.json_class }}` in JSON){% endif %}. """
