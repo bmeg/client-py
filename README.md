@@ -1,4 +1,9 @@
-Workaround for FHIR R4: https://github.com/smart-on-fhir/client-py/issues/70
+Note: Forked changes:
+-------------------
+
+* Adds embedded schema elements: (attribute_docstrings, attribute_enums)
+* Validates required enums
+* Workaround for FHIR R4: https://github.com/smart-on-fhir/client-py/issues/70 from @gitpushdash (thanks!)
 
 SMART FHIR Client
 =================
@@ -141,6 +146,32 @@ patient.as_json()
 #   name:
 #     given:
 #       Expecting property "given" on <class 'fhirclient.models.humanname.HumanName'> to be list, but is <class 'str'>
+```
+
+##### Validation
+
+```python
+    def testDictWithBadValue(self):
+        """Should not be able to create ResearchStudy dict with unknown value."""
+        with self.assertRaises(FHIRValidationError) as err:
+            ResearchStudy({'status': 'foo-bar'})
+        expected_msg = 'Expecting property with required binding_strength "status" to be member of http://hl7.org/fhir/research-study-status is "foo-bar"'
+        assert expected_msg in str(err.exception), self.testDictWithBadValue.__doc__
+```
+
+##### Simplified Projection
+
+`as_simplified_json()` is available on all classes that inherit from FHIRAbstractBase.  It will remove much of the FHIR scaffolding.  Simplifies:
+
+- extensions
+- single_item_lists
+- codings
+
+Returns -> tuple. A dict object with much of the FHIR scaffolding removed; A corresponding lite schema dict.
+
+
+```python
+
 ```
 
 #### Initialize from JSON file

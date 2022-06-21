@@ -279,7 +279,7 @@ class FHIRAbstractBase(object):
         - single_item_lists
         - codings
 
-        :returns: A dict object with much of the FHIR scaffolding removed
+        :returns: tuple A dict object with much of the FHIR scaffolding removed; A corresponding lite schema.
         """
 
         js = {}
