@@ -12,10 +12,11 @@ session_data
 
 # IDE files
 *.sublime-*
-
+.idea/
 .DS_Store
 
 # packaging
 build
 dist
 *.egg-info
+venv/
