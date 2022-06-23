@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-21.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
 #  2022, SMART Health IT.
 
 import io
@@ -186,9 +186,16 @@ class OperationOutcomeTests(unittest.TestCase):
                 continue
 
             value = getattr(inst, name)
+
             is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, typing.List) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
             if is_coding:
+                # why are we skipping Coding test?
                 continue
+
+            is_date = 'FHIRDate' in value.__class__.__name__
+            if is_date:
+                simplified_value_is_date = 'FHIRDate' in simplified_js[name].__class__.__name__
+                self.assertFalse(simplified_value_is_date, "Should simplify Date {} {} {}".format(name, value.__class__.__name__, vars(value)) )
 
             if isinstance(getattr(inst, name), typing.List) and len(getattr(inst, name)) == 1:
                 # Properties that need to be renamed because of language keyword conflicts
@@ -225,6 +232,19 @@ class OperationOutcomeTests(unittest.TestCase):
         # test simplified, flattened
         from flatten_json import flatten
         flattened = flatten(simplified_js, separator='|')
+        # test values
+        for simplified_key, simplified_values in flattened.items():
+            if not simplified_values:
+                continue
+            if not isinstance(simplified_values, typing.List):
+                simplified_values = [simplified_values]
+            for simplified_value in simplified_values:
+                simplified_value_is_fhir_resource = 'fhirclient.models' in simplified_value.__class__.__module__
+                simplified_value_is_dict = isinstance(simplified_value, dict)
+                if simplified_value_is_fhir_resource or simplified_value_is_dict:
+                    msg = "Should simplify value {} {} {}".format(simplified_key, simplified_value.__class__.__name__, vars(simplified_value))
+                    self.assertFalse(simplified_value_is_fhir_resource, msg)
+
         for flattened_key in flattened:
             dict_ = simplified_schema
             for flattened_key_part in flattened_key.split('|'):

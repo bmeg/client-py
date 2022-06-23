@@ -88,6 +88,8 @@ class FHIRReference(reference.Reference):
     def processedReferenceIdentifier(self):
         """ Normalizes the reference-id.
         """
+        if not self.reference and self.identifier:
+            return f"identifier={self.identifier.system}|{self.identifier.value}"
         if self.reference and '#' == self.reference[0]:
             return self.reference[1:]
         return self.reference
