@@ -311,7 +311,13 @@ class FHIRAbstractBase(object):
             # test class name, avoids circular reference
             is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, list) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
 
-            if is_extension:
+            is_date = 'FHIRDate' in value.__class__.__name__
+
+            if is_date:
+                js[jsname] = value.date.isoformat()
+                _set_schema(jsname)
+
+            elif is_extension:
                 if not isinstance(value, list):
                     value = [value]
                 for extension in value:
@@ -337,6 +343,12 @@ class FHIRAbstractBase(object):
                             simplified_value = 'NA'
                     js[simplified_key] = simplified_value
                     _set_schema(simplified_key)
+                    # double check if extension is embedding resources
+                    if hasattr(simplified_value, 'as_simplified_json'):
+                        simplified_embedded_resource, _ = simplified_value.as_simplified_json()
+                        js[simplified_key] = list(simplified_embedded_resource.values())[0]
+                    if 'FHIRDate' in js[simplified_key].__class__.__name__:
+                        js[simplified_key] = js[simplified_key].date.isoformat()
 
             elif is_coding:
                 if isinstance(value, list):
