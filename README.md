@@ -206,9 +206,8 @@ Clone the _client-py_ repository, then best create a virtual environment and ins
 Building Distribution
 ---------------------
 
-    pip install -r requirements.txt
-    python setup.py sdist
-    python setup.py bdist_wheel
+    rm -r dist/ ; python3  setup.py sdist bdist_wheel
+    twine upload dist/*
 
 
 ### Incrementing the lib version
@@ -217,6 +216,7 @@ Building Distribution
     bumpversion minor
     bumpversion major
 
+    Note: if unable to use bumpversion , manually set fhirclient/client.py
 
 Docs Generation
 ---------------
