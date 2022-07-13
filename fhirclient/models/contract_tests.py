@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract1(self, inst):
         self.assertEqual(inst.friendly[0].contentAttachment.title, "The terms of the consent in friendly consumer speak.")
         self.assertEqual(inst.id, "pcd-example-notOrg")
@@ -66,7 +68,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract2(self, inst):
         self.assertEqual(inst.applies.start.date, FHIRDate("2017-01-01").date)
         self.assertEqual(inst.applies.start.as_json(), "2017-01-01")
@@ -122,7 +126,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract3(self, inst):
         self.assertEqual(inst.applies.start.date, FHIRDate("2013-11-01T21:18:27-04:00").date)
         self.assertEqual(inst.applies.start.as_json(), "2013-11-01T21:18:27-04:00")
@@ -187,7 +193,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract4(self, inst):
         self.assertEqual(inst.friendly[0].contentAttachment.title, "The terms of the consent in friendly consumer speak.")
         self.assertEqual(inst.id, "pcd-example-notLabs")
@@ -225,7 +233,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract5(self, inst):
         self.assertEqual(inst.friendly[0].contentAttachment.title, "The terms of the consent in friendly consumer speak.")
         self.assertEqual(inst.id, "pcd-example-notThem")
@@ -262,7 +272,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract6(self, inst):
         self.assertEqual(inst.friendly[0].contentAttachment.title, "The terms of the consent in friendly consumer speak.")
         self.assertEqual(inst.id, "pcd-example-notAuthor")
@@ -293,7 +305,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract7(self, inst):
         self.assertEqual(inst.id, "C-123")
         self.assertEqual(inst.identifier[0].system, "http://happyvalley.com/contract")
@@ -336,7 +350,9 @@ class ContractTests(unittest.TestCase):
         inst2 = contract.Contract(js)
         self.implContract8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implContract8(self, inst):
         self.assertEqual(inst.friendly[0].contentAttachment.title, "The terms of the consent in friendly consumer speak.")
         self.assertEqual(inst.id, "pcd-example-notThis")
@@ -420,9 +436,9 @@ class ContractTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -454,10 +470,11 @@ class ContractTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

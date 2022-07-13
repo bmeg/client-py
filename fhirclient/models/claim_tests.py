@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim1(self, inst):
         self.assertEqual(inst.accident.date.date, FHIRDate("2014-07-09").date)
         self.assertEqual(inst.accident.date.as_json(), "2014-07-09")
@@ -117,7 +119,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim2(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
@@ -161,7 +165,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim3(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
@@ -206,7 +212,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim4(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
@@ -250,7 +258,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim5(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.contained[0].id, "device-frame")
@@ -409,7 +419,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim6(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
@@ -463,7 +475,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim7(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.contained[0].id, "org-insurer")
@@ -511,7 +525,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim8(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2014-08-16").date)
@@ -592,7 +608,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim9(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.created.date, FHIRDate("2015-03-16").date)
@@ -712,7 +730,9 @@ class ClaimTests(unittest.TestCase):
         inst2 = claim.Claim(js)
         self.implClaim10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implClaim10(self, inst):
         self.assertEqual(inst.careTeam[0].sequence, 1)
         self.assertEqual(inst.contained[0].id, "patient-1")
@@ -846,9 +866,9 @@ class ClaimTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -880,10 +900,11 @@ class ClaimTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

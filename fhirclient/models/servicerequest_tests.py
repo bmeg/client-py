@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest1(self, inst):
         self.assertEqual(inst.asNeededCodeableConcept.text, "as needed to clear mucus")
         self.assertEqual(inst.authoredOn.date, FHIRDate("2017-02-01T17:23:07Z").date)
@@ -76,7 +78,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest2(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2017-02-01T17:23:07Z").date)
         self.assertEqual(inst.authoredOn.as_json(), "2017-02-01T17:23:07Z")
@@ -105,7 +109,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest3(self, inst):
         self.assertEqual(inst.code.coding[0].code, "LIPID")
         self.assertEqual(inst.code.coding[0].system, "http://acme.org/tests")
@@ -141,7 +147,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest4(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2017-03-05").date)
         self.assertEqual(inst.authoredOn.as_json(), "2017-03-05")
@@ -170,7 +178,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest5(self, inst):
         self.assertEqual(inst.code.coding[0].code, "229115003")
         self.assertEqual(inst.code.coding[0].display, "Bench Press (regime/therapy) ")
@@ -199,7 +209,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest6(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-08-16").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-08-16")
@@ -232,7 +244,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest7(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-02-20").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-02-20")
@@ -264,7 +278,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest8(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2017-03-05").date)
         self.assertEqual(inst.authoredOn.as_json(), "2017-03-05")
@@ -291,7 +307,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest9(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-09-20").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-09-20")
@@ -328,7 +346,9 @@ class ServiceRequestTests(unittest.TestCase):
         inst2 = servicerequest.ServiceRequest(js)
         self.implServiceRequest10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implServiceRequest10(self, inst):
         self.assertEqual(inst.code.coding[0].code, "24627-2")
         self.assertEqual(inst.code.coding[0].system, "http://loinc.org")
@@ -401,9 +421,9 @@ class ServiceRequestTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -435,10 +455,11 @@ class ServiceRequestTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet1(self, inst):
         self.assertTrue(inst.compose.inactive)
         self.assertEqual(inst.compose.include[0].concept[0].code, "14647-2")
@@ -89,7 +91,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet2(self, inst):
         self.assertEqual(inst.compose.include[0].concept[0].code, "invalid")
         self.assertEqual(inst.compose.include[0].concept[1].code, "structure")
@@ -227,7 +231,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet3(self, inst):
         self.assertEqual(inst.compose.include[0].filter[0].op, "=")
         self.assertEqual(inst.compose.include[0].filter[0].property, "parent")
@@ -304,7 +310,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet4(self, inst):
         self.assertTrue(inst.compose.inactive)
         self.assertEqual(inst.compose.include[0].filter[0].op, "descendent-of")
@@ -349,7 +357,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet5(self, inst):
         self.assertEqual(inst.compose.include[0].filter[0].op, "=")
         self.assertEqual(inst.compose.include[0].filter[0].property, "acme-plasma")
@@ -381,7 +391,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet6(self, inst):
         self.assertEqual(inst.compose.include[0].valueSet[0], "http://terminology.hl7.org/ValueSet/v2-0136")
         self.assertEqual(inst.compose.include[1].concept[0].code, "asked-unknown")
@@ -417,7 +429,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet7(self, inst):
         self.assertEqual(inst.compose.include[0].system, "http://hl7.org/fhir/examplescenario-actor-type")
         self.assertEqual(inst.contact[0].telecom[0].system, "url")
@@ -459,7 +473,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet8(self, inst):
         self.assertEqual(inst.compose.include[0].system, "http://terminology.hl7.org/CodeSystem/list-example-use-codes")
         self.assertEqual(inst.contact[0].telecom[0].system, "url")
@@ -499,7 +515,9 @@ class ValueSetTests(unittest.TestCase):
         inst2 = valueset.ValueSet(js)
         self.implValueSet9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implValueSet9(self, inst):
         self.assertEqual(inst.compose.exclude[0].concept[0].code, "5932-9")
         self.assertEqual(inst.compose.exclude[0].concept[0].display, "Cholesterol [Presence] in Blood by Test strip")
@@ -584,9 +602,9 @@ class ValueSetTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -618,10 +636,11 @@ class ValueSetTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

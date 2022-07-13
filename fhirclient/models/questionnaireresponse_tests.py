@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implQuestionnaireResponse1(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00-05:00").date)
         self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00-05:00")
@@ -76,7 +78,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implQuestionnaireResponse2(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2008-01-17").date)
         self.assertEqual(inst.authored.as_json(), "2008-01-17")
@@ -644,7 +648,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implQuestionnaireResponse3(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2013-06-18T00:00:00+01:00").date)
         self.assertEqual(inst.authored.as_json(), "2013-06-18T00:00:00+01:00")
@@ -692,7 +698,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implQuestionnaireResponse4(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2013-02-19T14:15:00+10:00").date)
         self.assertEqual(inst.authored.as_json(), "2013-02-19T14:15:00+10:00")
@@ -752,7 +760,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
         inst2 = questionnaireresponse.QuestionnaireResponse(js)
         self.implQuestionnaireResponse5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implQuestionnaireResponse5(self, inst):
         self.assertEqual(inst.authored.date, FHIRDate("2014-12-11T04:44:16Z").date)
         self.assertEqual(inst.authored.as_json(), "2014-12-11T04:44:16Z")
@@ -839,9 +849,9 @@ class QuestionnaireResponseTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -873,10 +883,11 @@ class QuestionnaireResponseTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

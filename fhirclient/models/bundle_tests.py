@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle1(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/f202")
         self.assertEqual(inst.entry[0].resource.id, "f202")
@@ -57,7 +59,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle2(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "urn:uuid:3fdc72f4-a11d-4a9d-9260-a9f745779e1d")
         self.assertEqual(inst.entry[0].request.method, "POST")
@@ -107,7 +111,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle3(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/ghp")
         self.assertEqual(inst.entry[0].resource.id, "ghp")
@@ -147,7 +153,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle4(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/Practitioner/1")
         self.assertEqual(inst.entry[0].resource.id, "1")
@@ -205,7 +213,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle5(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/lipids")
         self.assertEqual(inst.entry[0].resource.id, "lipids")
@@ -233,7 +243,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle6(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "urn:uuid:b0a4b18e-94e7-4b1b-8031-c7ae4bdd8db9")
         self.assertEqual(inst.entry[0].request.method, "POST")
@@ -281,7 +293,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle7(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/PractitionerRole/f003-0")
         self.assertEqual(inst.entry[0].resource.id, "f003-0")
@@ -319,7 +333,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle8(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "https://example.com/base/DiagnosticReport/f001")
         self.assertEqual(inst.entry[0].resource.id, "f001")
@@ -341,7 +357,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle9(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://fhir.healthintersections.com.au/open/Composition/180f219f-97a8-486d-99d9-ed631fe4fc57")
         self.assertEqual(inst.entry[0].resource.id, "180f219f-97a8-486d-99d9-ed631fe4fc57")
@@ -395,7 +413,9 @@ class BundleTests(unittest.TestCase):
         inst2 = bundle.Bundle(js)
         self.implBundle10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implBundle10(self, inst):
         self.assertEqual(inst.entry[0].fullUrl, "http://hl7.org/fhir/Location/2")
         self.assertEqual(inst.entry[0].resource.id, "2")
@@ -464,9 +484,9 @@ class BundleTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -498,10 +518,11 @@ class BundleTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

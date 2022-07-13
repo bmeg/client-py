@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ActivityDefinitionTests(unittest.TestCase):
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implActivityDefinition1(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
         self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
@@ -133,7 +135,9 @@ class ActivityDefinitionTests(unittest.TestCase):
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implActivityDefinition2(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2016-03-12").date)
         self.assertEqual(inst.approvalDate.as_json(), "2016-03-12")
@@ -251,7 +255,9 @@ class ActivityDefinitionTests(unittest.TestCase):
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implActivityDefinition3(self, inst):
         self.assertEqual(inst.approvalDate.date, FHIRDate("2017-03-01").date)
         self.assertEqual(inst.approvalDate.as_json(), "2017-03-01")
@@ -349,7 +355,9 @@ class ActivityDefinitionTests(unittest.TestCase):
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implActivityDefinition4(self, inst):
         self.assertEqual(inst.bodySite[0].coding[0].code, "17401000")
         self.assertEqual(inst.bodySite[0].coding[0].display, "Heart valve structure")
@@ -395,7 +403,9 @@ class ActivityDefinitionTests(unittest.TestCase):
         inst2 = activitydefinition.ActivityDefinition(js)
         self.implActivityDefinition5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implActivityDefinition5(self, inst):
         self.assertEqual(inst.code.coding[0].code, "BlueTubes")
         self.assertEqual(inst.code.coding[0].display, "Blood collect tubes blue cap")
@@ -468,9 +478,9 @@ class ActivityDefinitionTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -502,10 +512,11 @@ class ActivityDefinitionTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

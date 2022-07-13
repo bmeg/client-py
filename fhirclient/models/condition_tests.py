@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition1(self, inst):
         self.assertEqual(inst.bodySite[0].coding[0].code, "280193007")
         self.assertEqual(inst.bodySite[0].coding[0].display, "Entire retropharyngeal area")
@@ -76,7 +78,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition2(self, inst):
         self.assertEqual(inst.bodySite[0].coding[0].code, "281158006")
         self.assertEqual(inst.bodySite[0].coding[0].display, "Pulmonary vascular structure")
@@ -116,7 +120,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition3(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "encounter-diagnosis")
         self.assertEqual(inst.category[0].coding[0].display, "Encounter Diagnosis")
@@ -148,7 +154,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition4(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "problem-list-item")
         self.assertEqual(inst.category[0].coding[0].display, "Problem List Item")
@@ -175,7 +183,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition5(self, inst):
         self.assertEqual(inst.bodySite[0].coding[0].code, "51185008")
         self.assertEqual(inst.bodySite[0].coding[0].display, "Thorax")
@@ -222,7 +232,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition6(self, inst):
         self.assertEqual(inst.clinicalStatus.coding[0].code, "active")
         self.assertEqual(inst.clinicalStatus.coding[0].system, "http://terminology.hl7.org/CodeSystem/condition-clinical")
@@ -249,7 +261,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition7(self, inst):
         self.assertEqual(inst.abatementDateTime.date, FHIRDate("2013-03-20").date)
         self.assertEqual(inst.abatementDateTime.as_json(), "2013-03-20")
@@ -295,7 +309,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition8(self, inst):
         self.assertEqual(inst.category[0].coding[0].code, "problem-list-item")
         self.assertEqual(inst.category[0].coding[0].display, "Problem List Item")
@@ -326,7 +342,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition9(self, inst):
         self.assertEqual(inst.abatementAge.code, "a")
         self.assertEqual(inst.abatementAge.system, "http://unitsofmeasure.org")
@@ -372,7 +390,9 @@ class ConditionTests(unittest.TestCase):
         inst2 = condition.Condition(js)
         self.implCondition10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCondition10(self, inst):
         self.assertEqual(inst.abatementString, "around April 9, 2013")
         self.assertEqual(inst.bodySite[0].coding[0].code, "38266002")
@@ -464,9 +484,9 @@ class ConditionTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -498,10 +518,11 @@ class ConditionTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

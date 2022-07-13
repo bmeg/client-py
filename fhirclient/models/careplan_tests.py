@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan1(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "359615001")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Partial lobectomy of lung")
@@ -71,7 +73,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan2(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "367336001")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Chemotherapy")
@@ -103,7 +107,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan3(self, inst):
         self.assertEqual(inst.id, "obesity-narrative")
         self.assertEqual(inst.intent, "plan")
@@ -123,7 +129,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan4(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "3141-9")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Weight Measured")
@@ -167,7 +175,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan5(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "284093001")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Potassium supplementation")
@@ -210,7 +220,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan6(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "nursecon")
         self.assertEqual(inst.activity[0].detail.code.coding[0].system, "http://example.org/local")
@@ -251,7 +263,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan7(self, inst):
         self.assertEqual(inst.activity[0].detail.description, "Eve will review photos of high and low density foods and share with her parents")
         self.assertFalse(inst.activity[0].detail.doNotPerform)
@@ -394,7 +408,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan8(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "172960003")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Incision of retropharyngeal abscess")
@@ -430,7 +446,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan9(self, inst):
         self.assertEqual(inst.activity[0].detail.code.coding[0].code, "64915003")
         self.assertEqual(inst.activity[0].detail.code.coding[0].display, "Operation on heart")
@@ -466,7 +484,9 @@ class CarePlanTests(unittest.TestCase):
         inst2 = careplan.CarePlan(js)
         self.implCarePlan10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implCarePlan10(self, inst):
         self.assertEqual(inst.activity[1].detail.code.coding[0].code, "1an")
         self.assertEqual(inst.activity[1].detail.code.coding[0].system, "http://example.org/mySystem")
@@ -580,9 +600,9 @@ class CarePlanTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -614,10 +634,11 @@ class CarePlanTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

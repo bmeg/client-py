@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation1(self, inst):
         self.assertEqual(inst.address.city, "Den Burg")
         self.assertEqual(inst.address.country, "NLD")
@@ -83,7 +85,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation2(self, inst):
         self.assertEqual(inst.alias[0], "South Wing OR 5")
         self.assertEqual(inst.alias[1], "Main Wing OR 2")
@@ -120,7 +124,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation3(self, inst):
         self.assertEqual(inst.description, "Ambulance provided by Burgers University Medical Center")
         self.assertEqual(inst.id, "amb")
@@ -152,7 +158,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation4(self, inst):
         self.assertEqual(inst.description, "All Pharmacies in the United Kingdom covered by the National Pharmacy Association")
         self.assertEqual(inst.id, "ukp")
@@ -181,7 +189,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation5(self, inst):
         self.assertEqual(inst.description, "Patient's Home")
         self.assertEqual(inst.id, "ph")
@@ -210,7 +220,9 @@ class LocationTests(unittest.TestCase):
         inst2 = location.Location(js)
         self.implLocation6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implLocation6(self, inst):
         self.assertEqual(inst.address.city, "Ann Arbor")
         self.assertEqual(inst.address.country, "USA")
@@ -298,9 +310,9 @@ class LocationTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -332,10 +344,11 @@ class LocationTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

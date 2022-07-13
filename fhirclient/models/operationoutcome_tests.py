@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome1(self, inst):
         self.assertEqual(inst.id, "validationfail")
         self.assertEqual(inst.issue[0].code, "structure")
@@ -58,7 +60,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome2(self, inst):
         self.assertEqual(inst.id, "break-the-glass")
         self.assertEqual(inst.issue[0].code, "suppressed")
@@ -82,7 +86,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome3(self, inst):
         self.assertEqual(inst.id, "searchfail")
         self.assertEqual(inst.issue[0].code, "code-invalid")
@@ -104,7 +110,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome4(self, inst):
         self.assertEqual(inst.id, "exception")
         self.assertEqual(inst.issue[0].code, "exception")
@@ -125,7 +133,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome5(self, inst):
         self.assertEqual(inst.id, "101")
         self.assertEqual(inst.issue[0].code, "code-invalid")
@@ -149,7 +159,9 @@ class OperationOutcomeTests(unittest.TestCase):
         inst2 = operationoutcome.OperationOutcome(js)
         self.implOperationOutcome6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implOperationOutcome6(self, inst):
         self.assertEqual(inst.id, "allok")
         self.assertEqual(inst.issue[0].code, "informational")
@@ -217,9 +229,9 @@ class OperationOutcomeTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -251,10 +263,11 @@ class OperationOutcomeTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

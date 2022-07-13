@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner1(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].city, "Den helder")
@@ -75,7 +77,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner2(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].city, "Den helder")
@@ -118,7 +122,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner3(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].city, "Den helder")
@@ -162,7 +168,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner4(self, inst):
         self.assertEqual(inst.id, "xcda-author")
         self.assertEqual(inst.meta.tag[0].code, "HTEST")
@@ -183,7 +191,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner5(self, inst):
         self.assertEqual(inst.address[0].city, "Amsterdam")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -231,7 +241,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner6(self, inst):
         self.assertEqual(inst.address[0].city, "Den Burg")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -276,7 +288,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner7(self, inst):
         self.assertTrue(inst.active)
         self.assertEqual(inst.address[0].city, "PleasantVille")
@@ -313,7 +327,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner8(self, inst):
         self.assertEqual(inst.address[0].city, "Den Burg")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -358,7 +374,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner9(self, inst):
         self.assertEqual(inst.address[0].city, "Den helder")
         self.assertEqual(inst.address[0].country, "NLD")
@@ -393,7 +411,9 @@ class PractitionerTests(unittest.TestCase):
         inst2 = practitioner.Practitioner(js)
         self.implPractitioner10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPractitioner10(self, inst):
         self.assertEqual(inst.id, "xcda1")
         self.assertEqual(inst.identifier[0].system, "http://healthcare.example.org/identifiers/staff")
@@ -465,9 +485,9 @@ class PractitionerTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -499,10 +519,11 @@ class PractitionerTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

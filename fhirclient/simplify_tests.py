@@ -19,3 +19,10 @@ class TestSimplify(unittest.TestCase):
         inst = PatientTests().instantiate_from("patient-example-xds.json")
         self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
         pprint(inst.as_simplified_json())
+
+    def testPatientExtensions(self):
+        inst = PatientTests().instantiate_from('patient-patient-example-3.json')
+        self.assertIsNotNone(inst, "Must have instantiated a Patient instance")
+        js, schema = inst.as_simplified_json()
+        pprint(js.keys())
+

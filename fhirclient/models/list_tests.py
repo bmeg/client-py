@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList1(self, inst):
         self.assertEqual(inst.code.coding[0].code, "182836005")
         self.assertEqual(inst.code.coding[0].display, "Review of medication")
@@ -68,7 +70,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList2(self, inst):
         self.assertEqual(inst.code.coding[0].code, "8670-2")
         self.assertEqual(inst.code.coding[0].display, "History of family member diseases")
@@ -101,7 +105,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList3(self, inst):
         self.assertEqual(inst.code.coding[0].code, "346638")
         self.assertEqual(inst.code.coding[0].display, "Patient Admission List")
@@ -126,7 +132,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList4(self, inst):
         self.assertEqual(inst.code.coding[0].code, "182836005")
         self.assertEqual(inst.code.coding[0].display, "Review of medication")
@@ -156,7 +164,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList5(self, inst):
         self.assertEqual(inst.code.coding[0].code, "8670-2")
         self.assertEqual(inst.code.coding[0].display, "History of family member diseases")
@@ -187,7 +197,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList6(self, inst):
         self.assertEqual(inst.code.coding[0].code, "8670-2")
         self.assertEqual(inst.code.coding[0].display, "History of family member diseases")
@@ -213,7 +225,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList7(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2012-11-25T22:17:00+11:00").date)
         self.assertEqual(inst.date.as_json(), "2012-11-25T22:17:00+11:00")
@@ -240,7 +254,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList8(self, inst):
         self.assertEqual(inst.code.coding[0].code, "52472-8")
         self.assertEqual(inst.code.coding[0].display, "Allergies and Adverse Drug Reactions")
@@ -269,7 +285,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList9(self, inst):
         self.assertEqual(inst.code.coding[0].code, "80738-8")
         self.assertEqual(inst.code.coding[0].display, "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal")
@@ -299,7 +317,9 @@ class ListTests(unittest.TestCase):
         inst2 = list.List(js)
         self.implList10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implList10(self, inst):
         self.assertEqual(inst.date.date, FHIRDate("2018-02-21T12:17:00+11:00").date)
         self.assertEqual(inst.date.as_json(), "2018-02-21T12:17:00+11:00")
@@ -368,9 +388,9 @@ class ListTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -402,10 +422,11 @@ class ListTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

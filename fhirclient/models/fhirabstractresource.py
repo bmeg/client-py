@@ -38,8 +38,8 @@ class FHIRAbstractResource(fhirabstractbase.FHIRAbstractBase):
             return fhirelementfactory.FHIRElementFactory.instantiate(res_type, jsondict)
         return super(FHIRAbstractResource, cls)._with_json_dict(jsondict)
     
-    def as_json(self):
-        js = super(FHIRAbstractResource, self).as_json()
+    def as_json(self, strict=True):
+        js = super(FHIRAbstractResource, self).as_json(strict=strict)
         js['resourceType'] = self.resource_type
         return js
     

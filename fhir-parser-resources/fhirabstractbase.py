@@ -271,6 +271,16 @@ class FHIRAbstractBase(object):
         if len(errs) > 0:
             raise FHIRValidationError(errs)
 
+    @staticmethod
+    def check_simple_value(simplified_value):
+        """Double check if extension is embedding resources."""
+        if hasattr(simplified_value, 'as_simplified_json'):
+            simplified_embedded_resource, _ = simplified_value.as_simplified_json()
+            return simplified_embedded_resource
+        if 'FHIRDate' in simplified_value.__class__.__name__:
+            return simplified_value.date.isoformat()
+        return simplified_value
+
     def as_simplified_json(self, filtered_names=None):
         """ Serializes to JSON by inspecting `elementProperties()` and creating
         a JSON dictionary of all registered properties. Performs no checks.  Simplifies:
@@ -284,6 +294,17 @@ class FHIRAbstractBase(object):
 
         js = {}
         schema = {}
+        if hasattr(self, 'resource_type'):
+            js['resourceType'] = self.resource_type
+            schema['resourceType'] = {'docstring': 'One of the resource types defined as part of this version of FHIR',
+                                      'enum': None,
+                                      'name': 'resourceType',
+                                      'jsname': 'resourceType',
+                                      'typ': 'str',
+                                      'is_list': False,
+                                      'of_many': None,
+                                      'not_optional': False,
+                                      }
         for name, jsname, typ, is_list, of_many, not_optional in self.elementProperties():
             value = getattr(self, name)
 
@@ -324,31 +345,31 @@ class FHIRAbstractBase(object):
                     assert extension.__class__.__name__ == 'Extension'
                     assert extension.url
                     simplified_key = "extension_{}".format(extension.url.split('/')[-1])
-                    simplified_value = next(iter([v for k, v in extension.__dict__.items() if k.startswith('value') and v]), None)
-                    if not simplified_value:
+                    simplified_value = next(iter([v for k, v in extension.__dict__.items() if k.startswith('value') and v is not None]), None)
+
+                    if simplified_value is not None:
+                        js[simplified_key] = self.check_simple_value(simplified_value)
+                        _set_schema(simplified_key)
+
+                    if simplified_value is None:
                         # look in the extension's extensions, concatenate with | separator
-                        simplified_values = []
                         if extension.extension:
                             for sub_extension in extension.extension:
                                 for k, v in sub_extension.__dict__.items():
-                                    if not v:
-                                        continue
                                     if not k.startswith('value'):
                                         continue
+                                    if v is None:
+                                        continue
                                     simple_value_, _ = sub_extension.as_simplified_json([k])
-                                    simplified_values.append(list(simple_value_.values())[0])
-                            simplified_values = [str(item) for item in simplified_values if item]
-                            simplified_value = '|'.join(simplified_values)
-                        else:
-                            simplified_value = 'NA'
-                    js[simplified_key] = simplified_value
-                    _set_schema(simplified_key)
-                    # double check if extension is embedding resources
-                    if hasattr(simplified_value, 'as_simplified_json'):
-                        simplified_embedded_resource, _ = simplified_value.as_simplified_json()
-                        js[simplified_key] = list(simplified_embedded_resource.values())[0]
-                    if 'FHIRDate' in js[simplified_key].__class__.__name__:
-                        js[simplified_key] = js[simplified_key].date.isoformat()
+                                    if isinstance(simple_value_, dict):
+                                        for k, v in simple_value_.items():
+                                            simplified_key_with_extension = f"{simplified_key}_{k}"
+                                            js[simplified_key_with_extension] = self.check_simple_value(v)
+                                            _set_schema(simplified_key_with_extension)
+                                    else:
+                                        simplified_key_with_extension = f"{simplified_key}_{k}"
+                                        js[simplified_key_with_extension] = self.check_simple_value(simple_value_)
+                                        _set_schema(simplified_key_with_extension)
 
             elif is_coding:
                 if isinstance(value, list):
@@ -414,7 +435,7 @@ class FHIRAbstractBase(object):
 
         return js, schema
 
-    def as_json(self):
+    def as_json(self, strict=True):
         """ Serializes to JSON by inspecting `elementProperties()` and creating
         a JSON dictionary of all registered properties. Checks:
 
@@ -477,7 +498,7 @@ class FHIRAbstractBase(object):
                 errs.append(KeyError("Property \"{}\" on {} is not optional, you must provide a value for it"
                                      .format(nonop, self)))
 
-        if len(errs) > 0:
+        if len(errs) > 0 and strict:
             raise FHIRValidationError(errs)
         return js
 

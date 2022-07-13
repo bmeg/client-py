@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition1(self, inst):
         self.assertEqual(inst.action[0].action[0].action[0].action[0].action[0].definitionCanonical, "#1111")
         self.assertEqual(inst.action[0].action[0].action[0].action[0].action[0].extension[0].extension[0].url, "day")
@@ -130,7 +132,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition2(self, inst):
         self.assertEqual(inst.action[0].action[0].definitionCanonical, "#activitydefinition-medicationrequest-1")
         self.assertEqual(inst.action[0].action[0].id, "medication-action-1")
@@ -165,7 +169,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition3(self, inst):
         self.assertEqual(inst.action[0].action[0].action[0].definitionCanonical, "#referralToCardiologyConsult")
         self.assertEqual(inst.action[0].action[0].action[0].dynamicValue[0].expression.expression, "Now()")
@@ -330,7 +336,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition4(self, inst):
         self.assertEqual(inst.action[0].cardinalityBehavior, "single")
         self.assertEqual(inst.action[0].condition[0].expression.expression, "exists ([Condition: Obesity]) or not exists ([Observation: BMI] O where O.effectiveDateTime 2 years or less before Today())")
@@ -392,7 +400,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition5(self, inst):
         self.assertEqual(inst.action[0].action[0].action[0].definitionCanonical, "#referralToMentalHealthCare")
         self.assertEqual(inst.action[0].action[0].action[0].dynamicValue[0].expression.expression, "Now()")
@@ -566,7 +576,9 @@ class PlanDefinitionTests(unittest.TestCase):
         inst2 = plandefinition.PlanDefinition(js)
         self.implPlanDefinition6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implPlanDefinition6(self, inst):
         self.assertEqual(inst.action[0].action[0].condition[0].expression.expression, "Should Administer Zika Virus Exposure Assessment")
         self.assertEqual(inst.action[0].action[0].condition[0].expression.language, "text/cql")
@@ -670,9 +682,9 @@ class PlanDefinitionTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -704,10 +716,11 @@ class PlanDefinitionTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

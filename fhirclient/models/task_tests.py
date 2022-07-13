@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask1(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
@@ -83,7 +85,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask2(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-10-12T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-10-12T08:25:05+10:00")
@@ -122,7 +126,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask3(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
@@ -167,7 +173,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask4(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-10-04T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-10-04T08:25:05+10:00")
@@ -208,7 +216,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask5(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-03-10T22:39:32-04:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-03-10T22:39:32-04:00")
@@ -233,7 +243,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask6(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-10-04T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-10-04T08:25:05+10:00")
@@ -269,7 +281,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask7(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-10-31T08:45:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:45:05+10:00")
@@ -311,7 +325,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask8(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-10-04T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-10-04T08:25:05+10:00")
@@ -343,7 +359,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask9(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2018-10-04T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2018-10-04T08:25:05+10:00")
@@ -373,7 +391,9 @@ class TaskTests(unittest.TestCase):
         inst2 = task.Task(js)
         self.implTask10(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implTask10(self, inst):
         self.assertEqual(inst.authoredOn.date, FHIRDate("2016-10-31T08:25:05+10:00").date)
         self.assertEqual(inst.authoredOn.as_json(), "2016-10-31T08:25:05+10:00")
@@ -465,9 +485,9 @@ class TaskTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -499,10 +519,11 @@ class TaskTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break

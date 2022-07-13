@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-06-22.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
 #  2022, SMART Health IT.
 
 import io
@@ -35,7 +35,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent1(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent1(self, inst):
         self.assertEqual(inst.action, "E")
         self.assertEqual(inst.agent[0].altId, "601847123")
@@ -87,7 +89,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent2(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent2(self, inst):
         self.assertEqual(inst.action, "E")
         self.assertEqual(inst.agent[0].altId, "601847123")
@@ -134,7 +138,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent3(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent3(self, inst):
         self.assertEqual(inst.action, "R")
         self.assertEqual(inst.agent[0].altId, "601847123")
@@ -185,7 +191,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent4(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent4(self, inst):
         self.assertEqual(inst.action, "R")
         self.assertFalse(inst.agent[0].requestor)
@@ -246,7 +254,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent5(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent5(self, inst):
         self.assertEqual(inst.action, "E")
         self.assertEqual(inst.agent[0].altId, "601847123")
@@ -293,7 +303,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent6(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent6(self, inst):
         self.assertEqual(inst.action, "E")
         self.assertEqual(inst.agent[0].altId, "6580")
@@ -348,7 +360,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent7(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent7(self, inst):
         self.assertEqual(inst.action, "E")
         self.assertEqual(inst.agent[0].network.address, "127.0.0.1")
@@ -405,7 +419,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent8(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent8(self, inst):
         self.assertEqual(inst.action, "R")
         self.assertEqual(inst.agent[0].altId, "notMe")
@@ -485,7 +501,9 @@ class AuditEventTests(unittest.TestCase):
         inst2 = auditevent.AuditEvent(js)
         self.implAuditEvent9(inst2)
         self.evaluate_simplified_json(inst2)
-    
+        # should take a strict param
+        js2 = inst.as_json(strict=False)
+
     def implAuditEvent9(self, inst):
         self.assertEqual(inst.action, "C")
         self.assertEqual(inst.agent[0].altId, "601847123")
@@ -588,9 +606,9 @@ class AuditEventTests(unittest.TestCase):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
                 simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertEqual(len(inst.extension), len(simplified_extensions), "Should simplify extensions.")
+                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
                 for simplified_extension in simplified_extensions:
-                    assert simplified_js[simplified_extension], f"Missing value for {simplified_extension}"
+                    assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':
                         logging.getLogger(__name__).warning(
@@ -622,10 +640,11 @@ class AuditEventTests(unittest.TestCase):
                 if flattened_key_part not in dict_ and flattened_key_part.isnumeric():
                     # traverse over list index
                     continue
-                dict_ = dict_[flattened_key_part]
-                self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
-                if 'docstring' not in dict_:
-                    logging.getLogger(__name__).warning(
-                        "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
-                            inst.resource_type, flattened_key, flattened_key_part, dict_))
-                    break
+                if flattened_key_part in dict_:
+                    dict_ = dict_[flattened_key_part]
+                    self.assertIsNotNone(dict_, "Should have a schema entry for {}".format(flattened_key_part))
+                    if 'docstring' not in dict_:
+                        logging.getLogger(__name__).warning(
+                            "Missing docstring for resource_type:{} flattened_key:{} flattened_key_part:{} dict:{}".format(
+                                inst.resource_type, flattened_key, flattened_key_part, dict_))
+                break
