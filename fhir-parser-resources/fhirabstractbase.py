@@ -408,7 +408,7 @@ class FHIRAbstractBase(object):
                         continue
                     assert identifier.__class__.__name__ == 'Identifier'
                     if identifier.system:
-                        simplified_key = "identifier_{}".format(identifier.system)
+                        simplified_key = "identifier_{}".format(identifier.system.split('/')[-1])
                     else:
                         simplified_key = "identifier_"
                     if identifier.type and identifier.type and identifier.type.coding:
