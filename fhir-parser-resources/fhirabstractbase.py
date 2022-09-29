@@ -314,12 +314,12 @@ class FHIRAbstractBase(object):
             if filtered_names and name not in filtered_names:
                 continue
 
-            def _set_schema(key):
+            def _set_schema(key, subtype=None):
                 schema[key] = {'docstring': self.attribute_docstrings().get(name),
                                'enum': self.attribute_enums().get(name),
                                'name': name,
                                'jsname': jsname,
-                               'typ': typ.__name__,
+                               'typ': subtype if subtype else typ.__name__,
                                'is_list': is_list,
                                'of_many': of_many,
                                'not_optional': not_optional,
@@ -349,7 +349,7 @@ class FHIRAbstractBase(object):
 
                     if simplified_value is not None:
                         js[simplified_key] = self.check_simple_value(simplified_value)
-                        _set_schema(simplified_key)
+                        _set_schema(simplified_key, subtype=type(js[simplified_key]).__name__)
 
                     if simplified_value is None:
                         # look in the extension's extensions, concatenate with | separator
@@ -360,16 +360,17 @@ class FHIRAbstractBase(object):
                                         continue
                                     if v is None:
                                         continue
-                                    simple_value_, _ = sub_extension.as_simplified_json([k])
+                                    simple_value_, simple_sub_schema_ = sub_extension.as_simplified_json([k])
+                                    simple_sub_schema_ = next(iter(simple_sub_schema_.values()))
                                     if isinstance(simple_value_, dict):
                                         for k, v in simple_value_.items():
-                                            simplified_key_with_extension = f"{simplified_key}_{k}"
+                                            simplified_key_with_extension = f"{simplified_key}_{sub_extension.url}_{k}"
                                             js[simplified_key_with_extension] = self.check_simple_value(v)
-                                            _set_schema(simplified_key_with_extension)
+                                            _set_schema(simplified_key_with_extension, simple_sub_schema_['typ'])
                                     else:
                                         simplified_key_with_extension = f"{simplified_key}_{k}"
                                         js[simplified_key_with_extension] = self.check_simple_value(simple_value_)
-                                        _set_schema(simplified_key_with_extension)
+                                        _set_schema(simplified_key_with_extension, simple_sub_schema_['typ'])
 
             elif is_coding:
                 if isinstance(value, list):
