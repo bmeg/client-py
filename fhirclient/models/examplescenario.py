@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ExampleScenario) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ExampleScenario) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -36,7 +36,33 @@ class ExampleScenario(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['actor'] = 'List[ExampleScenarioActor]'
+    _attribute_types['instance'] = 'List[ExampleScenarioInstance]'
+    _attribute_types['process'] = 'List[ExampleScenarioProcess]'
+    _attribute_types['workflow'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -172,7 +198,20 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['actorId'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -241,7 +280,22 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['resourceId'] = 'str'
+    _attribute_types['resourceType'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['version'] = 'List[ExampleScenarioInstanceVersion]'
+    _attribute_types['containedInstance'] = 'List[ExampleScenarioInstanceContainedInstance]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -319,7 +373,18 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['resourceId'] = 'str'
+    _attribute_types['versionId'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -368,7 +433,18 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['versionId'] = 'str'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -420,7 +496,21 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['title'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['preConditions'] = 'str'
+    _attribute_types['postConditions'] = 'str'
+    _attribute_types['step'] = 'List[ExampleScenarioProcessStep]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -486,7 +576,20 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['process'] = 'List[ExampleScenarioProcess]'
+    _attribute_types['pause'] = 'bool'
+    _attribute_types['operation'] = 'ExampleScenarioProcessStepOperation'
+    _attribute_types['alternative'] = 'List[ExampleScenarioProcessStepAlternative]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -549,7 +652,19 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['title'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['step'] = 'List[ExampleScenarioProcessStep]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -611,7 +726,26 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['number'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['initiator'] = 'str'
+    _attribute_types['receiver'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['initiatorActive'] = 'bool'
+    _attribute_types['receiverActive'] = 'bool'
+    _attribute_types['request'] = 'ExampleScenarioInstanceContainedInstance'
+    _attribute_types['response'] = 'ExampleScenarioInstanceContainedInstance'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

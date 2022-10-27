@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Signature) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Signature) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -30,7 +30,23 @@ class Signature(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'List[Coding]'
+    _attribute_types['when'] = 'FHIRDate'
+    _attribute_types['who'] = 'FHIRReference'
+    _attribute_types['onBehalfOf'] = 'FHIRReference'
+    _attribute_types['targetFormat'] = 'str'
+    _attribute_types['sigFormat'] = 'str'
+    _attribute_types['data'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

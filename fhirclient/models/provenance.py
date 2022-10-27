@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Provenance) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Provenance) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -41,7 +41,27 @@ class Provenance(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['target'] = 'List[FHIRReference]'
+    _attribute_types['occurredPeriod'] = 'Period'
+    _attribute_types['occurredDateTime'] = 'FHIRDate'
+    _attribute_types['recorded'] = 'FHIRDate'
+    _attribute_types['policy'] = 'List[str]'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['reason'] = 'List[CodeableConcept]'
+    _attribute_types['activity'] = 'CodeableConcept'
+    _attribute_types['agent'] = 'List[ProvenanceAgent]'
+    _attribute_types['entity'] = 'List[ProvenanceEntity]'
+    _attribute_types['signature'] = 'List[Signature]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -142,7 +162,20 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['role'] = 'List[CodeableConcept]'
+    _attribute_types['who'] = 'FHIRReference'
+    _attribute_types['onBehalfOf'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -208,7 +241,19 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['role'] = 'str'
+    _attribute_types['what'] = 'FHIRReference'
+    _attribute_types['agent'] = 'List[ProvenanceAgent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/InsurancePlan) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/InsurancePlan) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -33,7 +33,30 @@ class InsurancePlan(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['alias'] = 'List[str]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['ownedBy'] = 'FHIRReference'
+    _attribute_types['administeredBy'] = 'FHIRReference'
+    _attribute_types['coverageArea'] = 'List[FHIRReference]'
+    _attribute_types['contact'] = 'List[InsurancePlanContact]'
+    _attribute_types['endpoint'] = 'List[FHIRReference]'
+    _attribute_types['network'] = 'List[FHIRReference]'
+    _attribute_types['coverage'] = 'List[InsurancePlanCoverage]'
+    _attribute_types['plan'] = 'List[InsurancePlanPlan]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -154,7 +177,20 @@ class InsurancePlanContact(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['purpose'] = 'CodeableConcept'
+    _attribute_types['name'] = 'HumanName'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['address'] = 'Address'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -222,7 +258,19 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['network'] = 'List[FHIRReference]'
+    _attribute_types['benefit'] = 'List[InsurancePlanCoverageBenefit]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -279,7 +327,19 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['requirement'] = 'str'
+    _attribute_types['limit'] = 'List[InsurancePlanCoverageBenefitLimit]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -335,7 +395,18 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['value'] = 'Quantity'
+    _attribute_types['code'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -390,7 +461,22 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['coverageArea'] = 'List[FHIRReference]'
+    _attribute_types['network'] = 'List[FHIRReference]'
+    _attribute_types['generalCost'] = 'List[InsurancePlanPlanGeneralCost]'
+    _attribute_types['specificCost'] = 'List[InsurancePlanPlanSpecificCost]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -463,7 +549,20 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['groupSize'] = 'int'
+    _attribute_types['cost'] = 'Money'
+    _attribute_types['comment'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -524,7 +623,18 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['benefit'] = 'List[InsurancePlanPlanSpecificCostBenefit]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -575,7 +685,18 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['cost'] = 'List[InsurancePlanPlanSpecificCostBenefitCost]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -628,7 +749,20 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['applicability'] = 'CodeableConcept'
+    _attribute_types['qualifiers'] = 'List[CodeableConcept]'
+    _attribute_types['value'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

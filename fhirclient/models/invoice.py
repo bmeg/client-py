@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Invoice) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Invoice) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -38,7 +38,32 @@ class Invoice(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['cancelledReason'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['recipient'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['participant'] = 'List[InvoiceParticipant]'
+    _attribute_types['issuer'] = 'FHIRReference'
+    _attribute_types['account'] = 'FHIRReference'
+    _attribute_types['lineItem'] = 'List[InvoiceLineItem]'
+    _attribute_types['totalPriceComponent'] = 'List[InvoiceLineItemPriceComponent]'
+    _attribute_types['totalNet'] = 'Money'
+    _attribute_types['totalGross'] = 'Money'
+    _attribute_types['paymentTerms'] = 'str'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -171,7 +196,20 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['sequence'] = 'int'
+    _attribute_types['chargeItemReference'] = 'FHIRReference'
+    _attribute_types['chargeItemCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['priceComponent'] = 'List[InvoiceLineItemPriceComponent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -241,7 +279,20 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['factor'] = 'float'
+    _attribute_types['amount'] = 'Money'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -308,7 +359,18 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['role'] = 'CodeableConcept'
+    _attribute_types['actor'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

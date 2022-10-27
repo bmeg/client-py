@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CatalogEntry) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CatalogEntry) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -35,7 +35,29 @@ class CatalogEntry(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['orderable'] = 'bool'
+    _attribute_types['referencedItem'] = 'FHIRReference'
+    _attribute_types['additionalIdentifier'] = 'List[Identifier]'
+    _attribute_types['classification'] = 'List[CodeableConcept]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['validityPeriod'] = 'Period'
+    _attribute_types['validTo'] = 'FHIRDate'
+    _attribute_types['lastUpdated'] = 'FHIRDate'
+    _attribute_types['additionalCharacteristic'] = 'List[CodeableConcept]'
+    _attribute_types['additionalClassification'] = 'List[CodeableConcept]'
+    _attribute_types['relatedEntry'] = 'List[CatalogEntryRelatedEntry]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -153,7 +175,18 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['relationtype'] = 'str'
+    _attribute_types['item'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

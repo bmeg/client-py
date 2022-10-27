@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CommunicationRequest) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CommunicationRequest) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -46,7 +46,39 @@ class CommunicationRequest(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['replaces'] = 'List[FHIRReference]'
+    _attribute_types['groupIdentifier'] = 'Identifier'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['doNotPerform'] = 'bool'
+    _attribute_types['medium'] = 'List[CodeableConcept]'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['about'] = 'List[FHIRReference]'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['payload'] = 'List[CommunicationRequestPayload]'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['authoredOn'] = 'FHIRDate'
+    _attribute_types['requester'] = 'FHIRReference'
+    _attribute_types['recipient'] = 'List[FHIRReference]'
+    _attribute_types['sender'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -225,7 +257,19 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['contentString'] = 'str'
+    _attribute_types['contentAttachment'] = 'Attachment'
+    _attribute_types['contentReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

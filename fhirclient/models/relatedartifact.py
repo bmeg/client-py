@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RelatedArtifact) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RelatedArtifact) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -27,7 +27,23 @@ class RelatedArtifact(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['label'] = 'str'
+    _attribute_types['display'] = 'str'
+    _attribute_types['citation'] = 'str'
+    _attribute_types['url'] = 'str'
+    _attribute_types['document'] = 'Attachment'
+    _attribute_types['resource'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

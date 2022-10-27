@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DeviceUseStatement) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DeviceUseStatement) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -37,7 +37,31 @@ class DeviceUseStatement(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['derivedFrom'] = 'List[FHIRReference]'
+    _attribute_types['timingTiming'] = 'Timing'
+    _attribute_types['timingPeriod'] = 'Period'
+    _attribute_types['timingDateTime'] = 'FHIRDate'
+    _attribute_types['recordedOn'] = 'FHIRDate'
+    _attribute_types['source'] = 'FHIRReference'
+    _attribute_types['device'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['bodySite'] = 'CodeableConcept'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AuditEvent) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AuditEvent) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,27 @@ class AuditEvent(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'Coding'
+    _attribute_types['subtype'] = 'List[Coding]'
+    _attribute_types['action'] = 'str'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['recorded'] = 'FHIRDate'
+    _attribute_types['outcome'] = 'str'
+    _attribute_types['outcomeDesc'] = 'str'
+    _attribute_types['purposeOfEvent'] = 'List[CodeableConcept]'
+    _attribute_types['agent'] = 'List[AuditEventAgent]'
+    _attribute_types['source'] = 'AuditEventSource'
+    _attribute_types['entity'] = 'List[AuditEventEntity]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -148,7 +168,27 @@ class AuditEventAgent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['role'] = 'List[CodeableConcept]'
+    _attribute_types['who'] = 'FHIRReference'
+    _attribute_types['altId'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['requestor'] = 'bool'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['policy'] = 'List[str]'
+    _attribute_types['media'] = 'Coding'
+    _attribute_types['network'] = 'AuditEventAgentNetwork'
+    _attribute_types['purposeOfUse'] = 'List[CodeableConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -245,7 +285,18 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['address'] = 'str'
+    _attribute_types['type'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -303,7 +354,25 @@ class AuditEventEntity(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['what'] = 'FHIRReference'
+    _attribute_types['type'] = 'Coding'
+    _attribute_types['role'] = 'Coding'
+    _attribute_types['lifecycle'] = 'Coding'
+    _attribute_types['securityLabel'] = 'List[Coding]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['query'] = 'str'
+    _attribute_types['detail'] = 'List[AuditEventEntityDetail]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -390,7 +459,19 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueBase64Binary'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -447,7 +528,19 @@ class AuditEventSource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['site'] = 'str'
+    _attribute_types['observer'] = 'FHIRReference'
+    _attribute_types['type'] = 'List[Coding]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

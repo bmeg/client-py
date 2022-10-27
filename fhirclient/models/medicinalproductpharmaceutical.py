@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductPharmaceutical) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductPharmaceutical) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -27,7 +27,23 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['administrableDoseForm'] = 'CodeableConcept'
+    _attribute_types['unitOfPresentation'] = 'CodeableConcept'
+    _attribute_types['ingredient'] = 'List[FHIRReference]'
+    _attribute_types['device'] = 'List[FHIRReference]'
+    _attribute_types['characteristics'] = 'List[MedicinalProductPharmaceuticalCharacteristics]'
+    _attribute_types['routeOfAdministration'] = 'List[MedicinalProductPharmaceuticalRouteOfAdministration]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -104,7 +120,18 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['status'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -159,7 +186,23 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(backboneelement.Backbo
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['firstDose'] = 'Quantity'
+    _attribute_types['maxSingleDose'] = 'Quantity'
+    _attribute_types['maxDosePerDay'] = 'Quantity'
+    _attribute_types['maxDosePerTreatmentPeriod'] = 'Ratio'
+    _attribute_types['maxTreatmentPeriod'] = 'Duration'
+    _attribute_types['targetSpecies'] = 'List[MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -242,7 +285,18 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(backbonee
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['withdrawalPeriod'] = 'List[MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -294,7 +348,19 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['tissue'] = 'CodeableConcept'
+    _attribute_types['value'] = 'Quantity'
+    _attribute_types['supportingInformation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

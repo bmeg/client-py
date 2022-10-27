@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/OrganizationAffiliation) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -32,7 +32,28 @@ class OrganizationAffiliation(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['active'] = 'bool'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['organization'] = 'FHIRReference'
+    _attribute_types['participatingOrganization'] = 'FHIRReference'
+    _attribute_types['network'] = 'List[FHIRReference]'
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['specialty'] = 'List[CodeableConcept]'
+    _attribute_types['location'] = 'List[FHIRReference]'
+    _attribute_types['healthcareService'] = 'List[FHIRReference]'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['endpoint'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

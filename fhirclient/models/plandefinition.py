@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/PlanDefinition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/PlanDefinition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -57,7 +57,48 @@ class PlanDefinition(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['subtitle'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['subjectCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['subjectReference'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['usage'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['approvalDate'] = 'FHIRDate'
+    _attribute_types['lastReviewDate'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['topic'] = 'List[CodeableConcept]'
+    _attribute_types['author'] = 'List[ContactDetail]'
+    _attribute_types['editor'] = 'List[ContactDetail]'
+    _attribute_types['reviewer'] = 'List[ContactDetail]'
+    _attribute_types['endorser'] = 'List[ContactDetail]'
+    _attribute_types['relatedArtifact'] = 'List[RelatedArtifact]'
+    _attribute_types['library'] = 'List[str]'
+    _attribute_types['goal'] = 'List[PlanDefinitionGoal]'
+    _attribute_types['action'] = 'List[PlanDefinitionAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -323,7 +364,50 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['prefix'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['textEquivalent'] = 'str'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['reason'] = 'List[CodeableConcept]'
+    _attribute_types['documentation'] = 'List[RelatedArtifact]'
+    _attribute_types['goalId'] = 'List[str]'
+    _attribute_types['subjectCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['subjectReference'] = 'FHIRReference'
+    _attribute_types['trigger'] = 'List[TriggerDefinition]'
+    _attribute_types['condition'] = 'List[PlanDefinitionActionCondition]'
+    _attribute_types['input'] = 'List[DataRequirement]'
+    _attribute_types['output'] = 'List[DataRequirement]'
+    _attribute_types['relatedAction'] = 'List[PlanDefinitionActionRelatedAction]'
+    _attribute_types['timingDateTime'] = 'FHIRDate'
+    _attribute_types['timingAge'] = 'Age'
+    _attribute_types['timingPeriod'] = 'Period'
+    _attribute_types['timingDuration'] = 'Duration'
+    _attribute_types['timingRange'] = 'Range'
+    _attribute_types['timingTiming'] = 'Timing'
+    _attribute_types['participant'] = 'List[PlanDefinitionActionParticipant]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['groupingBehavior'] = 'str'
+    _attribute_types['selectionBehavior'] = 'str'
+    _attribute_types['requiredBehavior'] = 'str'
+    _attribute_types['precheckBehavior'] = 'str'
+    _attribute_types['cardinalityBehavior'] = 'str'
+    _attribute_types['definitionCanonical'] = 'str'
+    _attribute_types['definitionUri'] = 'str'
+    _attribute_types['transform'] = 'str'
+    _attribute_types['dynamicValue'] = 'List[PlanDefinitionActionDynamicValue]'
+    _attribute_types['action'] = 'List[PlanDefinitionAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -586,7 +670,18 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['kind'] = 'str'
+    _attribute_types['expression'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -647,7 +742,18 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['expression'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -698,7 +804,18 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['role'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -758,7 +875,20 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['actionId'] = 'str'
+    _attribute_types['relationship'] = 'str'
+    _attribute_types['offsetDuration'] = 'Duration'
+    _attribute_types['offsetRange'] = 'Range'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -833,7 +963,23 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['description'] = 'CodeableConcept'
+    _attribute_types['priority'] = 'CodeableConcept'
+    _attribute_types['start'] = 'CodeableConcept'
+    _attribute_types['addresses'] = 'List[CodeableConcept]'
+    _attribute_types['documentation'] = 'List[RelatedArtifact]'
+    _attribute_types['target'] = 'List[PlanDefinitionGoalTarget]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -925,7 +1071,21 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['measure'] = 'CodeableConcept'
+    _attribute_types['detailQuantity'] = 'Quantity'
+    _attribute_types['detailRange'] = 'Range'
+    _attribute_types['detailCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['due'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

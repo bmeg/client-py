@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Coverage) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Coverage) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -39,7 +39,33 @@ class Coverage(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['policyHolder'] = 'FHIRReference'
+    _attribute_types['subscriber'] = 'FHIRReference'
+    _attribute_types['subscriberId'] = 'str'
+    _attribute_types['beneficiary'] = 'FHIRReference'
+    _attribute_types['dependent'] = 'str'
+    _attribute_types['relationship'] = 'CodeableConcept'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['payor'] = 'List[FHIRReference]'
+    _attribute_types['class_fhir'] = 'List[CoverageClass]'
+    _attribute_types['order'] = 'int'
+    _attribute_types['network'] = 'str'
+    _attribute_types['costToBeneficiary'] = 'List[CoverageCostToBeneficiary]'
+    _attribute_types['subrogation'] = 'bool'
+    _attribute_types['contract'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -180,7 +206,19 @@ class CoverageClass(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['value'] = 'str'
+    _attribute_types['name'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -249,7 +287,20 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueMoney'] = 'Money'
+    _attribute_types['exception'] = 'List[CoverageCostToBeneficiaryException]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -317,7 +368,18 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

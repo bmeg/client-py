@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CodeSystem) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CodeSystem) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -50,7 +50,42 @@ class CodeSystem(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['caseSensitive'] = 'bool'
+    _attribute_types['valueSet'] = 'str'
+    _attribute_types['hierarchyMeaning'] = 'str'
+    _attribute_types['compositional'] = 'bool'
+    _attribute_types['versionNeeded'] = 'bool'
+    _attribute_types['content'] = 'str'
+    _attribute_types['supplements'] = 'str'
+    _attribute_types['count'] = 'int'
+    _attribute_types['filter'] = 'List[CodeSystemFilter]'
+    _attribute_types['property'] = 'List[CodeSystemProperty]'
+    _attribute_types['concept'] = 'List[CodeSystemConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -252,7 +287,22 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['display'] = 'str'
+    _attribute_types['definition'] = 'str'
+    _attribute_types['designation'] = 'List[CodeSystemConceptDesignation]'
+    _attribute_types['property'] = 'List[CodeSystemConceptProperty]'
+    _attribute_types['concept'] = 'List[CodeSystemConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -325,7 +375,19 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['language'] = 'str'
+    _attribute_types['use'] = 'Coding'
+    _attribute_types['value'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -387,7 +449,24 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['valueCode'] = 'str'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valueDecimal'] = 'float'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -471,7 +550,20 @@ class CodeSystemFilter(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['operator'] = 'List[str]'
+    _attribute_types['value'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -541,7 +633,20 @@ class CodeSystemProperty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['uri'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['type'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

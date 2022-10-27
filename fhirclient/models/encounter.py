@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Encounter) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Encounter) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -46,7 +46,39 @@ class Encounter(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusHistory'] = 'List[EncounterStatusHistory]'
+    _attribute_types['class_fhir'] = 'Coding'
+    _attribute_types['classHistory'] = 'List[EncounterClassHistory]'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['serviceType'] = 'CodeableConcept'
+    _attribute_types['priority'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['episodeOfCare'] = 'List[FHIRReference]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['participant'] = 'List[EncounterParticipant]'
+    _attribute_types['appointment'] = 'List[FHIRReference]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['length'] = 'Duration'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['diagnosis'] = 'List[EncounterDiagnosis]'
+    _attribute_types['account'] = 'List[FHIRReference]'
+    _attribute_types['hospitalization'] = 'EncounterHospitalization'
+    _attribute_types['location'] = 'List[EncounterLocation]'
+    _attribute_types['serviceProvider'] = 'FHIRReference'
+    _attribute_types['partOf'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -223,7 +255,18 @@ class EncounterClassHistory(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['class_fhir'] = 'Coding'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -273,7 +316,19 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['condition'] = 'FHIRReference'
+    _attribute_types['use'] = 'CodeableConcept'
+    _attribute_types['rank'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -340,7 +395,25 @@ class EncounterHospitalization(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['preAdmissionIdentifier'] = 'Identifier'
+    _attribute_types['origin'] = 'FHIRReference'
+    _attribute_types['admitSource'] = 'CodeableConcept'
+    _attribute_types['reAdmission'] = 'CodeableConcept'
+    _attribute_types['dietPreference'] = 'List[CodeableConcept]'
+    _attribute_types['specialCourtesy'] = 'List[CodeableConcept]'
+    _attribute_types['specialArrangement'] = 'List[CodeableConcept]'
+    _attribute_types['destination'] = 'FHIRReference'
+    _attribute_types['dischargeDisposition'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -456,7 +529,20 @@ class EncounterLocation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['status'] = 'str'
+    _attribute_types['physicalType'] = 'CodeableConcept'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -534,7 +620,19 @@ class EncounterParticipant(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['individual'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -593,7 +691,18 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['status'] = 'str'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

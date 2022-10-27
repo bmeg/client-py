@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SupplyDelivery) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SupplyDelivery) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,29 @@ class SupplyDelivery(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['suppliedItem'] = 'SupplyDeliverySuppliedItem'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['occurrenceTiming'] = 'Timing'
+    _attribute_types['supplier'] = 'FHIRReference'
+    _attribute_types['destination'] = 'FHIRReference'
+    _attribute_types['receiver'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -157,7 +179,19 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['itemCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['itemReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

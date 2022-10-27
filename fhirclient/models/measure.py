@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Measure) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Measure) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -63,7 +63,58 @@ class Measure(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['subtitle'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['subjectCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['subjectReference'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['usage'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['approvalDate'] = 'FHIRDate'
+    _attribute_types['lastReviewDate'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['topic'] = 'List[CodeableConcept]'
+    _attribute_types['author'] = 'List[ContactDetail]'
+    _attribute_types['editor'] = 'List[ContactDetail]'
+    _attribute_types['reviewer'] = 'List[ContactDetail]'
+    _attribute_types['endorser'] = 'List[ContactDetail]'
+    _attribute_types['relatedArtifact'] = 'List[RelatedArtifact]'
+    _attribute_types['library'] = 'List[str]'
+    _attribute_types['disclaimer'] = 'str'
+    _attribute_types['scoring'] = 'CodeableConcept'
+    _attribute_types['compositeScoring'] = 'CodeableConcept'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['riskAdjustment'] = 'str'
+    _attribute_types['rateAggregation'] = 'str'
+    _attribute_types['rationale'] = 'str'
+    _attribute_types['clinicalRecommendationStatement'] = 'str'
+    _attribute_types['improvementNotation'] = 'CodeableConcept'
+    _attribute_types['definition'] = 'List[str]'
+    _attribute_types['guidance'] = 'str'
+    _attribute_types['group'] = 'List[MeasureGroup]'
+    _attribute_types['supplementalData'] = 'List[MeasureSupplementalData]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -376,7 +427,20 @@ class MeasureGroup(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['population'] = 'List[MeasureGroupPopulation]'
+    _attribute_types['stratifier'] = 'List[MeasureGroupStratifier]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -438,7 +502,19 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['criteria'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -504,7 +580,20 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['criteria'] = 'Expression'
+    _attribute_types['component'] = 'List[MeasureGroupStratifierComponent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -568,7 +657,19 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['criteria'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -628,7 +729,20 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['usage'] = 'List[CodeableConcept]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['criteria'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

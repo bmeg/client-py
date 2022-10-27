@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ClaimResponse) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ClaimResponse) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -49,7 +49,43 @@ class ClaimResponse(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subType'] = 'CodeableConcept'
+    _attribute_types['use'] = 'str'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['created'] = 'FHIRDate'
+    _attribute_types['insurer'] = 'FHIRReference'
+    _attribute_types['requestor'] = 'FHIRReference'
+    _attribute_types['request'] = 'FHIRReference'
+    _attribute_types['outcome'] = 'str'
+    _attribute_types['disposition'] = 'str'
+    _attribute_types['preAuthRef'] = 'str'
+    _attribute_types['preAuthPeriod'] = 'Period'
+    _attribute_types['payeeType'] = 'CodeableConcept'
+    _attribute_types['item'] = 'List[ClaimResponseItem]'
+    _attribute_types['addItem'] = 'List[ClaimResponseAddItem]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+    _attribute_types['total'] = 'List[ClaimResponseTotal]'
+    _attribute_types['payment'] = 'ClaimResponsePayment'
+    _attribute_types['fundsReserve'] = 'CodeableConcept'
+    _attribute_types['formCode'] = 'CodeableConcept'
+    _attribute_types['form'] = 'Attachment'
+    _attribute_types['processNote'] = 'List[ClaimResponseProcessNote]'
+    _attribute_types['communicationRequest'] = 'List[FHIRReference]'
+    _attribute_types['insurance'] = 'List[ClaimResponseInsurance]'
+    _attribute_types['error'] = 'List[ClaimResponseError]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -286,7 +322,37 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['itemSequence'] = 'List[int]'
+    _attribute_types['detailSequence'] = 'List[int]'
+    _attribute_types['subdetailSequence'] = 'List[int]'
+    _attribute_types['provider'] = 'List[FHIRReference]'
+    _attribute_types['productOrService'] = 'CodeableConcept'
+    _attribute_types['modifier'] = 'List[CodeableConcept]'
+    _attribute_types['programCode'] = 'List[CodeableConcept]'
+    _attribute_types['servicedDate'] = 'FHIRDate'
+    _attribute_types['servicedPeriod'] = 'Period'
+    _attribute_types['locationCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['locationAddress'] = 'Address'
+    _attribute_types['locationReference'] = 'FHIRReference'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['unitPrice'] = 'Money'
+    _attribute_types['factor'] = 'float'
+    _attribute_types['net'] = 'Money'
+    _attribute_types['bodySite'] = 'CodeableConcept'
+    _attribute_types['subSite'] = 'List[CodeableConcept]'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+    _attribute_types['detail'] = 'List[ClaimResponseAddItemDetail]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -459,7 +525,25 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['productOrService'] = 'CodeableConcept'
+    _attribute_types['modifier'] = 'List[CodeableConcept]'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['unitPrice'] = 'Money'
+    _attribute_types['factor'] = 'float'
+    _attribute_types['net'] = 'Money'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+    _attribute_types['subDetail'] = 'List[ClaimResponseAddItemDetailSubDetail]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -558,7 +642,24 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['productOrService'] = 'CodeableConcept'
+    _attribute_types['modifier'] = 'List[CodeableConcept]'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['unitPrice'] = 'Money'
+    _attribute_types['factor'] = 'float'
+    _attribute_types['net'] = 'Money'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -648,7 +749,20 @@ class ClaimResponseError(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['itemSequence'] = 'int'
+    _attribute_types['detailSequence'] = 'int'
+    _attribute_types['subDetailSequence'] = 'int'
+    _attribute_types['code'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -713,7 +827,21 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['sequence'] = 'int'
+    _attribute_types['focal'] = 'bool'
+    _attribute_types['coverage'] = 'FHIRReference'
+    _attribute_types['businessArrangement'] = 'str'
+    _attribute_types['claimResponse'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -782,7 +910,20 @@ class ClaimResponseItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['itemSequence'] = 'int'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+    _attribute_types['detail'] = 'List[ClaimResponseItemDetail]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -847,7 +988,20 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['reason'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'Money'
+    _attribute_types['value'] = 'float'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -929,7 +1083,20 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['detailSequence'] = 'int'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+    _attribute_types['subDetail'] = 'List[ClaimResponseItemDetailSubDetail]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -991,7 +1158,19 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['subDetailSequence'] = 'int'
+    _attribute_types['noteNumber'] = 'List[int]'
+    _attribute_types['adjudication'] = 'List[ClaimResponseItemAdjudication]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1051,7 +1230,22 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['adjustment'] = 'Money'
+    _attribute_types['adjustmentReason'] = 'CodeableConcept'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['amount'] = 'Money'
+    _attribute_types['identifier'] = 'Identifier'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1138,7 +1332,20 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['number'] = 'int'
+    _attribute_types['type'] = 'str'
+    _attribute_types['text'] = 'str'
+    _attribute_types['language'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1205,7 +1412,18 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'Money'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

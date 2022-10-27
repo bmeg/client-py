@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ImplementationGuide) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ImplementationGuide) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -44,7 +44,36 @@ class ImplementationGuide(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['packageId'] = 'str'
+    _attribute_types['license'] = 'str'
+    _attribute_types['fhirVersion'] = 'List[str]'
+    _attribute_types['dependsOn'] = 'List[ImplementationGuideDependsOn]'
+    _attribute_types['global_fhir'] = 'List[ImplementationGuideGlobal]'
+    _attribute_types['definition'] = 'ImplementationGuideDefinition'
+    _attribute_types['manifest'] = 'ImplementationGuideManifest'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -199,7 +228,21 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['grouping'] = 'List[ImplementationGuideDefinitionGrouping]'
+    _attribute_types['resource'] = 'List[ImplementationGuideDefinitionResource]'
+    _attribute_types['page'] = 'ImplementationGuideDefinitionPage'
+    _attribute_types['parameter'] = 'List[ImplementationGuideDefinitionParameter]'
+    _attribute_types['template'] = 'List[ImplementationGuideDefinitionTemplate]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -266,7 +309,18 @@ class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -321,7 +375,21 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['nameUrl'] = 'str'
+    _attribute_types['nameReference'] = 'FHIRReference'
+    _attribute_types['title'] = 'str'
+    _attribute_types['generation'] = 'str'
+    _attribute_types['page'] = 'List[ImplementationGuideDefinitionPage]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -391,7 +459,18 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['value'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -456,7 +535,23 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['reference'] = 'FHIRReference'
+    _attribute_types['fhirVersion'] = 'List[str]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['exampleBoolean'] = 'bool'
+    _attribute_types['exampleCanonical'] = 'str'
+    _attribute_types['groupingId'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -531,7 +626,19 @@ class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['source'] = 'str'
+    _attribute_types['scope'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -590,7 +697,19 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['uri'] = 'str'
+    _attribute_types['packageId'] = 'str'
+    _attribute_types['version'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -647,7 +766,18 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['profile'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -708,7 +838,21 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['rendering'] = 'str'
+    _attribute_types['resource'] = 'List[ImplementationGuideManifestResource]'
+    _attribute_types['page'] = 'List[ImplementationGuideManifestPage]'
+    _attribute_types['image'] = 'List[str]'
+    _attribute_types['other'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -775,7 +919,19 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['anchor'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -836,7 +992,20 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['reference'] = 'FHIRReference'
+    _attribute_types['exampleBoolean'] = 'bool'
+    _attribute_types['exampleCanonical'] = 'str'
+    _attribute_types['relativePath'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

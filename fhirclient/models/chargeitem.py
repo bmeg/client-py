@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ChargeItem) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ChargeItem) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -56,7 +56,45 @@ class ChargeItem(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['definitionUri'] = 'List[str]'
+    _attribute_types['definitionCanonical'] = 'List[str]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['context'] = 'FHIRReference'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['occurrenceTiming'] = 'Timing'
+    _attribute_types['performer'] = 'List[ChargeItemPerformer]'
+    _attribute_types['performingOrganization'] = 'FHIRReference'
+    _attribute_types['requestingOrganization'] = 'FHIRReference'
+    _attribute_types['costCenter'] = 'FHIRReference'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['bodysite'] = 'List[CodeableConcept]'
+    _attribute_types['factorOverride'] = 'float'
+    _attribute_types['priceOverride'] = 'Money'
+    _attribute_types['overrideReason'] = 'str'
+    _attribute_types['enterer'] = 'FHIRReference'
+    _attribute_types['enteredDate'] = 'FHIRDate'
+    _attribute_types['reason'] = 'List[CodeableConcept]'
+    _attribute_types['service'] = 'List[FHIRReference]'
+    _attribute_types['productReference'] = 'FHIRReference'
+    _attribute_types['productCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['account'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['supportingInformation'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -250,7 +288,18 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['function'] = 'CodeableConcept'
+    _attribute_types['actor'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

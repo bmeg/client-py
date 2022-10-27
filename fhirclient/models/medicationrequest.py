@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationRequest) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -60,7 +60,50 @@ class MedicationRequest(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['intent'] = 'str'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['doNotPerform'] = 'bool'
+    _attribute_types['reportedBoolean'] = 'bool'
+    _attribute_types['reportedReference'] = 'FHIRReference'
+    _attribute_types['medicationCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['medicationReference'] = 'FHIRReference'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['supportingInformation'] = 'List[FHIRReference]'
+    _attribute_types['authoredOn'] = 'FHIRDate'
+    _attribute_types['requester'] = 'FHIRReference'
+    _attribute_types['performer'] = 'FHIRReference'
+    _attribute_types['performerType'] = 'CodeableConcept'
+    _attribute_types['recorder'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['groupIdentifier'] = 'Identifier'
+    _attribute_types['courseOfTherapyType'] = 'CodeableConcept'
+    _attribute_types['insurance'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['dosageInstruction'] = 'List[Dosage]'
+    _attribute_types['dispenseRequest'] = 'MedicationRequestDispenseRequest'
+    _attribute_types['substitution'] = 'MedicationRequestSubstitution'
+    _attribute_types['priorPrescription'] = 'FHIRReference'
+    _attribute_types['detectedIssue'] = 'List[FHIRReference]'
+    _attribute_types['eventHistory'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -325,7 +368,23 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['initialFill'] = 'MedicationRequestDispenseRequestInitialFill'
+    _attribute_types['dispenseInterval'] = 'Duration'
+    _attribute_types['validityPeriod'] = 'Period'
+    _attribute_types['numberOfRepeatsAllowed'] = 'int'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['expectedSupplyDuration'] = 'Duration'
+    _attribute_types['performer'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -402,7 +461,18 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['duration'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -457,7 +527,19 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['allowedBoolean'] = 'bool'
+    _attribute_types['allowedCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['reason'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

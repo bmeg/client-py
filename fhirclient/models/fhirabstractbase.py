@@ -48,6 +48,11 @@ class FHIRAbstractBase(object):
     """ Abstract base class for all FHIR elements.
     """
 
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return {}
+
     def __init__(self, jsondict=None, strict=True):
         """ Initializer. If strict is true, raises on errors, otherwise uses
         `logger.warning()`.
@@ -209,7 +214,7 @@ class FHIRAbstractBase(object):
                                 if not codable_concept.__class__.__name__ == 'CodeableConcept':
                                     err = TypeError(
                                         "Expecting property with required binding_strength \"{}\" to be a CodeableConcept"
-                                            .format(name))
+                                        .format(name))
                                     break
                                 if len(codable_concept.coding) == 0:
                                     err = TypeError("Coding missing or empty \"{}\"".format(name))
@@ -218,12 +223,12 @@ class FHIRAbstractBase(object):
                                     if coding.system != enum_definition['url']:
                                         err = TypeError(
                                             "Expecting CodeableConcept property with required binding_strength \"{}\" system to be {} was {}"
-                                                .format(name, enum_definition['url'], coding.system))
+                                            .format(name, enum_definition['url'], coding.system))
                                         break
                                     if coding.code not in enum_definition['restricted_to']:
                                         err = TypeError(
                                             "Expecting CodeableConcept property with required binding_strength \"{}\" code to be in {} was {}"
-                                                .format(name, enum_definition['url'], coding.code))
+                                            .format(name, enum_definition['url'], coding.code))
                                         break
 
                                 if err:
@@ -281,13 +286,15 @@ class FHIRAbstractBase(object):
             return simplified_value.date.isoformat()
         return simplified_value
 
-    def as_simplified_json(self, filtered_names=None):
+    def as_simplified_json(self, filtered_names=None,
+                           simplifications=['extensions', 'single_item_lists', 'codings', 'identifiers']):
         """ Serializes to JSON by inspecting `elementProperties()` and creating
         a JSON dictionary of all registered properties. Performs no checks.  Simplifies:
 
         - extensions
         - single_item_lists
         - codings
+        - identifiers
 
         :returns: tuple A dict object with much of the FHIR scaffolding removed; A corresponding lite schema.
         """
@@ -314,23 +321,30 @@ class FHIRAbstractBase(object):
             if filtered_names and name not in filtered_names:
                 continue
 
-            def _set_schema(key):
+            def _set_schema(key, subtype=None, is_extension_=False, extension_url=None, extension_child_url=None, name_=None, jsname_=None):
+
                 schema[key] = {'docstring': self.attribute_docstrings().get(name),
                                'enum': self.attribute_enums().get(name),
-                               'name': name,
-                               'jsname': jsname,
-                               'typ': typ.__name__,
+                               'name': name_ if name_ else name,
+                               'jsname': jsname_ if jsname_ else jsname,
+                               'typ': subtype if subtype else typ.__name__,
                                'is_list': is_list,
                                'of_many': of_many,
                                'not_optional': not_optional,
+                               'is_extension': is_extension_,
+                               'extension_url': extension_url,
+                               'extension_child_url': extension_child_url,
                                }
 
             is_identifier = jsname == 'identifier' and not isinstance(value, str)
+            # is_identifier = is_identifier and 'identifiers' in simplifications
 
             is_extension = jsname == 'extension' and not isinstance(value, str)
+            is_extension = is_extension and 'extensions' in simplifications
 
             # test class name, avoids circular reference
             is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, list) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            is_coding = is_coding and 'codings' in simplifications
 
             is_date = 'FHIRDate' in value.__class__.__name__
 
@@ -344,32 +358,43 @@ class FHIRAbstractBase(object):
                 for extension in value:
                     assert extension.__class__.__name__ == 'Extension'
                     assert extension.url
-                    simplified_key = "extension_{}".format(extension.url.split('/')[-1])
+                    simplified_key = extension.url.split('/')[-1].replace('-', '_')
                     simplified_value = next(iter([v for k, v in extension.__dict__.items() if k.startswith('value') and v is not None]), None)
 
                     if simplified_value is not None:
                         js[simplified_key] = self.check_simple_value(simplified_value)
-                        _set_schema(simplified_key)
+                        _set_schema(simplified_key, subtype=type(js[simplified_key]).__name__,
+                                    is_extension_=True, extension_url=extension.url,
+                                    name_=simplified_key, jsname_=simplified_key)
 
                     if simplified_value is None:
                         # look in the extension's extensions, concatenate with | separator
                         if extension.extension:
-                            for sub_extension in extension.extension:
-                                for k, v in sub_extension.__dict__.items():
+                            for extension_child in extension.extension:
+                                for k, v in  extension_child.__dict__.items():
                                     if not k.startswith('value'):
                                         continue
                                     if v is None:
                                         continue
-                                    simple_value_, _ = sub_extension.as_simplified_json([k])
+                                    simple_value_, simple_sub_schema_ =  extension_child.as_simplified_json([k])
+                                    simple_sub_schema_ = next(iter(simple_sub_schema_.values()))
                                     if isinstance(simple_value_, dict):
                                         for k, v in simple_value_.items():
-                                            simplified_key_with_extension = f"{simplified_key}_{k}"
+                                            simplified_key_with_extension = f"{simplified_key}_{ extension_child.url}"
                                             js[simplified_key_with_extension] = self.check_simple_value(v)
-                                            _set_schema(simplified_key_with_extension)
+                                            _set_schema(simplified_key_with_extension, simple_sub_schema_['typ'],
+                                                        is_extension_=True, extension_url=extension.url,
+                                                        extension_child_url=extension_child.url,
+                                                        name_=simplified_key_with_extension,
+                                                        jsname_=simplified_key_with_extension)
                                     else:
-                                        simplified_key_with_extension = f"{simplified_key}_{k}"
+                                        simplified_key_with_extension = f"{simplified_key}"
                                         js[simplified_key_with_extension] = self.check_simple_value(simple_value_)
-                                        _set_schema(simplified_key_with_extension)
+                                        _set_schema(simplified_key_with_extension, simple_sub_schema_['typ'],
+                                                    is_extension_=True, extension_url=extension.url,
+                                                    extension_child_url=extension_child.url,
+                                                    name_=simplified_key_with_extension,
+                                                    jsname_=simplified_key_with_extension)
 
             elif is_coding:
                 if isinstance(value, list):
@@ -393,7 +418,7 @@ class FHIRAbstractBase(object):
                         continue
                     assert identifier.__class__.__name__ == 'Identifier'
                     if identifier.system:
-                        simplified_key = "identifier_{}".format(identifier.system)
+                        simplified_key = "identifier_{}".format(identifier.system.split('/')[-1])
                     else:
                         simplified_key = "identifier_"
                     if identifier.type and identifier.type and identifier.type.coding:
@@ -417,7 +442,7 @@ class FHIRAbstractBase(object):
                         simple_value = v
                     lst.append(simple_value)
                 # single_item_lists
-                if len(lst) == 1:
+                if len(lst) == 1 and 'single_item_lists' in simplifications:
                     js[jsname] = lst[0]
                 else:
                     js[jsname] = lst

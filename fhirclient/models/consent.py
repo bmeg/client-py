@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Consent) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Consent) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -38,7 +38,30 @@ class Consent(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['scope'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['dateTime'] = 'FHIRDate'
+    _attribute_types['performer'] = 'List[FHIRReference]'
+    _attribute_types['organization'] = 'List[FHIRReference]'
+    _attribute_types['sourceAttachment'] = 'Attachment'
+    _attribute_types['sourceReference'] = 'FHIRReference'
+    _attribute_types['policy'] = 'List[ConsentPolicy]'
+    _attribute_types['policyRule'] = 'CodeableConcept'
+    _attribute_types['verification'] = 'List[ConsentVerification]'
+    _attribute_types['provision'] = 'ConsentProvision'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -172,7 +195,18 @@ class ConsentPolicy(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['authority'] = 'str'
+    _attribute_types['uri'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -233,7 +267,27 @@ class ConsentProvision(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['actor'] = 'List[ConsentProvisionActor]'
+    _attribute_types['action'] = 'List[CodeableConcept]'
+    _attribute_types['securityLabel'] = 'List[Coding]'
+    _attribute_types['purpose'] = 'List[Coding]'
+    _attribute_types['class_fhir'] = 'List[Coding]'
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['dataPeriod'] = 'Period'
+    _attribute_types['data'] = 'List[ConsentProvisionData]'
+    _attribute_types['provision'] = 'List[ConsentProvision]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -343,7 +397,18 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['role'] = 'CodeableConcept'
+    _attribute_types['reference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -394,7 +459,18 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['meaning'] = 'str'
+    _attribute_types['reference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -454,7 +530,19 @@ class ConsentVerification(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['verified'] = 'bool'
+    _attribute_types['verifiedWith'] = 'FHIRReference'
+    _attribute_types['verificationDate'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

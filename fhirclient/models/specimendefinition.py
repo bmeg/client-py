@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SpecimenDefinition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SpecimenDefinition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -27,7 +27,22 @@ class SpecimenDefinition(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['typeCollected'] = 'CodeableConcept'
+    _attribute_types['patientPreparation'] = 'List[CodeableConcept]'
+    _attribute_types['timeAspect'] = 'str'
+    _attribute_types['collection'] = 'List[CodeableConcept]'
+    _attribute_types['typeTested'] = 'List[SpecimenDefinitionTypeTested]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -106,7 +121,24 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['isDerived'] = 'bool'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['preference'] = 'str'
+    _attribute_types['container'] = 'SpecimenDefinitionTypeTestedContainer'
+    _attribute_types['requirement'] = 'str'
+    _attribute_types['retentionTime'] = 'Duration'
+    _attribute_types['rejectionCriterion'] = 'List[CodeableConcept]'
+    _attribute_types['handling'] = 'List[SpecimenDefinitionTypeTestedHandling]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -205,7 +237,25 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['material'] = 'CodeableConcept'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['cap'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['capacity'] = 'Quantity'
+    _attribute_types['minimumVolumeQuantity'] = 'Quantity'
+    _attribute_types['minimumVolumeString'] = 'str'
+    _attribute_types['additive'] = 'List[SpecimenDefinitionTypeTestedContainerAdditive]'
+    _attribute_types['preparation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -298,7 +348,18 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['additiveCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['additiveReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -352,7 +413,20 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['temperatureQualifier'] = 'CodeableConcept'
+    _attribute_types['temperatureRange'] = 'Range'
+    _attribute_types['maxDuration'] = 'Duration'
+    _attribute_types['instruction'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

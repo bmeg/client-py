@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ServiceRequest) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ServiceRequest) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -60,7 +60,54 @@ class ServiceRequest(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['replaces'] = 'List[FHIRReference]'
+    _attribute_types['requisition'] = 'Identifier'
+    _attribute_types['status'] = 'str'
+    _attribute_types['intent'] = 'str'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['doNotPerform'] = 'bool'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['orderDetail'] = 'List[CodeableConcept]'
+    _attribute_types['quantityQuantity'] = 'Quantity'
+    _attribute_types['quantityRatio'] = 'Ratio'
+    _attribute_types['quantityRange'] = 'Range'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['occurrenceTiming'] = 'Timing'
+    _attribute_types['asNeededBoolean'] = 'bool'
+    _attribute_types['asNeededCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['authoredOn'] = 'FHIRDate'
+    _attribute_types['requester'] = 'FHIRReference'
+    _attribute_types['performerType'] = 'CodeableConcept'
+    _attribute_types['performer'] = 'List[FHIRReference]'
+    _attribute_types['locationCode'] = 'List[CodeableConcept]'
+    _attribute_types['locationReference'] = 'List[FHIRReference]'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['insurance'] = 'List[FHIRReference]'
+    _attribute_types['supportingInfo'] = 'List[FHIRReference]'
+    _attribute_types['specimen'] = 'List[FHIRReference]'
+    _attribute_types['bodySite'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['patientInstruction'] = 'str'
+    _attribute_types['relevantHistory'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

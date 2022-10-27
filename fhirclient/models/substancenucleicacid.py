@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceNucleicAcid) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceNucleicAcid) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -27,7 +27,21 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['sequenceType'] = 'CodeableConcept'
+    _attribute_types['numberOfSubunits'] = 'int'
+    _attribute_types['areaOfHybridisation'] = 'str'
+    _attribute_types['oligoNucleotideType'] = 'CodeableConcept'
+    _attribute_types['subunit'] = 'List[SubstanceNucleicAcidSubunit]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -112,7 +126,24 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['subunit'] = 'int'
+    _attribute_types['sequence'] = 'str'
+    _attribute_types['length'] = 'int'
+    _attribute_types['sequenceAttachment'] = 'Attachment'
+    _attribute_types['fivePrime'] = 'CodeableConcept'
+    _attribute_types['threePrime'] = 'CodeableConcept'
+    _attribute_types['linkage'] = 'List[SubstanceNucleicAcidSubunitLinkage]'
+    _attribute_types['sugar'] = 'List[SubstanceNucleicAcidSubunitSugar]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -207,7 +238,20 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['connectivity'] = 'str'
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['name'] = 'str'
+    _attribute_types['residueSite'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -273,7 +317,19 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['name'] = 'str'
+    _attribute_types['residueSite'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

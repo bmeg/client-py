@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ImmunizationEvaluation) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ImmunizationEvaluation) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -38,7 +38,31 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['authority'] = 'FHIRReference'
+    _attribute_types['targetDisease'] = 'CodeableConcept'
+    _attribute_types['immunizationEvent'] = 'FHIRReference'
+    _attribute_types['doseStatus'] = 'CodeableConcept'
+    _attribute_types['doseStatusReason'] = 'List[CodeableConcept]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['series'] = 'str'
+    _attribute_types['doseNumberPositiveInt'] = 'int'
+    _attribute_types['doseNumberString'] = 'str'
+    _attribute_types['seriesDosesPositiveInt'] = 'int'
+    _attribute_types['seriesDosesString'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Bundle) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Bundle) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -28,7 +28,23 @@ class Bundle(resource.Resource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | resource.Resource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['type'] = 'str'
+    _attribute_types['timestamp'] = 'FHIRDate'
+    _attribute_types['total'] = 'int'
+    _attribute_types['link'] = 'List[BundleLink]'
+    _attribute_types['entry'] = 'List[BundleEntry]'
+    _attribute_types['signature'] = 'Signature'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -118,7 +134,22 @@ class BundleEntry(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['link'] = 'List[BundleLink]'
+    _attribute_types['fullUrl'] = 'str'
+    _attribute_types['resource'] = 'Resource'
+    _attribute_types['search'] = 'BundleEntrySearch'
+    _attribute_types['request'] = 'BundleEntryRequest'
+    _attribute_types['response'] = 'BundleEntryResponse'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -195,7 +226,22 @@ class BundleEntryRequest(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['method'] = 'str'
+    _attribute_types['url'] = 'str'
+    _attribute_types['ifNoneMatch'] = 'str'
+    _attribute_types['ifModifiedSince'] = 'FHIRDate'
+    _attribute_types['ifMatch'] = 'str'
+    _attribute_types['ifNoneExist'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -279,7 +325,21 @@ class BundleEntryResponse(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['status'] = 'str'
+    _attribute_types['location'] = 'str'
+    _attribute_types['etag'] = 'str'
+    _attribute_types['lastModified'] = 'FHIRDate'
+    _attribute_types['outcome'] = 'Resource'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -346,7 +406,18 @@ class BundleEntrySearch(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['mode'] = 'str'
+    _attribute_types['score'] = 'float'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -405,7 +476,18 @@ class BundleLink(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['relation'] = 'str'
+    _attribute_types['url'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

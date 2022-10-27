@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationKnowledge) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationKnowledge) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -43,7 +43,38 @@ class MedicationKnowledge(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['status'] = 'str'
+    _attribute_types['manufacturer'] = 'FHIRReference'
+    _attribute_types['doseForm'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'Quantity'
+    _attribute_types['synonym'] = 'List[str]'
+    _attribute_types['relatedMedicationKnowledge'] = 'List[MedicationKnowledgeRelatedMedicationKnowledge]'
+    _attribute_types['associatedMedication'] = 'List[FHIRReference]'
+    _attribute_types['productType'] = 'List[CodeableConcept]'
+    _attribute_types['monograph'] = 'List[MedicationKnowledgeMonograph]'
+    _attribute_types['ingredient'] = 'List[MedicationKnowledgeIngredient]'
+    _attribute_types['preparationInstruction'] = 'str'
+    _attribute_types['intendedRoute'] = 'List[CodeableConcept]'
+    _attribute_types['cost'] = 'List[MedicationKnowledgeCost]'
+    _attribute_types['monitoringProgram'] = 'List[MedicationKnowledgeMonitoringProgram]'
+    _attribute_types['administrationGuidelines'] = 'List[MedicationKnowledgeAdministrationGuidelines]'
+    _attribute_types['medicineClassification'] = 'List[MedicationKnowledgeMedicineClassification]'
+    _attribute_types['packaging'] = 'MedicationKnowledgePackaging'
+    _attribute_types['drugCharacteristic'] = 'List[MedicationKnowledgeDrugCharacteristic]'
+    _attribute_types['contraindication'] = 'List[FHIRReference]'
+    _attribute_types['regulatory'] = 'List[MedicationKnowledgeRegulatory]'
+    _attribute_types['kinetics'] = 'List[MedicationKnowledgeKinetics]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -208,7 +239,20 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['dosage'] = 'List[MedicationKnowledgeAdministrationGuidelinesDosage]'
+    _attribute_types['indicationCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['indicationReference'] = 'FHIRReference'
+    _attribute_types['patientCharacteristics'] = 'List[MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -270,7 +314,18 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(backboneelement.Backbone
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['dosage'] = 'List[Dosage]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -324,7 +379,19 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(backbone
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['characteristicCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['characteristicQuantity'] = 'Quantity'
+    _attribute_types['value'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -383,7 +450,19 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['source'] = 'str'
+    _attribute_types['cost'] = 'Money'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -443,7 +522,21 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueBase64Binary'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -518,7 +611,20 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['itemCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['itemReference'] = 'FHIRReference'
+    _attribute_types['isActive'] = 'bool'
+    _attribute_types['strength'] = 'Ratio'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -579,7 +685,19 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['areaUnderCurve'] = 'List[Quantity]'
+    _attribute_types['lethalDose50'] = 'List[Quantity]'
+    _attribute_types['halfLifePeriod'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -634,7 +752,18 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['classification'] = 'List[CodeableConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -686,7 +815,18 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['name'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -735,7 +875,18 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['source'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -786,7 +937,18 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['quantity'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -845,7 +1007,20 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['regulatoryAuthority'] = 'FHIRReference'
+    _attribute_types['substitution'] = 'List[MedicationKnowledgeRegulatorySubstitution]'
+    _attribute_types['schedule'] = 'List[MedicationKnowledgeRegulatorySchedule]'
+    _attribute_types['maxDispense'] = 'MedicationKnowledgeRegulatoryMaxDispense'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -907,7 +1082,18 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['period'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -955,7 +1141,17 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['schedule'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1000,7 +1196,18 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['allowed'] = 'bool'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1052,7 +1259,18 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['reference'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

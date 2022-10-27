@@ -18,7 +18,7 @@ fi
 #python -m unittest discover ./models '*_tests.py'		# ImportError
 tests=(models/*_tests.py)
 python -m unittest ${tests[@]}
-
+exit
 # couple of custom tests
 echo 'import requests' | python 2>/dev/null
 if [ $? -eq 0 ]; then

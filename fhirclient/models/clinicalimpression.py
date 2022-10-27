@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ClinicalImpression) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ClinicalImpression) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -49,7 +49,37 @@ class ClinicalImpression(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['effectiveDateTime'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['assessor'] = 'FHIRReference'
+    _attribute_types['previous'] = 'FHIRReference'
+    _attribute_types['problem'] = 'List[FHIRReference]'
+    _attribute_types['investigation'] = 'List[ClinicalImpressionInvestigation]'
+    _attribute_types['protocol'] = 'List[str]'
+    _attribute_types['summary'] = 'str'
+    _attribute_types['finding'] = 'List[ClinicalImpressionFinding]'
+    _attribute_types['prognosisCodeableConcept'] = 'List[CodeableConcept]'
+    _attribute_types['prognosisReference'] = 'List[FHIRReference]'
+    _attribute_types['supportingInfo'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -205,7 +235,19 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['itemCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['itemReference'] = 'FHIRReference'
+    _attribute_types['basis'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -265,7 +307,18 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['item'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

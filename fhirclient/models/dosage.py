@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Dosage) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Dosage) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,30 @@ class Dosage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['sequence'] = 'int'
+    _attribute_types['text'] = 'str'
+    _attribute_types['additionalInstruction'] = 'List[CodeableConcept]'
+    _attribute_types['patientInstruction'] = 'str'
+    _attribute_types['timing'] = 'Timing'
+    _attribute_types['asNeededBoolean'] = 'bool'
+    _attribute_types['asNeededCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['site'] = 'CodeableConcept'
+    _attribute_types['route'] = 'CodeableConcept'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['doseAndRate'] = 'List[DosageDoseAndRate]'
+    _attribute_types['maxDosePerPeriod'] = 'Ratio'
+    _attribute_types['maxDosePerAdministration'] = 'Quantity'
+    _attribute_types['maxDosePerLifetime'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -152,7 +175,22 @@ class DosageDoseAndRate(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['doseRange'] = 'Range'
+    _attribute_types['doseQuantity'] = 'Quantity'
+    _attribute_types['rateRatio'] = 'Ratio'
+    _attribute_types['rateRange'] = 'Range'
+    _attribute_types['rateQuantity'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

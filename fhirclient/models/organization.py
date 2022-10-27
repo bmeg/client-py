@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Organization) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Organization) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,26 @@ class Organization(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['active'] = 'bool'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['alias'] = 'List[str]'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['address'] = 'List[Address]'
+    _attribute_types['partOf'] = 'FHIRReference'
+    _attribute_types['contact'] = 'List[OrganizationContact]'
+    _attribute_types['endpoint'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -135,7 +154,20 @@ class OrganizationContact(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['purpose'] = 'CodeableConcept'
+    _attribute_types['name'] = 'HumanName'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['address'] = 'Address'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

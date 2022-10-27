@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/TestScript) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/TestScript) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -46,7 +46,40 @@ class TestScript(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['origin'] = 'List[TestScriptOrigin]'
+    _attribute_types['destination'] = 'List[TestScriptDestination]'
+    _attribute_types['metadata'] = 'TestScriptMetadata'
+    _attribute_types['fixture'] = 'List[TestScriptFixture]'
+    _attribute_types['profile'] = 'List[FHIRReference]'
+    _attribute_types['variable'] = 'List[TestScriptVariable]'
+    _attribute_types['setup'] = 'TestScriptSetup'
+    _attribute_types['test'] = 'List[TestScriptTest]'
+    _attribute_types['teardown'] = 'TestScriptTeardown'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -222,7 +255,18 @@ class TestScriptDestination(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['index'] = 'int'
+    _attribute_types['profile'] = 'Coding'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -276,7 +320,19 @@ class TestScriptFixture(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['autocreate'] = 'bool'
+    _attribute_types['autodelete'] = 'bool'
+    _attribute_types['resource'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -334,7 +390,18 @@ class TestScriptMetadata(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['link'] = 'List[TestScriptMetadataLink]'
+    _attribute_types['capability'] = 'List[TestScriptMetadataCapability]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -393,7 +460,23 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['required'] = 'bool'
+    _attribute_types['validated'] = 'bool'
+    _attribute_types['description'] = 'str'
+    _attribute_types['origin'] = 'List[int]'
+    _attribute_types['destination'] = 'int'
+    _attribute_types['link'] = 'List[str]'
+    _attribute_types['capabilities'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -469,7 +552,18 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -521,7 +615,18 @@ class TestScriptOrigin(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['index'] = 'int'
+    _attribute_types['profile'] = 'Coding'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -569,7 +674,17 @@ class TestScriptSetup(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['action'] = 'List[TestScriptSetupAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -615,7 +730,18 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['operation'] = 'TestScriptSetupActionOperation'
+    _attribute_types['assert_fhir'] = 'TestScriptSetupActionAssert'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -687,7 +813,38 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['label'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['direction'] = 'str'
+    _attribute_types['compareToSourceId'] = 'str'
+    _attribute_types['compareToSourceExpression'] = 'str'
+    _attribute_types['compareToSourcePath'] = 'str'
+    _attribute_types['contentType'] = 'str'
+    _attribute_types['expression'] = 'str'
+    _attribute_types['headerField'] = 'str'
+    _attribute_types['minimumId'] = 'str'
+    _attribute_types['navigationLinks'] = 'bool'
+    _attribute_types['operator'] = 'str'
+    _attribute_types['path'] = 'str'
+    _attribute_types['requestMethod'] = 'str'
+    _attribute_types['requestURL'] = 'str'
+    _attribute_types['resource'] = 'str'
+    _attribute_types['response'] = 'str'
+    _attribute_types['responseCode'] = 'str'
+    _attribute_types['sourceId'] = 'str'
+    _attribute_types['validateProfileId'] = 'str'
+    _attribute_types['value'] = 'str'
+    _attribute_types['warningOnly'] = 'bool'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -879,7 +1036,33 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'Coding'
+    _attribute_types['resource'] = 'str'
+    _attribute_types['label'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['accept'] = 'str'
+    _attribute_types['contentType'] = 'str'
+    _attribute_types['destination'] = 'int'
+    _attribute_types['encodeRequestUrl'] = 'bool'
+    _attribute_types['method'] = 'str'
+    _attribute_types['origin'] = 'int'
+    _attribute_types['params'] = 'str'
+    _attribute_types['requestHeader'] = 'List[TestScriptSetupActionOperationRequestHeader]'
+    _attribute_types['requestId'] = 'str'
+    _attribute_types['responseId'] = 'str'
+    _attribute_types['sourceId'] = 'str'
+    _attribute_types['targetId'] = 'str'
+    _attribute_types['url'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1014,7 +1197,18 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['field'] = 'str'
+    _attribute_types['value'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1065,7 +1259,17 @@ class TestScriptTeardown(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['action'] = 'List[TestScriptTeardownAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1110,7 +1314,17 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['operation'] = 'TestScriptSetupActionOperation'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1155,7 +1369,19 @@ class TestScriptTest(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['action'] = 'List[TestScriptTestAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1211,7 +1437,18 @@ class TestScriptTestAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['operation'] = 'TestScriptSetupActionOperation'
+    _attribute_types['assert_fhir'] = 'TestScriptSetupActionAssert'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1269,7 +1506,24 @@ class TestScriptVariable(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['defaultValue'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['expression'] = 'str'
+    _attribute_types['headerField'] = 'str'
+    _attribute_types['hint'] = 'str'
+    _attribute_types['path'] = 'str'
+    _attribute_types['sourceId'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

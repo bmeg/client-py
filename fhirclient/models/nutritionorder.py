@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/NutritionOrder) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/NutritionOrder) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -39,7 +39,33 @@ class NutritionOrder(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['instantiates'] = 'List[str]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['intent'] = 'str'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['dateTime'] = 'FHIRDate'
+    _attribute_types['orderer'] = 'FHIRReference'
+    _attribute_types['allergyIntolerance'] = 'List[FHIRReference]'
+    _attribute_types['foodPreferenceModifier'] = 'List[CodeableConcept]'
+    _attribute_types['excludeFoodModifier'] = 'List[CodeableConcept]'
+    _attribute_types['oralDiet'] = 'NutritionOrderOralDiet'
+    _attribute_types['supplement'] = 'List[NutritionOrderSupplement]'
+    _attribute_types['enteralFormula'] = 'NutritionOrderEnteralFormula'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -201,7 +227,25 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['baseFormulaType'] = 'CodeableConcept'
+    _attribute_types['baseFormulaProductName'] = 'str'
+    _attribute_types['additiveType'] = 'CodeableConcept'
+    _attribute_types['additiveProductName'] = 'str'
+    _attribute_types['caloricDensity'] = 'Quantity'
+    _attribute_types['routeofAdministration'] = 'CodeableConcept'
+    _attribute_types['administration'] = 'List[NutritionOrderEnteralFormulaAdministration]'
+    _attribute_types['maxVolumeToDeliver'] = 'Quantity'
+    _attribute_types['administrationInstruction'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -300,7 +344,20 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['schedule'] = 'Timing'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['rateQuantity'] = 'Quantity'
+    _attribute_types['rateRatio'] = 'Ratio'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -365,7 +422,22 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['schedule'] = 'List[Timing]'
+    _attribute_types['nutrient'] = 'List[NutritionOrderOralDietNutrient]'
+    _attribute_types['texture'] = 'List[NutritionOrderOralDietTexture]'
+    _attribute_types['fluidConsistencyType'] = 'List[CodeableConcept]'
+    _attribute_types['instruction'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -439,7 +511,18 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['modifier'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -491,7 +574,18 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['modifier'] = 'CodeableConcept'
+    _attribute_types['foodType'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -547,7 +641,21 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['productName'] = 'str'
+    _attribute_types['schedule'] = 'List[Timing]'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['instruction'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

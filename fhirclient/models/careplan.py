@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CarePlan) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CarePlan) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -46,7 +46,39 @@ class CarePlan(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['replaces'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['intent'] = 'str'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['title'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['created'] = 'FHIRDate'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['contributor'] = 'List[FHIRReference]'
+    _attribute_types['careTeam'] = 'List[FHIRReference]'
+    _attribute_types['addresses'] = 'List[FHIRReference]'
+    _attribute_types['supportingInfo'] = 'List[FHIRReference]'
+    _attribute_types['goal'] = 'List[FHIRReference]'
+    _attribute_types['activity'] = 'List[CarePlanActivity]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -223,7 +255,21 @@ class CarePlanActivity(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['outcomeCodeableConcept'] = 'List[CodeableConcept]'
+    _attribute_types['outcomeReference'] = 'List[FHIRReference]'
+    _attribute_types['progress'] = 'List[Annotation]'
+    _attribute_types['reference'] = 'FHIRReference'
+    _attribute_types['detail'] = 'CarePlanActivityDetail'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -309,7 +355,36 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['kind'] = 'str'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['goal'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['doNotPerform'] = 'bool'
+    _attribute_types['scheduledTiming'] = 'Timing'
+    _attribute_types['scheduledPeriod'] = 'Period'
+    _attribute_types['scheduledString'] = 'str'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['performer'] = 'List[FHIRReference]'
+    _attribute_types['productCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['productReference'] = 'FHIRReference'
+    _attribute_types['dailyAmount'] = 'Quantity'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

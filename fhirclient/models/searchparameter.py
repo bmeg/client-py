@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SearchParameter) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SearchParameter) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -48,7 +48,42 @@ class SearchParameter(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['derivedFrom'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['code'] = 'str'
+    _attribute_types['base'] = 'List[str]'
+    _attribute_types['type'] = 'str'
+    _attribute_types['expression'] = 'str'
+    _attribute_types['xpath'] = 'str'
+    _attribute_types['xpathUsage'] = 'str'
+    _attribute_types['target'] = 'List[str]'
+    _attribute_types['multipleOr'] = 'bool'
+    _attribute_types['multipleAnd'] = 'bool'
+    _attribute_types['comparator'] = 'List[str]'
+    _attribute_types['modifier'] = 'List[str]'
+    _attribute_types['chain'] = 'List[str]'
+    _attribute_types['component'] = 'List[SearchParameterComponent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -268,7 +303,18 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['definition'] = 'str'
+    _attribute_types['expression'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

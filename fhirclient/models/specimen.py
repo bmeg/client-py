@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Specimen) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Specimen) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,29 @@ class Specimen(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['accessionIdentifier'] = 'Identifier'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['receivedTime'] = 'FHIRDate'
+    _attribute_types['parent'] = 'List[FHIRReference]'
+    _attribute_types['request'] = 'List[FHIRReference]'
+    _attribute_types['collection'] = 'SpecimenCollection'
+    _attribute_types['processing'] = 'List[SpecimenProcessing]'
+    _attribute_types['container'] = 'List[SpecimenContainer]'
+    _attribute_types['condition'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -157,7 +179,25 @@ class SpecimenCollection(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['collector'] = 'FHIRReference'
+    _attribute_types['collectedDateTime'] = 'FHIRDate'
+    _attribute_types['collectedPeriod'] = 'Period'
+    _attribute_types['duration'] = 'Duration'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['bodySite'] = 'CodeableConcept'
+    _attribute_types['fastingStatusCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['fastingStatusDuration'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -249,7 +289,23 @@ class SpecimenContainer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['capacity'] = 'Quantity'
+    _attribute_types['specimenQuantity'] = 'Quantity'
+    _attribute_types['additiveCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['additiveReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -328,7 +384,21 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['procedure'] = 'CodeableConcept'
+    _attribute_types['additive'] = 'List[FHIRReference]'
+    _attribute_types['timeDateTime'] = 'FHIRDate'
+    _attribute_types['timePeriod'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

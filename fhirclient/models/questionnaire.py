@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -46,7 +46,38 @@ class Questionnaire(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['derivedFrom'] = 'List[str]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['subjectType'] = 'List[str]'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['approvalDate'] = 'FHIRDate'
+    _attribute_types['lastReviewDate'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['code'] = 'List[Coding]'
+    _attribute_types['item'] = 'List[QuestionnaireItem]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -229,7 +260,32 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['linkId'] = 'str'
+    _attribute_types['definition'] = 'str'
+    _attribute_types['code'] = 'List[Coding]'
+    _attribute_types['prefix'] = 'str'
+    _attribute_types['text'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['enableWhen'] = 'List[QuestionnaireItemEnableWhen]'
+    _attribute_types['enableBehavior'] = 'str'
+    _attribute_types['required'] = 'bool'
+    _attribute_types['repeats'] = 'bool'
+    _attribute_types['readOnly'] = 'bool'
+    _attribute_types['maxLength'] = 'int'
+    _attribute_types['answerValueSet'] = 'str'
+    _attribute_types['answerOption'] = 'List[QuestionnaireItemAnswerOption]'
+    _attribute_types['initial'] = 'List[QuestionnaireItemInitial]'
+    _attribute_types['item'] = 'List[QuestionnaireItem]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -370,7 +426,23 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueDate'] = 'FHIRDate'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueReference'] = 'FHIRReference'
+    _attribute_types['initialSelected'] = 'bool'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -458,7 +530,28 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['question'] = 'str'
+    _attribute_types['operator'] = 'str'
+    _attribute_types['answerBoolean'] = 'bool'
+    _attribute_types['answerDecimal'] = 'float'
+    _attribute_types['answerInteger'] = 'int'
+    _attribute_types['answerDate'] = 'FHIRDate'
+    _attribute_types['answerDateTime'] = 'FHIRDate'
+    _attribute_types['answerTime'] = 'FHIRDate'
+    _attribute_types['answerString'] = 'str'
+    _attribute_types['answerCoding'] = 'Coding'
+    _attribute_types['answerQuantity'] = 'Quantity'
+    _attribute_types['answerReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -576,7 +669,28 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueDecimal'] = 'float'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueDate'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueUri'] = 'str'
+    _attribute_types['valueAttachment'] = 'Attachment'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

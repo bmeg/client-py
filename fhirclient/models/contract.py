@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Contract) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Contract) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -57,7 +57,51 @@ class Contract(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['url'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['legalState'] = 'CodeableConcept'
+    _attribute_types['instantiatesCanonical'] = 'FHIRReference'
+    _attribute_types['instantiatesUri'] = 'str'
+    _attribute_types['contentDerivative'] = 'CodeableConcept'
+    _attribute_types['issued'] = 'FHIRDate'
+    _attribute_types['applies'] = 'Period'
+    _attribute_types['expirationType'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'List[FHIRReference]'
+    _attribute_types['authority'] = 'List[FHIRReference]'
+    _attribute_types['domain'] = 'List[FHIRReference]'
+    _attribute_types['site'] = 'List[FHIRReference]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['subtitle'] = 'str'
+    _attribute_types['alias'] = 'List[str]'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['scope'] = 'CodeableConcept'
+    _attribute_types['topicCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['topicReference'] = 'FHIRReference'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subType'] = 'List[CodeableConcept]'
+    _attribute_types['contentDefinition'] = 'ContractContentDefinition'
+    _attribute_types['term'] = 'List[ContractTerm]'
+    _attribute_types['supportingInfo'] = 'List[FHIRReference]'
+    _attribute_types['relevantHistory'] = 'List[FHIRReference]'
+    _attribute_types['signer'] = 'List[ContractSigner]'
+    _attribute_types['friendly'] = 'List[ContractFriendly]'
+    _attribute_types['legal'] = 'List[ContractLegal]'
+    _attribute_types['rule'] = 'List[ContractRule]'
+    _attribute_types['legallyBindingAttachment'] = 'Attachment'
+    _attribute_types['legallyBindingReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -337,7 +381,22 @@ class ContractContentDefinition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subType'] = 'CodeableConcept'
+    _attribute_types['publisher'] = 'FHIRReference'
+    _attribute_types['publicationDate'] = 'FHIRDate'
+    _attribute_types['publicationStatus'] = 'str'
+    _attribute_types['copyright'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -434,7 +493,18 @@ class ContractFriendly(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['contentAttachment'] = 'Attachment'
+    _attribute_types['contentReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -485,7 +555,18 @@ class ContractLegal(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['contentAttachment'] = 'Attachment'
+    _attribute_types['contentReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -536,7 +617,18 @@ class ContractRule(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['contentAttachment'] = 'Attachment'
+    _attribute_types['contentReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -591,7 +683,19 @@ class ContractSigner(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'Coding'
+    _attribute_types['party'] = 'FHIRReference'
+    _attribute_types['signature'] = 'List[Signature]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -659,7 +763,29 @@ class ContractTerm(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['issued'] = 'FHIRDate'
+    _attribute_types['applies'] = 'Period'
+    _attribute_types['topicCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['topicReference'] = 'FHIRReference'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subType'] = 'CodeableConcept'
+    _attribute_types['text'] = 'str'
+    _attribute_types['securityLabel'] = 'List[ContractTermSecurityLabel]'
+    _attribute_types['offer'] = 'ContractTermOffer'
+    _attribute_types['asset'] = 'List[ContractTermAsset]'
+    _attribute_types['action'] = 'List[ContractTermAction]'
+    _attribute_types['group'] = 'List[ContractTerm]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -803,7 +929,39 @@ class ContractTermAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['doNotPerform'] = 'bool'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'List[ContractTermActionSubject]'
+    _attribute_types['intent'] = 'CodeableConcept'
+    _attribute_types['linkId'] = 'List[str]'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['context'] = 'FHIRReference'
+    _attribute_types['contextLinkId'] = 'List[str]'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['occurrenceTiming'] = 'Timing'
+    _attribute_types['requester'] = 'List[FHIRReference]'
+    _attribute_types['requesterLinkId'] = 'List[str]'
+    _attribute_types['performerType'] = 'List[CodeableConcept]'
+    _attribute_types['performerRole'] = 'CodeableConcept'
+    _attribute_types['performer'] = 'FHIRReference'
+    _attribute_types['performerLinkId'] = 'List[str]'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['reason'] = 'List[str]'
+    _attribute_types['reasonLinkId'] = 'List[str]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['securityLabelNumber'] = 'List[int]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -984,7 +1142,18 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['reference'] = 'List[FHIRReference]'
+    _attribute_types['role'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1052,7 +1221,31 @@ class ContractTermAsset(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['scope'] = 'CodeableConcept'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['typeReference'] = 'List[FHIRReference]'
+    _attribute_types['subtype'] = 'List[CodeableConcept]'
+    _attribute_types['relationship'] = 'Coding'
+    _attribute_types['context'] = 'List[ContractTermAssetContext]'
+    _attribute_types['condition'] = 'str'
+    _attribute_types['periodType'] = 'List[CodeableConcept]'
+    _attribute_types['period'] = 'List[Period]'
+    _attribute_types['usePeriod'] = 'List[Period]'
+    _attribute_types['text'] = 'str'
+    _attribute_types['linkId'] = 'List[str]'
+    _attribute_types['answer'] = 'List[ContractTermOfferAnswer]'
+    _attribute_types['securityLabelNumber'] = 'List[int]'
+    _attribute_types['valuedItem'] = 'List[ContractTermAssetValuedItem]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1191,7 +1384,19 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['reference'] = 'FHIRReference'
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['text'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1265,7 +1470,31 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['entityCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['entityReference'] = 'FHIRReference'
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['effectiveTime'] = 'FHIRDate'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['unitPrice'] = 'Money'
+    _attribute_types['factor'] = 'float'
+    _attribute_types['points'] = 'float'
+    _attribute_types['net'] = 'Money'
+    _attribute_types['payment'] = 'str'
+    _attribute_types['paymentDate'] = 'FHIRDate'
+    _attribute_types['responsible'] = 'FHIRReference'
+    _attribute_types['recipient'] = 'FHIRReference'
+    _attribute_types['linkId'] = 'List[str]'
+    _attribute_types['securityLabelNumber'] = 'List[int]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1389,7 +1618,26 @@ class ContractTermOffer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['party'] = 'List[ContractTermOfferParty]'
+    _attribute_types['topic'] = 'FHIRReference'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['decision'] = 'CodeableConcept'
+    _attribute_types['decisionMode'] = 'List[CodeableConcept]'
+    _attribute_types['answer'] = 'List[ContractTermOfferAnswer]'
+    _attribute_types['text'] = 'str'
+    _attribute_types['linkId'] = 'List[str]'
+    _attribute_types['securityLabelNumber'] = 'List[int]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1502,7 +1750,28 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueDecimal'] = 'float'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueDate'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueUri'] = 'str'
+    _attribute_types['valueAttachment'] = 'Attachment'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1601,7 +1870,18 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['reference'] = 'List[FHIRReference]'
+    _attribute_types['role'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1661,7 +1941,20 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['number'] = 'List[int]'
+    _attribute_types['classification'] = 'Coding'
+    _attribute_types['category'] = 'List[Coding]'
+    _attribute_types['control'] = 'List[Coding]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

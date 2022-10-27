@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Timing) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Timing) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -26,7 +26,19 @@ class Timing(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['event'] = 'List[FHIRDate]'
+    _attribute_types['repeat'] = 'TimingRepeat'
+    _attribute_types['code'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -99,7 +111,33 @@ class TimingRepeat(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['boundsDuration'] = 'Duration'
+    _attribute_types['boundsRange'] = 'Range'
+    _attribute_types['boundsPeriod'] = 'Period'
+    _attribute_types['count'] = 'int'
+    _attribute_types['countMax'] = 'int'
+    _attribute_types['duration'] = 'float'
+    _attribute_types['durationMax'] = 'float'
+    _attribute_types['durationUnit'] = 'str'
+    _attribute_types['frequency'] = 'int'
+    _attribute_types['frequencyMax'] = 'int'
+    _attribute_types['period'] = 'float'
+    _attribute_types['periodMax'] = 'float'
+    _attribute_types['periodUnit'] = 'str'
+    _attribute_types['dayOfWeek'] = 'List[str]'
+    _attribute_types['timeOfDay'] = 'List[FHIRDate]'
+    _attribute_types['when'] = 'List[str]'
+    _attribute_types['offset'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

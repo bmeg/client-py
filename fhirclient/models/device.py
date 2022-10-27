@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Device) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Device) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -49,7 +49,42 @@ class Device(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['definition'] = 'FHIRReference'
+    _attribute_types['udiCarrier'] = 'List[DeviceUdiCarrier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'List[CodeableConcept]'
+    _attribute_types['distinctIdentifier'] = 'str'
+    _attribute_types['manufacturer'] = 'str'
+    _attribute_types['manufactureDate'] = 'FHIRDate'
+    _attribute_types['expirationDate'] = 'FHIRDate'
+    _attribute_types['lotNumber'] = 'str'
+    _attribute_types['serialNumber'] = 'str'
+    _attribute_types['deviceName'] = 'List[DeviceDeviceName]'
+    _attribute_types['modelNumber'] = 'str'
+    _attribute_types['partNumber'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['specialization'] = 'List[DeviceSpecialization]'
+    _attribute_types['version'] = 'List[DeviceVersion]'
+    _attribute_types['property'] = 'List[DeviceProperty]'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['owner'] = 'FHIRReference'
+    _attribute_types['contact'] = 'List[ContactPoint]'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['url'] = 'str'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['safety'] = 'List[CodeableConcept]'
+    _attribute_types['parent'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -242,7 +277,18 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['type'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -301,7 +347,19 @@ class DeviceProperty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['valueQuantity'] = 'List[Quantity]'
+    _attribute_types['valueCode'] = 'List[CodeableConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -357,7 +415,18 @@ class DeviceSpecialization(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['systemType'] = 'CodeableConcept'
+    _attribute_types['version'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -415,7 +484,22 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['deviceIdentifier'] = 'str'
+    _attribute_types['issuer'] = 'str'
+    _attribute_types['jurisdiction'] = 'str'
+    _attribute_types['carrierAIDC'] = 'str'
+    _attribute_types['carrierHRF'] = 'str'
+    _attribute_types['entryType'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -491,7 +575,19 @@ class DeviceVersion(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['component'] = 'Identifier'
+    _attribute_types['value'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

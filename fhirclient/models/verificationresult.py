@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/VerificationResult) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/VerificationResult) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,30 @@ class VerificationResult(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['target'] = 'List[FHIRReference]'
+    _attribute_types['targetLocation'] = 'List[str]'
+    _attribute_types['need'] = 'CodeableConcept'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusDate'] = 'FHIRDate'
+    _attribute_types['validationType'] = 'CodeableConcept'
+    _attribute_types['validationProcess'] = 'List[CodeableConcept]'
+    _attribute_types['frequency'] = 'Timing'
+    _attribute_types['lastPerformed'] = 'FHIRDate'
+    _attribute_types['nextScheduled'] = 'FHIRDate'
+    _attribute_types['failureAction'] = 'CodeableConcept'
+    _attribute_types['primarySource'] = 'List[VerificationResultPrimarySource]'
+    _attribute_types['attestation'] = 'VerificationResultAttestation'
+    _attribute_types['validator'] = 'List[VerificationResultValidator]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -186,7 +209,24 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['who'] = 'FHIRReference'
+    _attribute_types['onBehalfOf'] = 'FHIRReference'
+    _attribute_types['communicationMethod'] = 'CodeableConcept'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['sourceIdentityCertificate'] = 'str'
+    _attribute_types['proxyIdentityCertificate'] = 'str'
+    _attribute_types['proxySignature'] = 'Signature'
+    _attribute_types['sourceSignature'] = 'Signature'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -280,7 +320,23 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['who'] = 'FHIRReference'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['communicationMethod'] = 'List[CodeableConcept]'
+    _attribute_types['validationStatus'] = 'CodeableConcept'
+    _attribute_types['validationDate'] = 'FHIRDate'
+    _attribute_types['canPushUpdates'] = 'CodeableConcept'
+    _attribute_types['pushTypeAvailable'] = 'List[CodeableConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -389,7 +445,19 @@ class VerificationResultValidator(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['organization'] = 'FHIRReference'
+    _attribute_types['identityCertificate'] = 'str'
+    _attribute_types['attestationSignature'] = 'Signature'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

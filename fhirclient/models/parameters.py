@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Parameters) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Parameters) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -24,7 +24,17 @@ class Parameters(resource.Resource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | resource.Resource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['parameter'] = 'List[ParametersParameter]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -123,7 +133,69 @@ class ParametersParameter(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['valueBase64Binary'] = 'str'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueCanonical'] = 'str'
+    _attribute_types['valueCode'] = 'str'
+    _attribute_types['valueDate'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valueDecimal'] = 'float'
+    _attribute_types['valueId'] = 'str'
+    _attribute_types['valueInstant'] = 'FHIRDate'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueMarkdown'] = 'str'
+    _attribute_types['valueOid'] = 'str'
+    _attribute_types['valuePositiveInt'] = 'int'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueUnsignedInt'] = 'int'
+    _attribute_types['valueUri'] = 'str'
+    _attribute_types['valueUrl'] = 'str'
+    _attribute_types['valueUuid'] = 'str'
+    _attribute_types['valueAddress'] = 'Address'
+    _attribute_types['valueAge'] = 'Age'
+    _attribute_types['valueAnnotation'] = 'Annotation'
+    _attribute_types['valueAttachment'] = 'Attachment'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueContactPoint'] = 'ContactPoint'
+    _attribute_types['valueCount'] = 'Count'
+    _attribute_types['valueDistance'] = 'Distance'
+    _attribute_types['valueDuration'] = 'Duration'
+    _attribute_types['valueHumanName'] = 'HumanName'
+    _attribute_types['valueIdentifier'] = 'Identifier'
+    _attribute_types['valueMoney'] = 'Money'
+    _attribute_types['valuePeriod'] = 'Period'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueRange'] = 'Range'
+    _attribute_types['valueRatio'] = 'Ratio'
+    _attribute_types['valueReference'] = 'FHIRReference'
+    _attribute_types['valueSampledData'] = 'SampledData'
+    _attribute_types['valueSignature'] = 'Signature'
+    _attribute_types['valueTiming'] = 'Timing'
+    _attribute_types['valueContactDetail'] = 'ContactDetail'
+    _attribute_types['valueContributor'] = 'Contributor'
+    _attribute_types['valueDataRequirement'] = 'DataRequirement'
+    _attribute_types['valueExpression'] = 'Expression'
+    _attribute_types['valueParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['valueRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['valueTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['valueUsageContext'] = 'UsageContext'
+    _attribute_types['valueDosage'] = 'Dosage'
+    _attribute_types['valueMeta'] = 'Meta'
+    _attribute_types['resource'] = 'Resource'
+    _attribute_types['part'] = 'List[ParametersParameter]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

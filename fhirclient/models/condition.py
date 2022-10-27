@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Condition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Condition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -47,7 +47,41 @@ class Condition(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['clinicalStatus'] = 'CodeableConcept'
+    _attribute_types['verificationStatus'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['severity'] = 'CodeableConcept'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['bodySite'] = 'List[CodeableConcept]'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['onsetDateTime'] = 'FHIRDate'
+    _attribute_types['onsetAge'] = 'Age'
+    _attribute_types['onsetPeriod'] = 'Period'
+    _attribute_types['onsetRange'] = 'Range'
+    _attribute_types['onsetString'] = 'str'
+    _attribute_types['abatementDateTime'] = 'FHIRDate'
+    _attribute_types['abatementAge'] = 'Age'
+    _attribute_types['abatementPeriod'] = 'Period'
+    _attribute_types['abatementRange'] = 'Range'
+    _attribute_types['abatementString'] = 'str'
+    _attribute_types['recordedDate'] = 'FHIRDate'
+    _attribute_types['recorder'] = 'FHIRReference'
+    _attribute_types['asserter'] = 'FHIRReference'
+    _attribute_types['stage'] = 'List[ConditionStage]'
+    _attribute_types['evidence'] = 'List[ConditionEvidence]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -236,7 +270,18 @@ class ConditionEvidence(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['detail'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -289,7 +334,19 @@ class ConditionStage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['summary'] = 'CodeableConcept'
+    _attribute_types['assessment'] = 'List[FHIRReference]'
+    _attribute_types['type'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

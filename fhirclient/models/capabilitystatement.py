@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CapabilityStatement) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/CapabilityStatement) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -50,7 +50,42 @@ class CapabilityStatement(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['kind'] = 'str'
+    _attribute_types['instantiates'] = 'List[str]'
+    _attribute_types['imports'] = 'List[str]'
+    _attribute_types['software'] = 'CapabilityStatementSoftware'
+    _attribute_types['implementation'] = 'CapabilityStatementImplementation'
+    _attribute_types['fhirVersion'] = 'str'
+    _attribute_types['format'] = 'List[str]'
+    _attribute_types['patchFormat'] = 'List[str]'
+    _attribute_types['implementationGuide'] = 'List[str]'
+    _attribute_types['rest'] = 'List[CapabilityStatementRest]'
+    _attribute_types['messaging'] = 'List[CapabilityStatementMessaging]'
+    _attribute_types['document'] = 'List[CapabilityStatementDocument]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -241,7 +276,19 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['mode'] = 'str'
+    _attribute_types['documentation'] = 'str'
+    _attribute_types['profile'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -307,7 +354,19 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['url'] = 'str'
+    _attribute_types['custodian'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -365,7 +424,20 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['endpoint'] = 'List[CapabilityStatementMessagingEndpoint]'
+    _attribute_types['reliableCache'] = 'int'
+    _attribute_types['documentation'] = 'str'
+    _attribute_types['supportedMessage'] = 'List[CapabilityStatementMessagingSupportedMessage]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -427,7 +499,18 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['protocol'] = 'Coding'
+    _attribute_types['address'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -479,7 +562,18 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['mode'] = 'str'
+    _attribute_types['definition'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -543,7 +637,24 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['mode'] = 'str'
+    _attribute_types['documentation'] = 'str'
+    _attribute_types['security'] = 'CapabilityStatementRestSecurity'
+    _attribute_types['resource'] = 'List[CapabilityStatementRestResource]'
+    _attribute_types['interaction'] = 'List[CapabilityStatementRestInteraction]'
+    _attribute_types['searchParam'] = 'List[CapabilityStatementRestResourceSearchParam]'
+    _attribute_types['operation'] = 'List[CapabilityStatementRestResourceOperation]'
+    _attribute_types['compartment'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -631,7 +742,18 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -704,7 +826,33 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['profile'] = 'str'
+    _attribute_types['supportedProfile'] = 'List[str]'
+    _attribute_types['documentation'] = 'str'
+    _attribute_types['interaction'] = 'List[CapabilityStatementRestResourceInteraction]'
+    _attribute_types['versioning'] = 'str'
+    _attribute_types['readHistory'] = 'bool'
+    _attribute_types['updateCreate'] = 'bool'
+    _attribute_types['conditionalCreate'] = 'bool'
+    _attribute_types['conditionalRead'] = 'str'
+    _attribute_types['conditionalUpdate'] = 'bool'
+    _attribute_types['conditionalDelete'] = 'str'
+    _attribute_types['referencePolicy'] = 'List[str]'
+    _attribute_types['searchInclude'] = 'List[str]'
+    _attribute_types['searchRevInclude'] = 'List[str]'
+    _attribute_types['searchParam'] = 'List[CapabilityStatementRestResourceSearchParam]'
+    _attribute_types['operation'] = 'List[CapabilityStatementRestResourceOperation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -866,7 +1014,18 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -926,7 +1085,19 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['definition'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -986,7 +1157,20 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['definition'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1056,7 +1240,19 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['cors'] = 'bool'
+    _attribute_types['service'] = 'List[CodeableConcept]'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1122,7 +1318,19 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['releaseDate'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Immunization) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Immunization) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -51,7 +51,45 @@ class Immunization(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['vaccineCode'] = 'CodeableConcept'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrenceString'] = 'str'
+    _attribute_types['recorded'] = 'FHIRDate'
+    _attribute_types['primarySource'] = 'bool'
+    _attribute_types['reportOrigin'] = 'CodeableConcept'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['manufacturer'] = 'FHIRReference'
+    _attribute_types['lotNumber'] = 'str'
+    _attribute_types['expirationDate'] = 'FHIRDate'
+    _attribute_types['site'] = 'CodeableConcept'
+    _attribute_types['route'] = 'CodeableConcept'
+    _attribute_types['doseQuantity'] = 'Quantity'
+    _attribute_types['performer'] = 'List[ImmunizationPerformer]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['isSubpotent'] = 'bool'
+    _attribute_types['subpotentReason'] = 'List[CodeableConcept]'
+    _attribute_types['education'] = 'List[ImmunizationEducation]'
+    _attribute_types['programEligibility'] = 'List[CodeableConcept]'
+    _attribute_types['fundingSource'] = 'CodeableConcept'
+    _attribute_types['reaction'] = 'List[ImmunizationReaction]'
+    _attribute_types['protocolApplied'] = 'List[ImmunizationProtocolApplied]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -278,7 +316,20 @@ class ImmunizationEducation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['documentType'] = 'str'
+    _attribute_types['reference'] = 'str'
+    _attribute_types['publicationDate'] = 'FHIRDate'
+    _attribute_types['presentationDate'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -339,7 +390,18 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['function'] = 'CodeableConcept'
+    _attribute_types['actor'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -396,7 +458,23 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['series'] = 'str'
+    _attribute_types['authority'] = 'FHIRReference'
+    _attribute_types['targetDisease'] = 'List[CodeableConcept]'
+    _attribute_types['doseNumberPositiveInt'] = 'int'
+    _attribute_types['doseNumberString'] = 'str'
+    _attribute_types['seriesDosesPositiveInt'] = 'int'
+    _attribute_types['seriesDosesString'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -474,7 +552,19 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['detail'] = 'FHIRReference'
+    _attribute_types['reported'] = 'bool'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

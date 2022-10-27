@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceSourceMaterial) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceSourceMaterial) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -45,7 +45,29 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['sourceMaterialClass'] = 'CodeableConcept'
+    _attribute_types['sourceMaterialType'] = 'CodeableConcept'
+    _attribute_types['sourceMaterialState'] = 'CodeableConcept'
+    _attribute_types['organismId'] = 'Identifier'
+    _attribute_types['organismName'] = 'str'
+    _attribute_types['parentSubstanceId'] = 'List[Identifier]'
+    _attribute_types['parentSubstanceName'] = 'List[str]'
+    _attribute_types['countryOfOrigin'] = 'List[CodeableConcept]'
+    _attribute_types['geographicalLocation'] = 'List[str]'
+    _attribute_types['developmentStage'] = 'CodeableConcept'
+    _attribute_types['fractionDescription'] = 'List[SubstanceSourceMaterialFractionDescription]'
+    _attribute_types['organism'] = 'SubstanceSourceMaterialOrganism'
+    _attribute_types['partDescription'] = 'List[SubstanceSourceMaterialPartDescription]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -186,7 +208,18 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['fraction'] = 'str'
+    _attribute_types['materialType'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -247,7 +280,24 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['family'] = 'CodeableConcept'
+    _attribute_types['genus'] = 'CodeableConcept'
+    _attribute_types['species'] = 'CodeableConcept'
+    _attribute_types['intraspecificType'] = 'CodeableConcept'
+    _attribute_types['intraspecificDescription'] = 'str'
+    _attribute_types['author'] = 'List[SubstanceSourceMaterialOrganismAuthor]'
+    _attribute_types['hybrid'] = 'SubstanceSourceMaterialOrganismHybrid'
+    _attribute_types['organismGeneral'] = 'SubstanceSourceMaterialOrganismOrganismGeneral'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -333,7 +383,18 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['authorType'] = 'CodeableConcept'
+    _attribute_types['authorDescription'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -392,7 +453,21 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['maternalOrganismId'] = 'str'
+    _attribute_types['maternalOrganismName'] = 'str'
+    _attribute_types['paternalOrganismId'] = 'str'
+    _attribute_types['paternalOrganismName'] = 'str'
+    _attribute_types['hybridType'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -466,7 +541,20 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['kingdom'] = 'CodeableConcept'
+    _attribute_types['phylum'] = 'CodeableConcept'
+    _attribute_types['class_fhir'] = 'CodeableConcept'
+    _attribute_types['order'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -525,7 +613,18 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['part'] = 'CodeableConcept'
+    _attribute_types['partLocation'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/EpisodeOfCare) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/EpisodeOfCare) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -38,7 +38,28 @@ class EpisodeOfCare(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusHistory'] = 'List[EpisodeOfCareStatusHistory]'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['diagnosis'] = 'List[EpisodeOfCareDiagnosis]'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['managingOrganization'] = 'FHIRReference'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['referralRequest'] = 'List[FHIRReference]'
+    _attribute_types['careManager'] = 'FHIRReference'
+    _attribute_types['team'] = 'List[FHIRReference]'
+    _attribute_types['account'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -155,7 +176,19 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['condition'] = 'FHIRReference'
+    _attribute_types['role'] = 'CodeableConcept'
+    _attribute_types['rank'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -219,7 +252,18 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['status'] = 'str'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

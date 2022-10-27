@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Person) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Person) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -32,7 +32,26 @@ class Person(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['name'] = 'List[HumanName]'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['gender'] = 'str'
+    _attribute_types['birthDate'] = 'FHIRDate'
+    _attribute_types['address'] = 'List[Address]'
+    _attribute_types['photo'] = 'Attachment'
+    _attribute_types['managingOrganization'] = 'FHIRReference'
+    _attribute_types['active'] = 'bool'
+    _attribute_types['link'] = 'List[PersonLink]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -129,7 +148,18 @@ class PersonLink(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['target'] = 'FHIRReference'
+    _attribute_types['assurance'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AllergyIntolerance) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AllergyIntolerance) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -42,7 +42,36 @@ class AllergyIntolerance(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['clinicalStatus'] = 'CodeableConcept'
+    _attribute_types['verificationStatus'] = 'CodeableConcept'
+    _attribute_types['type'] = 'str'
+    _attribute_types['category'] = 'List[str]'
+    _attribute_types['criticality'] = 'str'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['onsetDateTime'] = 'FHIRDate'
+    _attribute_types['onsetAge'] = 'Age'
+    _attribute_types['onsetPeriod'] = 'Period'
+    _attribute_types['onsetRange'] = 'Range'
+    _attribute_types['onsetString'] = 'str'
+    _attribute_types['recordedDate'] = 'FHIRDate'
+    _attribute_types['recorder'] = 'FHIRReference'
+    _attribute_types['asserter'] = 'FHIRReference'
+    _attribute_types['lastOccurrence'] = 'FHIRDate'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['reaction'] = 'List[AllergyIntoleranceReaction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -225,7 +254,23 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['substance'] = 'CodeableConcept'
+    _attribute_types['manifestation'] = 'List[CodeableConcept]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['onset'] = 'FHIRDate'
+    _attribute_types['severity'] = 'str'
+    _attribute_types['exposureRoute'] = 'CodeableConcept'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

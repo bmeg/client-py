@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/PaymentReconciliation) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/PaymentReconciliation) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -37,7 +37,31 @@ class PaymentReconciliation(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['created'] = 'FHIRDate'
+    _attribute_types['paymentIssuer'] = 'FHIRReference'
+    _attribute_types['request'] = 'FHIRReference'
+    _attribute_types['requestor'] = 'FHIRReference'
+    _attribute_types['outcome'] = 'str'
+    _attribute_types['disposition'] = 'str'
+    _attribute_types['paymentDate'] = 'FHIRDate'
+    _attribute_types['paymentAmount'] = 'Money'
+    _attribute_types['paymentIdentifier'] = 'Identifier'
+    _attribute_types['detail'] = 'List[PaymentReconciliationDetail]'
+    _attribute_types['formCode'] = 'CodeableConcept'
+    _attribute_types['processNote'] = 'List[PaymentReconciliationProcessNote]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -175,7 +199,26 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['predecessor'] = 'Identifier'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['request'] = 'FHIRReference'
+    _attribute_types['submitter'] = 'FHIRReference'
+    _attribute_types['response'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['responsible'] = 'FHIRReference'
+    _attribute_types['payee'] = 'FHIRReference'
+    _attribute_types['amount'] = 'Money'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -272,7 +315,18 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['text'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

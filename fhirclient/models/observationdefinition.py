@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ObservationDefinition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ObservationDefinition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -35,7 +35,29 @@ class ObservationDefinition(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['permittedDataType'] = 'List[str]'
+    _attribute_types['multipleResultsAllowed'] = 'bool'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['preferredReportName'] = 'str'
+    _attribute_types['quantitativeDetails'] = 'ObservationDefinitionQuantitativeDetails'
+    _attribute_types['qualifiedInterval'] = 'List[ObservationDefinitionQualifiedInterval]'
+    _attribute_types['validCodedValueSet'] = 'FHIRReference'
+    _attribute_types['normalCodedValueSet'] = 'FHIRReference'
+    _attribute_types['abnormalCodedValueSet'] = 'FHIRReference'
+    _attribute_types['criticalCodedValueSet'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -167,7 +189,24 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'str'
+    _attribute_types['range'] = 'Range'
+    _attribute_types['context'] = 'CodeableConcept'
+    _attribute_types['appliesTo'] = 'List[CodeableConcept]'
+    _attribute_types['gender'] = 'str'
+    _attribute_types['age'] = 'Range'
+    _attribute_types['gestationalAge'] = 'Range'
+    _attribute_types['condition'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -270,7 +309,20 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['customaryUnit'] = 'CodeableConcept'
+    _attribute_types['unit'] = 'CodeableConcept'
+    _attribute_types['conversionFactor'] = 'float'
+    _attribute_types['decimalPrecision'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

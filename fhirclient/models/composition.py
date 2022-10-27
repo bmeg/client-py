@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Composition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Composition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -45,7 +45,31 @@ class Composition(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['author'] = 'List[FHIRReference]'
+    _attribute_types['title'] = 'str'
+    _attribute_types['confidentiality'] = 'str'
+    _attribute_types['attester'] = 'List[CompositionAttester]'
+    _attribute_types['custodian'] = 'FHIRReference'
+    _attribute_types['relatesTo'] = 'List[CompositionRelatesTo]'
+    _attribute_types['event'] = 'List[CompositionEvent]'
+    _attribute_types['section'] = 'List[CompositionSection]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -171,7 +195,19 @@ class CompositionAttester(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['mode'] = 'str'
+    _attribute_types['time'] = 'FHIRDate'
+    _attribute_types['party'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -235,7 +271,19 @@ class CompositionEvent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['detail'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -293,7 +341,19 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['targetIdentifier'] = 'Identifier'
+    _attribute_types['targetReference'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -364,7 +424,26 @@ class CompositionSection(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['title'] = 'str'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['author'] = 'List[FHIRReference]'
+    _attribute_types['focus'] = 'FHIRReference'
+    _attribute_types['text'] = 'Narrative'
+    _attribute_types['mode'] = 'str'
+    _attribute_types['orderedBy'] = 'CodeableConcept'
+    _attribute_types['entry'] = 'List[FHIRReference]'
+    _attribute_types['emptyReason'] = 'CodeableConcept'
+    _attribute_types['section'] = 'List[CompositionSection]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

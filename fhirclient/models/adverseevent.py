@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AdverseEvent) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/AdverseEvent) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -45,7 +45,36 @@ class AdverseEvent(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['actuality'] = 'str'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['event'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['detected'] = 'FHIRDate'
+    _attribute_types['recordedDate'] = 'FHIRDate'
+    _attribute_types['resultingCondition'] = 'List[FHIRReference]'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['seriousness'] = 'CodeableConcept'
+    _attribute_types['severity'] = 'CodeableConcept'
+    _attribute_types['outcome'] = 'CodeableConcept'
+    _attribute_types['recorder'] = 'FHIRReference'
+    _attribute_types['contributor'] = 'List[FHIRReference]'
+    _attribute_types['suspectEntity'] = 'List[AdverseEventSuspectEntity]'
+    _attribute_types['subjectMedicalHistory'] = 'List[FHIRReference]'
+    _attribute_types['referenceDocument'] = 'List[FHIRReference]'
+    _attribute_types['study'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -224,7 +253,18 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['instance'] = 'FHIRReference'
+    _attribute_types['causality'] = 'List[AdverseEventSuspectEntityCausality]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -275,7 +315,20 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['assessment'] = 'CodeableConcept'
+    _attribute_types['productRelatedness'] = 'str'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['method'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

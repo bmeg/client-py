@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationDispense) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicationDispense) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -51,7 +51,42 @@ class MedicationDispense(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReasonCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['statusReasonReference'] = 'FHIRReference'
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['medicationCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['medicationReference'] = 'FHIRReference'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['context'] = 'FHIRReference'
+    _attribute_types['supportingInformation'] = 'List[FHIRReference]'
+    _attribute_types['performer'] = 'List[MedicationDispensePerformer]'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['authorizingPrescription'] = 'List[FHIRReference]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['daysSupply'] = 'Quantity'
+    _attribute_types['whenPrepared'] = 'FHIRDate'
+    _attribute_types['whenHandedOver'] = 'FHIRDate'
+    _attribute_types['destination'] = 'FHIRReference'
+    _attribute_types['receiver'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['dosageInstruction'] = 'List[Dosage]'
+    _attribute_types['substitution'] = 'MedicationDispenseSubstitution'
+    _attribute_types['detectedIssue'] = 'List[FHIRReference]'
+    _attribute_types['eventHistory'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -245,7 +280,18 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['function'] = 'CodeableConcept'
+    _attribute_types['actor'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -309,7 +355,20 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['wasSubstituted'] = 'bool'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['reason'] = 'List[CodeableConcept]'
+    _attribute_types['responsibleParty'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

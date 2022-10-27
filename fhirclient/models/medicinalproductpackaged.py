@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductPackaged) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductPackaged) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -28,7 +28,25 @@ class MedicinalProductPackaged(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['subject'] = 'List[FHIRReference]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['legalStatusOfSupply'] = 'CodeableConcept'
+    _attribute_types['marketingStatus'] = 'List[MarketingStatus]'
+    _attribute_types['marketingAuthorization'] = 'FHIRReference'
+    _attribute_types['manufacturer'] = 'List[FHIRReference]'
+    _attribute_types['batchIdentifier'] = 'List[MedicinalProductPackagedBatchIdentifier]'
+    _attribute_types['packageItem'] = 'List[MedicinalProductPackagedPackageItem]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -116,7 +134,18 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['outerPackaging'] = 'Identifier'
+    _attribute_types['immediatePackaging'] = 'Identifier'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -177,7 +206,28 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['material'] = 'List[CodeableConcept]'
+    _attribute_types['alternateMaterial'] = 'List[CodeableConcept]'
+    _attribute_types['device'] = 'List[FHIRReference]'
+    _attribute_types['manufacturedItem'] = 'List[FHIRReference]'
+    _attribute_types['packageItem'] = 'List[MedicinalProductPackagedPackageItem]'
+    _attribute_types['physicalCharacteristics'] = 'ProdCharacteristic'
+    _attribute_types['otherCharacteristics'] = 'List[CodeableConcept]'
+    _attribute_types['shelfLifeStorage'] = 'List[ProductShelfLife]'
+    _attribute_types['manufacturer'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

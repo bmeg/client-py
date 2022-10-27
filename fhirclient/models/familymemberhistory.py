@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -48,7 +48,42 @@ class FamilyMemberHistory(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['dataAbsentReason'] = 'CodeableConcept'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['name'] = 'str'
+    _attribute_types['relationship'] = 'CodeableConcept'
+    _attribute_types['sex'] = 'CodeableConcept'
+    _attribute_types['bornPeriod'] = 'Period'
+    _attribute_types['bornDate'] = 'FHIRDate'
+    _attribute_types['bornString'] = 'str'
+    _attribute_types['ageAge'] = 'Age'
+    _attribute_types['ageRange'] = 'Range'
+    _attribute_types['ageString'] = 'str'
+    _attribute_types['estimatedAge'] = 'bool'
+    _attribute_types['deceasedBoolean'] = 'bool'
+    _attribute_types['deceasedAge'] = 'Age'
+    _attribute_types['deceasedRange'] = 'Range'
+    _attribute_types['deceasedDate'] = 'FHIRDate'
+    _attribute_types['deceasedString'] = 'str'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['condition'] = 'List[FamilyMemberHistoryCondition]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -249,7 +284,24 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['outcome'] = 'CodeableConcept'
+    _attribute_types['contributedToDeath'] = 'bool'
+    _attribute_types['onsetAge'] = 'Age'
+    _attribute_types['onsetRange'] = 'Range'
+    _attribute_types['onsetPeriod'] = 'Period'
+    _attribute_types['onsetString'] = 'str'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

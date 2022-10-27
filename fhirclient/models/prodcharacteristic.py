@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ProdCharacteristic) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ProdCharacteristic) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -30,7 +30,27 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['height'] = 'Quantity'
+    _attribute_types['width'] = 'Quantity'
+    _attribute_types['depth'] = 'Quantity'
+    _attribute_types['weight'] = 'Quantity'
+    _attribute_types['nominalVolume'] = 'Quantity'
+    _attribute_types['externalDiameter'] = 'Quantity'
+    _attribute_types['shape'] = 'str'
+    _attribute_types['color'] = 'List[str]'
+    _attribute_types['imprint'] = 'List[str]'
+    _attribute_types['image'] = 'List[Attachment]'
+    _attribute_types['scoring'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

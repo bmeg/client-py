@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceReferenceInformation) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -24,7 +24,21 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['comment'] = 'str'
+    _attribute_types['gene'] = 'List[SubstanceReferenceInformationGene]'
+    _attribute_types['geneElement'] = 'List[SubstanceReferenceInformationGeneElement]'
+    _attribute_types['classification'] = 'List[SubstanceReferenceInformationClassification]'
+    _attribute_types['target'] = 'List[SubstanceReferenceInformationTarget]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -92,7 +106,20 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['domain'] = 'CodeableConcept'
+    _attribute_types['classification'] = 'CodeableConcept'
+    _attribute_types['subtype'] = 'List[CodeableConcept]'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -152,7 +179,19 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['geneSequenceOrigin'] = 'CodeableConcept'
+    _attribute_types['gene'] = 'CodeableConcept'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -207,7 +246,19 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['element'] = 'Identifier'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -269,7 +320,26 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['target'] = 'Identifier'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['interaction'] = 'CodeableConcept'
+    _attribute_types['organism'] = 'CodeableConcept'
+    _attribute_types['organismType'] = 'CodeableConcept'
+    _attribute_types['amountQuantity'] = 'Quantity'
+    _attribute_types['amountRange'] = 'Range'
+    _attribute_types['amountString'] = 'str'
+    _attribute_types['amountType'] = 'CodeableConcept'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

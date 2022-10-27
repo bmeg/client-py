@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Observation) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Observation) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -59,7 +59,53 @@ class Observation(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['focus'] = 'List[FHIRReference]'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['effectiveDateTime'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['effectiveTiming'] = 'Timing'
+    _attribute_types['effectiveInstant'] = 'FHIRDate'
+    _attribute_types['issued'] = 'FHIRDate'
+    _attribute_types['performer'] = 'List[FHIRReference]'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueRange'] = 'Range'
+    _attribute_types['valueRatio'] = 'Ratio'
+    _attribute_types['valueSampledData'] = 'SampledData'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valuePeriod'] = 'Period'
+    _attribute_types['dataAbsentReason'] = 'CodeableConcept'
+    _attribute_types['interpretation'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['bodySite'] = 'CodeableConcept'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['specimen'] = 'FHIRReference'
+    _attribute_types['device'] = 'FHIRReference'
+    _attribute_types['referenceRange'] = 'List[ObservationReferenceRange]'
+    _attribute_types['hasMember'] = 'List[FHIRReference]'
+    _attribute_types['derivedFrom'] = 'List[FHIRReference]'
+    _attribute_types['component'] = 'List[ObservationComponent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -324,7 +370,31 @@ class ObservationComponent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueRange'] = 'Range'
+    _attribute_types['valueRatio'] = 'Ratio'
+    _attribute_types['valueSampledData'] = 'SampledData'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valuePeriod'] = 'Period'
+    _attribute_types['dataAbsentReason'] = 'CodeableConcept'
+    _attribute_types['interpretation'] = 'List[CodeableConcept]'
+    _attribute_types['referenceRange'] = 'List[ObservationReferenceRange]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -454,7 +524,22 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['low'] = 'Quantity'
+    _attribute_types['high'] = 'Quantity'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['appliesTo'] = 'List[CodeableConcept]'
+    _attribute_types['age'] = 'Range'
+    _attribute_types['text'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

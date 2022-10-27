@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DeviceMetric) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DeviceMetric) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -32,7 +32,26 @@ class DeviceMetric(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['unit'] = 'CodeableConcept'
+    _attribute_types['source'] = 'FHIRReference'
+    _attribute_types['parent'] = 'FHIRReference'
+    _attribute_types['operationalStatus'] = 'str'
+    _attribute_types['color'] = 'str'
+    _attribute_types['category'] = 'str'
+    _attribute_types['measurementPeriod'] = 'Timing'
+    _attribute_types['calibration'] = 'List[DeviceMetricCalibration]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -152,7 +171,19 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['state'] = 'str'
+    _attribute_types['time'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

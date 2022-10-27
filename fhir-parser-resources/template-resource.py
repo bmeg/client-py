@@ -35,7 +35,19 @@ class {{ klass.name }}({% if klass.superclass in imports %}{{ klass.superclass.m
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | {{klass.superclass.module}}.{{klass.superclass.name}}.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+{%- for prop in klass.properties %}
+    _attribute_types['{{ prop.name }}'] = '{% if prop.is_array %}List[{{ prop.class_name }}]{% else %}{{ prop.class_name }}{% endif %}'
+{%- endfor %}
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

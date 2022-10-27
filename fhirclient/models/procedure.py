@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Procedure) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Procedure) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -55,7 +55,48 @@ class Procedure(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['statusReason'] = 'CodeableConcept'
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['performedDateTime'] = 'FHIRDate'
+    _attribute_types['performedPeriod'] = 'Period'
+    _attribute_types['performedString'] = 'str'
+    _attribute_types['performedAge'] = 'Age'
+    _attribute_types['performedRange'] = 'Range'
+    _attribute_types['recorder'] = 'FHIRReference'
+    _attribute_types['asserter'] = 'FHIRReference'
+    _attribute_types['performer'] = 'List[ProcedurePerformer]'
+    _attribute_types['location'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['bodySite'] = 'List[CodeableConcept]'
+    _attribute_types['outcome'] = 'CodeableConcept'
+    _attribute_types['report'] = 'List[FHIRReference]'
+    _attribute_types['complication'] = 'List[CodeableConcept]'
+    _attribute_types['complicationDetail'] = 'List[FHIRReference]'
+    _attribute_types['followUp'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['focalDevice'] = 'List[ProcedureFocalDevice]'
+    _attribute_types['usedReference'] = 'List[FHIRReference]'
+    _attribute_types['usedCode'] = 'List[CodeableConcept]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -267,7 +308,18 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['action'] = 'CodeableConcept'
+    _attribute_types['manipulated'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -319,7 +371,19 @@ class ProcedurePerformer(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['function'] = 'CodeableConcept'
+    _attribute_types['actor'] = 'FHIRReference'
+    _attribute_types['onBehalfOf'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

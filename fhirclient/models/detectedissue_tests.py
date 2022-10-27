@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2022-10-13.
 #  2022, SMART Health IT.
 
 import io
@@ -189,9 +189,14 @@ class DetectedIssueTests(unittest.TestCase):
         if hasattr(inst, 'extension'):
             if inst.extension and len(inst.extension) > 0:
                 assert 'extension' not in simplified_js
-                simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
-                self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
-                for simplified_extension in simplified_extensions:
+                expected_extension_key_prefixes = [extension.url.split('/')[-1].replace('-', '_') for extension in inst.extension]
+                actual_extension_keys = []
+                for prefix in expected_extension_key_prefixes:
+                    actual_extension_keys.extend([k for k in simplified_js.keys() if k.startswith(prefix)])
+                assert len(actual_extension_keys) >= len(expected_extension_key_prefixes), "Did not find expected extension keys"
+                # simplified_extensions = [k for k in simplified_js.keys() if k.startswith('extension_')]
+                # self.assertTrue(len(simplified_extensions) >= len(inst.extension), "Should simplify extensions.")
+                for simplified_extension in actual_extension_keys:
                     assert simplified_js[simplified_extension] is not None, f"Missing value for {simplified_extension}"
                     assert 'fhirclient.models.coding.Coding' not in str(simplified_js[simplified_extension]), "Should simplify codes"
                     if simplified_js[simplified_extension] == 'NA':

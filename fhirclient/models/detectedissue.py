@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DetectedIssue) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DetectedIssue) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -37,7 +37,29 @@ class DetectedIssue(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['severity'] = 'str'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['identifiedDateTime'] = 'FHIRDate'
+    _attribute_types['identifiedPeriod'] = 'Period'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['implicated'] = 'List[FHIRReference]'
+    _attribute_types['evidence'] = 'List[DetectedIssueEvidence]'
+    _attribute_types['detail'] = 'str'
+    _attribute_types['reference'] = 'str'
+    _attribute_types['mitigation'] = 'List[DetectedIssueMitigation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -159,7 +181,18 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['detail'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -214,7 +247,19 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['action'] = 'CodeableConcept'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['author'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Endpoint) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Endpoint) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -35,7 +35,27 @@ class Endpoint(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['connectionType'] = 'Coding'
+    _attribute_types['name'] = 'str'
+    _attribute_types['managingOrganization'] = 'FHIRReference'
+    _attribute_types['contact'] = 'List[ContactPoint]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['payloadType'] = 'List[CodeableConcept]'
+    _attribute_types['payloadMimeType'] = 'List[str]'
+    _attribute_types['address'] = 'str'
+    _attribute_types['header'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ElementDefinition) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ElementDefinition) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -217,7 +217,213 @@ class ElementDefinition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['representation'] = 'List[str]'
+    _attribute_types['sliceName'] = 'str'
+    _attribute_types['sliceIsConstraining'] = 'bool'
+    _attribute_types['label'] = 'str'
+    _attribute_types['code'] = 'List[Coding]'
+    _attribute_types['slicing'] = 'ElementDefinitionSlicing'
+    _attribute_types['short'] = 'str'
+    _attribute_types['definition'] = 'str'
+    _attribute_types['comment'] = 'str'
+    _attribute_types['requirements'] = 'str'
+    _attribute_types['alias'] = 'List[str]'
+    _attribute_types['min'] = 'int'
+    _attribute_types['max'] = 'str'
+    _attribute_types['base'] = 'ElementDefinitionBase'
+    _attribute_types['contentReference'] = 'str'
+    _attribute_types['type'] = 'List[ElementDefinitionType]'
+    _attribute_types['defaultValueBase64Binary'] = 'str'
+    _attribute_types['defaultValueBoolean'] = 'bool'
+    _attribute_types['defaultValueCanonical'] = 'str'
+    _attribute_types['defaultValueCode'] = 'str'
+    _attribute_types['defaultValueDate'] = 'FHIRDate'
+    _attribute_types['defaultValueDateTime'] = 'FHIRDate'
+    _attribute_types['defaultValueDecimal'] = 'float'
+    _attribute_types['defaultValueId'] = 'str'
+    _attribute_types['defaultValueInstant'] = 'FHIRDate'
+    _attribute_types['defaultValueInteger'] = 'int'
+    _attribute_types['defaultValueMarkdown'] = 'str'
+    _attribute_types['defaultValueOid'] = 'str'
+    _attribute_types['defaultValuePositiveInt'] = 'int'
+    _attribute_types['defaultValueString'] = 'str'
+    _attribute_types['defaultValueTime'] = 'FHIRDate'
+    _attribute_types['defaultValueUnsignedInt'] = 'int'
+    _attribute_types['defaultValueUri'] = 'str'
+    _attribute_types['defaultValueUrl'] = 'str'
+    _attribute_types['defaultValueUuid'] = 'str'
+    _attribute_types['defaultValueAddress'] = 'Address'
+    _attribute_types['defaultValueAge'] = 'Age'
+    _attribute_types['defaultValueAnnotation'] = 'Annotation'
+    _attribute_types['defaultValueAttachment'] = 'Attachment'
+    _attribute_types['defaultValueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['defaultValueCoding'] = 'Coding'
+    _attribute_types['defaultValueContactPoint'] = 'ContactPoint'
+    _attribute_types['defaultValueCount'] = 'Count'
+    _attribute_types['defaultValueDistance'] = 'Distance'
+    _attribute_types['defaultValueDuration'] = 'Duration'
+    _attribute_types['defaultValueHumanName'] = 'HumanName'
+    _attribute_types['defaultValueIdentifier'] = 'Identifier'
+    _attribute_types['defaultValueMoney'] = 'Money'
+    _attribute_types['defaultValuePeriod'] = 'Period'
+    _attribute_types['defaultValueQuantity'] = 'Quantity'
+    _attribute_types['defaultValueRange'] = 'Range'
+    _attribute_types['defaultValueRatio'] = 'Ratio'
+    _attribute_types['defaultValueReference'] = 'FHIRReference'
+    _attribute_types['defaultValueSampledData'] = 'SampledData'
+    _attribute_types['defaultValueSignature'] = 'Signature'
+    _attribute_types['defaultValueTiming'] = 'Timing'
+    _attribute_types['defaultValueContactDetail'] = 'ContactDetail'
+    _attribute_types['defaultValueContributor'] = 'Contributor'
+    _attribute_types['defaultValueDataRequirement'] = 'DataRequirement'
+    _attribute_types['defaultValueExpression'] = 'Expression'
+    _attribute_types['defaultValueParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['defaultValueRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['defaultValueTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['defaultValueUsageContext'] = 'UsageContext'
+    _attribute_types['defaultValueDosage'] = 'Dosage'
+    _attribute_types['defaultValueMeta'] = 'Meta'
+    _attribute_types['meaningWhenMissing'] = 'str'
+    _attribute_types['orderMeaning'] = 'str'
+    _attribute_types['fixedBase64Binary'] = 'str'
+    _attribute_types['fixedBoolean'] = 'bool'
+    _attribute_types['fixedCanonical'] = 'str'
+    _attribute_types['fixedCode'] = 'str'
+    _attribute_types['fixedDate'] = 'FHIRDate'
+    _attribute_types['fixedDateTime'] = 'FHIRDate'
+    _attribute_types['fixedDecimal'] = 'float'
+    _attribute_types['fixedId'] = 'str'
+    _attribute_types['fixedInstant'] = 'FHIRDate'
+    _attribute_types['fixedInteger'] = 'int'
+    _attribute_types['fixedMarkdown'] = 'str'
+    _attribute_types['fixedOid'] = 'str'
+    _attribute_types['fixedPositiveInt'] = 'int'
+    _attribute_types['fixedString'] = 'str'
+    _attribute_types['fixedTime'] = 'FHIRDate'
+    _attribute_types['fixedUnsignedInt'] = 'int'
+    _attribute_types['fixedUri'] = 'str'
+    _attribute_types['fixedUrl'] = 'str'
+    _attribute_types['fixedUuid'] = 'str'
+    _attribute_types['fixedAddress'] = 'Address'
+    _attribute_types['fixedAge'] = 'Age'
+    _attribute_types['fixedAnnotation'] = 'Annotation'
+    _attribute_types['fixedAttachment'] = 'Attachment'
+    _attribute_types['fixedCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['fixedCoding'] = 'Coding'
+    _attribute_types['fixedContactPoint'] = 'ContactPoint'
+    _attribute_types['fixedCount'] = 'Count'
+    _attribute_types['fixedDistance'] = 'Distance'
+    _attribute_types['fixedDuration'] = 'Duration'
+    _attribute_types['fixedHumanName'] = 'HumanName'
+    _attribute_types['fixedIdentifier'] = 'Identifier'
+    _attribute_types['fixedMoney'] = 'Money'
+    _attribute_types['fixedPeriod'] = 'Period'
+    _attribute_types['fixedQuantity'] = 'Quantity'
+    _attribute_types['fixedRange'] = 'Range'
+    _attribute_types['fixedRatio'] = 'Ratio'
+    _attribute_types['fixedReference'] = 'FHIRReference'
+    _attribute_types['fixedSampledData'] = 'SampledData'
+    _attribute_types['fixedSignature'] = 'Signature'
+    _attribute_types['fixedTiming'] = 'Timing'
+    _attribute_types['fixedContactDetail'] = 'ContactDetail'
+    _attribute_types['fixedContributor'] = 'Contributor'
+    _attribute_types['fixedDataRequirement'] = 'DataRequirement'
+    _attribute_types['fixedExpression'] = 'Expression'
+    _attribute_types['fixedParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['fixedRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['fixedTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['fixedUsageContext'] = 'UsageContext'
+    _attribute_types['fixedDosage'] = 'Dosage'
+    _attribute_types['fixedMeta'] = 'Meta'
+    _attribute_types['patternBase64Binary'] = 'str'
+    _attribute_types['patternBoolean'] = 'bool'
+    _attribute_types['patternCanonical'] = 'str'
+    _attribute_types['patternCode'] = 'str'
+    _attribute_types['patternDate'] = 'FHIRDate'
+    _attribute_types['patternDateTime'] = 'FHIRDate'
+    _attribute_types['patternDecimal'] = 'float'
+    _attribute_types['patternId'] = 'str'
+    _attribute_types['patternInstant'] = 'FHIRDate'
+    _attribute_types['patternInteger'] = 'int'
+    _attribute_types['patternMarkdown'] = 'str'
+    _attribute_types['patternOid'] = 'str'
+    _attribute_types['patternPositiveInt'] = 'int'
+    _attribute_types['patternString'] = 'str'
+    _attribute_types['patternTime'] = 'FHIRDate'
+    _attribute_types['patternUnsignedInt'] = 'int'
+    _attribute_types['patternUri'] = 'str'
+    _attribute_types['patternUrl'] = 'str'
+    _attribute_types['patternUuid'] = 'str'
+    _attribute_types['patternAddress'] = 'Address'
+    _attribute_types['patternAge'] = 'Age'
+    _attribute_types['patternAnnotation'] = 'Annotation'
+    _attribute_types['patternAttachment'] = 'Attachment'
+    _attribute_types['patternCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['patternCoding'] = 'Coding'
+    _attribute_types['patternContactPoint'] = 'ContactPoint'
+    _attribute_types['patternCount'] = 'Count'
+    _attribute_types['patternDistance'] = 'Distance'
+    _attribute_types['patternDuration'] = 'Duration'
+    _attribute_types['patternHumanName'] = 'HumanName'
+    _attribute_types['patternIdentifier'] = 'Identifier'
+    _attribute_types['patternMoney'] = 'Money'
+    _attribute_types['patternPeriod'] = 'Period'
+    _attribute_types['patternQuantity'] = 'Quantity'
+    _attribute_types['patternRange'] = 'Range'
+    _attribute_types['patternRatio'] = 'Ratio'
+    _attribute_types['patternReference'] = 'FHIRReference'
+    _attribute_types['patternSampledData'] = 'SampledData'
+    _attribute_types['patternSignature'] = 'Signature'
+    _attribute_types['patternTiming'] = 'Timing'
+    _attribute_types['patternContactDetail'] = 'ContactDetail'
+    _attribute_types['patternContributor'] = 'Contributor'
+    _attribute_types['patternDataRequirement'] = 'DataRequirement'
+    _attribute_types['patternExpression'] = 'Expression'
+    _attribute_types['patternParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['patternRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['patternTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['patternUsageContext'] = 'UsageContext'
+    _attribute_types['patternDosage'] = 'Dosage'
+    _attribute_types['patternMeta'] = 'Meta'
+    _attribute_types['example'] = 'List[ElementDefinitionExample]'
+    _attribute_types['minValueDate'] = 'FHIRDate'
+    _attribute_types['minValueDateTime'] = 'FHIRDate'
+    _attribute_types['minValueInstant'] = 'FHIRDate'
+    _attribute_types['minValueTime'] = 'FHIRDate'
+    _attribute_types['minValueDecimal'] = 'float'
+    _attribute_types['minValueInteger'] = 'int'
+    _attribute_types['minValuePositiveInt'] = 'int'
+    _attribute_types['minValueUnsignedInt'] = 'int'
+    _attribute_types['minValueQuantity'] = 'Quantity'
+    _attribute_types['maxValueDate'] = 'FHIRDate'
+    _attribute_types['maxValueDateTime'] = 'FHIRDate'
+    _attribute_types['maxValueInstant'] = 'FHIRDate'
+    _attribute_types['maxValueTime'] = 'FHIRDate'
+    _attribute_types['maxValueDecimal'] = 'float'
+    _attribute_types['maxValueInteger'] = 'int'
+    _attribute_types['maxValuePositiveInt'] = 'int'
+    _attribute_types['maxValueUnsignedInt'] = 'int'
+    _attribute_types['maxValueQuantity'] = 'Quantity'
+    _attribute_types['maxLength'] = 'int'
+    _attribute_types['condition'] = 'List[str]'
+    _attribute_types['constraint'] = 'List[ElementDefinitionConstraint]'
+    _attribute_types['mustSupport'] = 'bool'
+    _attribute_types['isModifier'] = 'bool'
+    _attribute_types['isModifierReason'] = 'str'
+    _attribute_types['isSummary'] = 'bool'
+    _attribute_types['binding'] = 'ElementDefinitionBinding'
+    _attribute_types['mapping'] = 'List[ElementDefinitionMapping]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1261,7 +1467,19 @@ class ElementDefinitionBase(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['min'] = 'int'
+    _attribute_types['max'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1319,7 +1537,19 @@ class ElementDefinitionBinding(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['strength'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['valueSet'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1389,7 +1619,23 @@ class ElementDefinitionConstraint(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['key'] = 'str'
+    _attribute_types['requirements'] = 'str'
+    _attribute_types['severity'] = 'str'
+    _attribute_types['human'] = 'str'
+    _attribute_types['expression'] = 'str'
+    _attribute_types['xpath'] = 'str'
+    _attribute_types['source'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1522,7 +1768,67 @@ class ElementDefinitionExample(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['label'] = 'str'
+    _attribute_types['valueBase64Binary'] = 'str'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueCanonical'] = 'str'
+    _attribute_types['valueCode'] = 'str'
+    _attribute_types['valueDate'] = 'FHIRDate'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valueDecimal'] = 'float'
+    _attribute_types['valueId'] = 'str'
+    _attribute_types['valueInstant'] = 'FHIRDate'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueMarkdown'] = 'str'
+    _attribute_types['valueOid'] = 'str'
+    _attribute_types['valuePositiveInt'] = 'int'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueTime'] = 'FHIRDate'
+    _attribute_types['valueUnsignedInt'] = 'int'
+    _attribute_types['valueUri'] = 'str'
+    _attribute_types['valueUrl'] = 'str'
+    _attribute_types['valueUuid'] = 'str'
+    _attribute_types['valueAddress'] = 'Address'
+    _attribute_types['valueAge'] = 'Age'
+    _attribute_types['valueAnnotation'] = 'Annotation'
+    _attribute_types['valueAttachment'] = 'Attachment'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueCoding'] = 'Coding'
+    _attribute_types['valueContactPoint'] = 'ContactPoint'
+    _attribute_types['valueCount'] = 'Count'
+    _attribute_types['valueDistance'] = 'Distance'
+    _attribute_types['valueDuration'] = 'Duration'
+    _attribute_types['valueHumanName'] = 'HumanName'
+    _attribute_types['valueIdentifier'] = 'Identifier'
+    _attribute_types['valueMoney'] = 'Money'
+    _attribute_types['valuePeriod'] = 'Period'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueRange'] = 'Range'
+    _attribute_types['valueRatio'] = 'Ratio'
+    _attribute_types['valueReference'] = 'FHIRReference'
+    _attribute_types['valueSampledData'] = 'SampledData'
+    _attribute_types['valueSignature'] = 'Signature'
+    _attribute_types['valueTiming'] = 'Timing'
+    _attribute_types['valueContactDetail'] = 'ContactDetail'
+    _attribute_types['valueContributor'] = 'Contributor'
+    _attribute_types['valueDataRequirement'] = 'DataRequirement'
+    _attribute_types['valueExpression'] = 'Expression'
+    _attribute_types['valueParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['valueRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['valueTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['valueUsageContext'] = 'UsageContext'
+    _attribute_types['valueDosage'] = 'Dosage'
+    _attribute_types['valueMeta'] = 'Meta'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1821,7 +2127,20 @@ class ElementDefinitionMapping(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identity'] = 'str'
+    _attribute_types['language'] = 'str'
+    _attribute_types['map'] = 'str'
+    _attribute_types['comment'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1890,7 +2209,20 @@ class ElementDefinitionSlicing(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['discriminator'] = 'List[ElementDefinitionSlicingDiscriminator]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['ordered'] = 'bool'
+    _attribute_types['rules'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1963,7 +2295,18 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['path'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -2025,7 +2368,21 @@ class ElementDefinitionType(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'str'
+    _attribute_types['profile'] = 'List[str]'
+    _attribute_types['targetProfile'] = 'List[str]'
+    _attribute_types['aggregation'] = 'List[str]'
+    _attribute_types['versioning'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

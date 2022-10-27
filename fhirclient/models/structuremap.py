@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/StructureMap) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/StructureMap) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -38,7 +38,34 @@ class StructureMap(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['experimental'] = 'bool'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['purpose'] = 'str'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['structure'] = 'List[StructureMapStructure]'
+    _attribute_types['import_fhir'] = 'List[str]'
+    _attribute_types['group'] = 'List[StructureMapGroup]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -184,7 +211,22 @@ class StructureMapGroup(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['extends'] = 'str'
+    _attribute_types['typeMode'] = 'str'
+    _attribute_types['documentation'] = 'str'
+    _attribute_types['input'] = 'List[StructureMapGroupInput]'
+    _attribute_types['rule'] = 'List[StructureMapGroupRule]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -265,7 +307,20 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['mode'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -334,7 +389,22 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['source'] = 'List[StructureMapGroupRuleSource]'
+    _attribute_types['target'] = 'List[StructureMapGroupRuleTarget]'
+    _attribute_types['rule'] = 'List[StructureMapGroupRule]'
+    _attribute_types['dependent'] = 'List[StructureMapGroupRuleDependent]'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -403,7 +473,18 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['variable'] = 'List[str]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -510,7 +591,76 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['context'] = 'str'
+    _attribute_types['min'] = 'int'
+    _attribute_types['max'] = 'str'
+    _attribute_types['type'] = 'str'
+    _attribute_types['defaultValueBase64Binary'] = 'str'
+    _attribute_types['defaultValueBoolean'] = 'bool'
+    _attribute_types['defaultValueCanonical'] = 'str'
+    _attribute_types['defaultValueCode'] = 'str'
+    _attribute_types['defaultValueDate'] = 'FHIRDate'
+    _attribute_types['defaultValueDateTime'] = 'FHIRDate'
+    _attribute_types['defaultValueDecimal'] = 'float'
+    _attribute_types['defaultValueId'] = 'str'
+    _attribute_types['defaultValueInstant'] = 'FHIRDate'
+    _attribute_types['defaultValueInteger'] = 'int'
+    _attribute_types['defaultValueMarkdown'] = 'str'
+    _attribute_types['defaultValueOid'] = 'str'
+    _attribute_types['defaultValuePositiveInt'] = 'int'
+    _attribute_types['defaultValueString'] = 'str'
+    _attribute_types['defaultValueTime'] = 'FHIRDate'
+    _attribute_types['defaultValueUnsignedInt'] = 'int'
+    _attribute_types['defaultValueUri'] = 'str'
+    _attribute_types['defaultValueUrl'] = 'str'
+    _attribute_types['defaultValueUuid'] = 'str'
+    _attribute_types['defaultValueAddress'] = 'Address'
+    _attribute_types['defaultValueAge'] = 'Age'
+    _attribute_types['defaultValueAnnotation'] = 'Annotation'
+    _attribute_types['defaultValueAttachment'] = 'Attachment'
+    _attribute_types['defaultValueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['defaultValueCoding'] = 'Coding'
+    _attribute_types['defaultValueContactPoint'] = 'ContactPoint'
+    _attribute_types['defaultValueCount'] = 'Count'
+    _attribute_types['defaultValueDistance'] = 'Distance'
+    _attribute_types['defaultValueDuration'] = 'Duration'
+    _attribute_types['defaultValueHumanName'] = 'HumanName'
+    _attribute_types['defaultValueIdentifier'] = 'Identifier'
+    _attribute_types['defaultValueMoney'] = 'Money'
+    _attribute_types['defaultValuePeriod'] = 'Period'
+    _attribute_types['defaultValueQuantity'] = 'Quantity'
+    _attribute_types['defaultValueRange'] = 'Range'
+    _attribute_types['defaultValueRatio'] = 'Ratio'
+    _attribute_types['defaultValueReference'] = 'FHIRReference'
+    _attribute_types['defaultValueSampledData'] = 'SampledData'
+    _attribute_types['defaultValueSignature'] = 'Signature'
+    _attribute_types['defaultValueTiming'] = 'Timing'
+    _attribute_types['defaultValueContactDetail'] = 'ContactDetail'
+    _attribute_types['defaultValueContributor'] = 'Contributor'
+    _attribute_types['defaultValueDataRequirement'] = 'DataRequirement'
+    _attribute_types['defaultValueExpression'] = 'Expression'
+    _attribute_types['defaultValueParameterDefinition'] = 'ParameterDefinition'
+    _attribute_types['defaultValueRelatedArtifact'] = 'RelatedArtifact'
+    _attribute_types['defaultValueTriggerDefinition'] = 'TriggerDefinition'
+    _attribute_types['defaultValueUsageContext'] = 'UsageContext'
+    _attribute_types['defaultValueDosage'] = 'Dosage'
+    _attribute_types['defaultValueMeta'] = 'Meta'
+    _attribute_types['element'] = 'str'
+    _attribute_types['listMode'] = 'str'
+    _attribute_types['variable'] = 'str'
+    _attribute_types['condition'] = 'str'
+    _attribute_types['check'] = 'str'
+    _attribute_types['logMessage'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -862,7 +1012,24 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['context'] = 'str'
+    _attribute_types['contextType'] = 'str'
+    _attribute_types['element'] = 'str'
+    _attribute_types['variable'] = 'str'
+    _attribute_types['listMode'] = 'List[str]'
+    _attribute_types['listRuleId'] = 'str'
+    _attribute_types['transform'] = 'str'
+    _attribute_types['parameter'] = 'List[StructureMapGroupRuleTargetParameter]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -962,7 +1129,21 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['valueId'] = 'str'
+    _attribute_types['valueString'] = 'str'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueInteger'] = 'int'
+    _attribute_types['valueDecimal'] = 'float'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -1031,7 +1212,20 @@ class StructureMapStructure(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['mode'] = 'str'
+    _attribute_types['alias'] = 'str'
+    _attribute_types['documentation'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

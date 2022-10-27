@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MolecularSequence) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MolecularSequence) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -37,7 +37,32 @@ class MolecularSequence(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['type'] = 'str'
+    _attribute_types['coordinateSystem'] = 'int'
+    _attribute_types['patient'] = 'FHIRReference'
+    _attribute_types['specimen'] = 'FHIRReference'
+    _attribute_types['device'] = 'FHIRReference'
+    _attribute_types['performer'] = 'FHIRReference'
+    _attribute_types['quantity'] = 'Quantity'
+    _attribute_types['referenceSeq'] = 'MolecularSequenceReferenceSeq'
+    _attribute_types['variant'] = 'List[MolecularSequenceVariant]'
+    _attribute_types['observedSeq'] = 'str'
+    _attribute_types['quality'] = 'List[MolecularSequenceQuality]'
+    _attribute_types['readCoverage'] = 'int'
+    _attribute_types['repository'] = 'List[MolecularSequenceRepository]'
+    _attribute_types['pointer'] = 'List[FHIRReference]'
+    _attribute_types['structureVariant'] = 'List[MolecularSequenceStructureVariant]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -185,7 +210,31 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['standardSequence'] = 'CodeableConcept'
+    _attribute_types['start'] = 'int'
+    _attribute_types['end'] = 'int'
+    _attribute_types['score'] = 'Quantity'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['truthTP'] = 'float'
+    _attribute_types['queryTP'] = 'float'
+    _attribute_types['truthFN'] = 'float'
+    _attribute_types['queryFP'] = 'float'
+    _attribute_types['gtFP'] = 'float'
+    _attribute_types['precision'] = 'float'
+    _attribute_types['recall'] = 'float'
+    _attribute_types['fScore'] = 'float'
+    _attribute_types['roc'] = 'MolecularSequenceQualityRoc'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -314,7 +363,23 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['score'] = 'List[int]'
+    _attribute_types['numTP'] = 'List[int]'
+    _attribute_types['numFP'] = 'List[int]'
+    _attribute_types['numFN'] = 'List[int]'
+    _attribute_types['precision'] = 'List[float]'
+    _attribute_types['sensitivity'] = 'List[float]'
+    _attribute_types['fMeasure'] = 'List[float]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -398,7 +463,25 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['chromosome'] = 'CodeableConcept'
+    _attribute_types['genomeBuild'] = 'str'
+    _attribute_types['orientation'] = 'str'
+    _attribute_types['referenceSeqId'] = 'CodeableConcept'
+    _attribute_types['referenceSeqPointer'] = 'FHIRReference'
+    _attribute_types['referenceSeqString'] = 'str'
+    _attribute_types['strand'] = 'str'
+    _attribute_types['windowStart'] = 'int'
+    _attribute_types['windowEnd'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -508,7 +591,22 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['url'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['datasetId'] = 'str'
+    _attribute_types['variantsetId'] = 'str'
+    _attribute_types['readsetId'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -589,7 +687,21 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['variantType'] = 'CodeableConcept'
+    _attribute_types['exact'] = 'bool'
+    _attribute_types['length'] = 'int'
+    _attribute_types['outer'] = 'MolecularSequenceStructureVariantOuter'
+    _attribute_types['inner'] = 'MolecularSequenceStructureVariantInner'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -653,7 +765,18 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['start'] = 'int'
+    _attribute_types['end'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -702,7 +825,18 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['start'] = 'int'
+    _attribute_types['end'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -761,7 +895,22 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['start'] = 'int'
+    _attribute_types['end'] = 'int'
+    _attribute_types['observedAllele'] = 'str'
+    _attribute_types['referenceAllele'] = 'str'
+    _attribute_types['cigar'] = 'str'
+    _attribute_types['variantPointer'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

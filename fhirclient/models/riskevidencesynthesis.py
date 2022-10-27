@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RiskEvidenceSynthesis) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RiskEvidenceSynthesis) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -54,7 +54,47 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['url'] = 'str'
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['version'] = 'str'
+    _attribute_types['name'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['status'] = 'str'
+    _attribute_types['date'] = 'FHIRDate'
+    _attribute_types['publisher'] = 'str'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['useContext'] = 'List[UsageContext]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['copyright'] = 'str'
+    _attribute_types['approvalDate'] = 'FHIRDate'
+    _attribute_types['lastReviewDate'] = 'FHIRDate'
+    _attribute_types['effectivePeriod'] = 'Period'
+    _attribute_types['topic'] = 'List[CodeableConcept]'
+    _attribute_types['author'] = 'List[ContactDetail]'
+    _attribute_types['editor'] = 'List[ContactDetail]'
+    _attribute_types['reviewer'] = 'List[ContactDetail]'
+    _attribute_types['endorser'] = 'List[ContactDetail]'
+    _attribute_types['relatedArtifact'] = 'List[RelatedArtifact]'
+    _attribute_types['synthesisType'] = 'CodeableConcept'
+    _attribute_types['studyType'] = 'CodeableConcept'
+    _attribute_types['population'] = 'FHIRReference'
+    _attribute_types['exposure'] = 'FHIRReference'
+    _attribute_types['outcome'] = 'FHIRReference'
+    _attribute_types['sampleSize'] = 'RiskEvidenceSynthesisSampleSize'
+    _attribute_types['riskEstimate'] = 'RiskEvidenceSynthesisRiskEstimate'
+    _attribute_types['certainty'] = 'List[RiskEvidenceSynthesisCertainty]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -282,7 +322,19 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['rating'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['certaintySubcomponent'] = 'List[RiskEvidenceSynthesisCertaintyCertaintySubcomponent]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -345,7 +397,19 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(backboneelement.Backbo
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['rating'] = 'List[CodeableConcept]'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -418,7 +482,23 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['value'] = 'float'
+    _attribute_types['unitOfMeasure'] = 'CodeableConcept'
+    _attribute_types['denominatorCount'] = 'int'
+    _attribute_types['numeratorCount'] = 'int'
+    _attribute_types['precisionEstimate'] = 'List[RiskEvidenceSynthesisRiskEstimatePrecisionEstimate]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -502,7 +582,20 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(backboneelement.Backbon
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['level'] = 'float'
+    _attribute_types['from_fhir'] = 'float'
+    _attribute_types['to'] = 'float'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -570,7 +663,19 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['numberOfStudies'] = 'int'
+    _attribute_types['numberOfParticipants'] = 'int'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

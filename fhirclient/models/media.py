@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Media) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Media) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -43,7 +43,39 @@ class Media(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['modality'] = 'CodeableConcept'
+    _attribute_types['view'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['createdDateTime'] = 'FHIRDate'
+    _attribute_types['createdPeriod'] = 'Period'
+    _attribute_types['issued'] = 'FHIRDate'
+    _attribute_types['operator'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['bodySite'] = 'CodeableConcept'
+    _attribute_types['deviceName'] = 'str'
+    _attribute_types['device'] = 'FHIRReference'
+    _attribute_types['height'] = 'int'
+    _attribute_types['width'] = 'int'
+    _attribute_types['frames'] = 'int'
+    _attribute_types['duration'] = 'float'
+    _attribute_types['content'] = 'Attachment'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

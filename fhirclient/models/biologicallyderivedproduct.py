@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,27 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['productCategory'] = 'str'
+    _attribute_types['productCode'] = 'CodeableConcept'
+    _attribute_types['status'] = 'str'
+    _attribute_types['request'] = 'List[FHIRReference]'
+    _attribute_types['quantity'] = 'int'
+    _attribute_types['parent'] = 'List[FHIRReference]'
+    _attribute_types['collection'] = 'BiologicallyDerivedProductCollection'
+    _attribute_types['processing'] = 'List[BiologicallyDerivedProductProcessing]'
+    _attribute_types['manipulation'] = 'BiologicallyDerivedProductManipulation'
+    _attribute_types['storage'] = 'List[BiologicallyDerivedProductStorage]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -144,7 +164,20 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['collector'] = 'FHIRReference'
+    _attribute_types['source'] = 'FHIRReference'
+    _attribute_types['collectedDateTime'] = 'FHIRDate'
+    _attribute_types['collectedPeriod'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -208,7 +241,19 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['timeDateTime'] = 'FHIRDate'
+    _attribute_types['timePeriod'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -269,7 +314,21 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['procedure'] = 'CodeableConcept'
+    _attribute_types['additive'] = 'FHIRReference'
+    _attribute_types['timeDateTime'] = 'FHIRDate'
+    _attribute_types['timePeriod'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -335,7 +394,20 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['temperature'] = 'float'
+    _attribute_types['scale'] = 'str'
+    _attribute_types['duration'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

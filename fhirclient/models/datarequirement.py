@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DataRequirement) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/DataRequirement) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -29,7 +29,25 @@ class DataRequirement(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'str'
+    _attribute_types['profile'] = 'List[str]'
+    _attribute_types['subjectCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['subjectReference'] = 'FHIRReference'
+    _attribute_types['mustSupport'] = 'List[str]'
+    _attribute_types['codeFilter'] = 'List[DataRequirementCodeFilter]'
+    _attribute_types['dateFilter'] = 'List[DataRequirementDateFilter]'
+    _attribute_types['limit'] = 'int'
+    _attribute_types['sort'] = 'List[DataRequirementSort]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -129,7 +147,20 @@ class DataRequirementCodeFilter(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['searchParam'] = 'str'
+    _attribute_types['valueSet'] = 'str'
+    _attribute_types['code'] = 'List[Coding]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -195,7 +226,21 @@ class DataRequirementDateFilter(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['searchParam'] = 'str'
+    _attribute_types['valueDateTime'] = 'FHIRDate'
+    _attribute_types['valuePeriod'] = 'Period'
+    _attribute_types['valueDuration'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -261,7 +306,18 @@ class DataRequirementSort(element.Element):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | element.Element.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['path'] = 'str'
+    _attribute_types['direction'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

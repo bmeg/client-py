@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RequestGroup) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RequestGroup) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -40,7 +40,34 @@ class RequestGroup(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['instantiatesCanonical'] = 'List[str]'
+    _attribute_types['instantiatesUri'] = 'List[str]'
+    _attribute_types['basedOn'] = 'List[FHIRReference]'
+    _attribute_types['replaces'] = 'List[FHIRReference]'
+    _attribute_types['groupIdentifier'] = 'Identifier'
+    _attribute_types['status'] = 'str'
+    _attribute_types['intent'] = 'str'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['authoredOn'] = 'FHIRDate'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['action'] = 'List[RequestGroupAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -216,7 +243,40 @@ class RequestGroupAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['prefix'] = 'str'
+    _attribute_types['title'] = 'str'
+    _attribute_types['description'] = 'str'
+    _attribute_types['textEquivalent'] = 'str'
+    _attribute_types['priority'] = 'str'
+    _attribute_types['code'] = 'List[CodeableConcept]'
+    _attribute_types['documentation'] = 'List[RelatedArtifact]'
+    _attribute_types['condition'] = 'List[RequestGroupActionCondition]'
+    _attribute_types['relatedAction'] = 'List[RequestGroupActionRelatedAction]'
+    _attribute_types['timingDateTime'] = 'FHIRDate'
+    _attribute_types['timingAge'] = 'Age'
+    _attribute_types['timingPeriod'] = 'Period'
+    _attribute_types['timingDuration'] = 'Duration'
+    _attribute_types['timingRange'] = 'Range'
+    _attribute_types['timingTiming'] = 'Timing'
+    _attribute_types['participant'] = 'List[FHIRReference]'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['groupingBehavior'] = 'str'
+    _attribute_types['selectionBehavior'] = 'str'
+    _attribute_types['requiredBehavior'] = 'str'
+    _attribute_types['precheckBehavior'] = 'str'
+    _attribute_types['cardinalityBehavior'] = 'str'
+    _attribute_types['resource'] = 'FHIRReference'
+    _attribute_types['action'] = 'List[RequestGroupAction]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -422,7 +482,18 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['kind'] = 'str'
+    _attribute_types['expression'] = 'Expression'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -482,7 +553,20 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['actionId'] = 'str'
+    _attribute_types['relationship'] = 'str'
+    _attribute_types['offsetDuration'] = 'Duration'
+    _attribute_types['offsetRange'] = 'Range'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

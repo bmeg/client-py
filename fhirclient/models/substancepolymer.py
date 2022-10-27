@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstancePolymer) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstancePolymer) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -25,7 +25,22 @@ class SubstancePolymer(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['class_fhir'] = 'CodeableConcept'
+    _attribute_types['geometry'] = 'CodeableConcept'
+    _attribute_types['copolymerConnectivity'] = 'List[CodeableConcept]'
+    _attribute_types['modification'] = 'List[str]'
+    _attribute_types['monomerSet'] = 'List[SubstancePolymerMonomerSet]'
+    _attribute_types['repeat'] = 'List[SubstancePolymerRepeat]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -96,7 +111,18 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['ratioType'] = 'CodeableConcept'
+    _attribute_types['startingMaterial'] = 'List[SubstancePolymerMonomerSetStartingMaterial]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -147,7 +173,20 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['material'] = 'CodeableConcept'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['isDefining'] = 'bool'
+    _attribute_types['amount'] = 'SubstanceAmount'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -208,7 +247,20 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['numberOfUnits'] = 'int'
+    _attribute_types['averageMolecularFormula'] = 'str'
+    _attribute_types['repeatUnitAmountType'] = 'CodeableConcept'
+    _attribute_types['repeatUnit'] = 'List[SubstancePolymerRepeatRepeatUnit]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -270,7 +322,21 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['orientationOfPolymerisation'] = 'CodeableConcept'
+    _attribute_types['repeatUnit'] = 'str'
+    _attribute_types['amount'] = 'SubstanceAmount'
+    _attribute_types['degreeOfPolymerisation'] = 'List[SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation]'
+    _attribute_types['structuralRepresentation'] = 'List[SubstancePolymerRepeatRepeatUnitStructuralRepresentation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -334,7 +400,18 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(backboneelement.Bac
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['degree'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'SubstanceAmount'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -384,7 +461,19 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(backboneelement.B
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['representation'] = 'str'
+    _attribute_types['attachment'] = 'Attachment'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

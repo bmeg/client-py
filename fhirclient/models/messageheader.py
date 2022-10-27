@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MessageHeader) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MessageHeader) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -37,7 +37,28 @@ class MessageHeader(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['eventCoding'] = 'Coding'
+    _attribute_types['eventUri'] = 'str'
+    _attribute_types['destination'] = 'List[MessageHeaderDestination]'
+    _attribute_types['sender'] = 'FHIRReference'
+    _attribute_types['enterer'] = 'FHIRReference'
+    _attribute_types['author'] = 'FHIRReference'
+    _attribute_types['source'] = 'MessageHeaderSource'
+    _attribute_types['responsible'] = 'FHIRReference'
+    _attribute_types['reason'] = 'CodeableConcept'
+    _attribute_types['response'] = 'MessageHeaderResponse'
+    _attribute_types['focus'] = 'List[FHIRReference]'
+    _attribute_types['definition'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -151,7 +172,20 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['target'] = 'FHIRReference'
+    _attribute_types['endpoint'] = 'str'
+    _attribute_types['receiver'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -214,7 +248,19 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'str'
+    _attribute_types['code'] = 'str'
+    _attribute_types['details'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -280,7 +326,21 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['software'] = 'str'
+    _attribute_types['version'] = 'str'
+    _attribute_types['contact'] = 'ContactPoint'
+    _attribute_types['endpoint'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

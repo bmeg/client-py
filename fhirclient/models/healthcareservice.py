@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/HealthcareService) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/HealthcareService) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -43,7 +43,40 @@ class HealthcareService(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['active'] = 'bool'
+    _attribute_types['providedBy'] = 'FHIRReference'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['type'] = 'List[CodeableConcept]'
+    _attribute_types['specialty'] = 'List[CodeableConcept]'
+    _attribute_types['location'] = 'List[FHIRReference]'
+    _attribute_types['name'] = 'str'
+    _attribute_types['comment'] = 'str'
+    _attribute_types['extraDetails'] = 'str'
+    _attribute_types['photo'] = 'Attachment'
+    _attribute_types['telecom'] = 'List[ContactPoint]'
+    _attribute_types['coverageArea'] = 'List[FHIRReference]'
+    _attribute_types['serviceProvisionCode'] = 'List[CodeableConcept]'
+    _attribute_types['eligibility'] = 'List[HealthcareServiceEligibility]'
+    _attribute_types['program'] = 'List[CodeableConcept]'
+    _attribute_types['characteristic'] = 'List[CodeableConcept]'
+    _attribute_types['communication'] = 'List[CodeableConcept]'
+    _attribute_types['referralMethod'] = 'List[CodeableConcept]'
+    _attribute_types['appointmentRequired'] = 'bool'
+    _attribute_types['availableTime'] = 'List[HealthcareServiceAvailableTime]'
+    _attribute_types['notAvailable'] = 'List[HealthcareServiceNotAvailable]'
+    _attribute_types['availabilityExceptions'] = 'str'
+    _attribute_types['endpoint'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -225,7 +258,20 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['daysOfWeek'] = 'List[str]'
+    _attribute_types['allDay'] = 'bool'
+    _attribute_types['availableStartTime'] = 'FHIRDate'
+    _attribute_types['availableEndTime'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -294,7 +340,18 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['comment'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -346,7 +403,18 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['description'] = 'str'
+    _attribute_types['during'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

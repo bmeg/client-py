@@ -48,6 +48,11 @@ class FHIRAbstractBase(object):
     """ Abstract base class for all FHIR elements.
     """
 
+    @classmethod
+    def attribute_docstrings(cls):
+        """Get dict of attributes docstrings."""
+        return {}
+
     def __init__(self, jsondict=None, strict=True):
         """ Initializer. If strict is true, raises on errors, otherwise uses
         `logger.warning()`.
@@ -209,7 +214,7 @@ class FHIRAbstractBase(object):
                                 if not codable_concept.__class__.__name__ == 'CodeableConcept':
                                     err = TypeError(
                                         "Expecting property with required binding_strength \"{}\" to be a CodeableConcept"
-                                            .format(name))
+                                        .format(name))
                                     break
                                 if len(codable_concept.coding) == 0:
                                     err = TypeError("Coding missing or empty \"{}\"".format(name))
@@ -218,12 +223,12 @@ class FHIRAbstractBase(object):
                                     if coding.system != enum_definition['url']:
                                         err = TypeError(
                                             "Expecting CodeableConcept property with required binding_strength \"{}\" system to be {} was {}"
-                                                .format(name, enum_definition['url'], coding.system))
+                                            .format(name, enum_definition['url'], coding.system))
                                         break
                                     if coding.code not in enum_definition['restricted_to']:
                                         err = TypeError(
                                             "Expecting CodeableConcept property with required binding_strength \"{}\" code to be in {} was {}"
-                                                .format(name, enum_definition['url'], coding.code))
+                                            .format(name, enum_definition['url'], coding.code))
                                         break
 
                                 if err:
@@ -281,13 +286,15 @@ class FHIRAbstractBase(object):
             return simplified_value.date.isoformat()
         return simplified_value
 
-    def as_simplified_json(self, filtered_names=None):
+    def as_simplified_json(self, filtered_names=None,
+                           simplifications=['extensions', 'single_item_lists', 'codings', 'identifiers']):
         """ Serializes to JSON by inspecting `elementProperties()` and creating
         a JSON dictionary of all registered properties. Performs no checks.  Simplifies:
 
         - extensions
         - single_item_lists
         - codings
+        - identifiers
 
         :returns: tuple A dict object with much of the FHIR scaffolding removed; A corresponding lite schema.
         """
@@ -330,11 +337,14 @@ class FHIRAbstractBase(object):
                                }
 
             is_identifier = jsname == 'identifier' and not isinstance(value, str)
+            # is_identifier = is_identifier and 'identifiers' in simplifications
 
             is_extension = jsname == 'extension' and not isinstance(value, str)
+            is_extension = is_extension and 'extensions' in simplifications
 
             # test class name, avoids circular reference
             is_coding = value.__class__.__name__ == 'Coding' or (isinstance(value, list) and len(value) == 1 and value[0].__class__.__name__ == 'Coding')
+            is_coding = is_coding and 'codings' in simplifications
 
             is_date = 'FHIRDate' in value.__class__.__name__
 
@@ -432,7 +442,7 @@ class FHIRAbstractBase(object):
                         simple_value = v
                     lst.append(simple_value)
                 # single_item_lists
-                if len(lst) == 1:
+                if len(lst) == 1 and 'single_item_lists' in simplifications:
                     js[jsname] = lst[0]
                 else:
                     js[jsname] = lst

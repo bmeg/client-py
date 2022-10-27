@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Goal) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Goal) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -41,7 +41,33 @@ class Goal(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['lifecycleStatus'] = 'str'
+    _attribute_types['achievementStatus'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['priority'] = 'CodeableConcept'
+    _attribute_types['description'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['startDate'] = 'FHIRDate'
+    _attribute_types['startCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['target'] = 'List[GoalTarget]'
+    _attribute_types['statusDate'] = 'FHIRDate'
+    _attribute_types['statusReason'] = 'str'
+    _attribute_types['expressedBy'] = 'FHIRReference'
+    _attribute_types['addresses'] = 'List[FHIRReference]'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['outcomeCode'] = 'List[CodeableConcept]'
+    _attribute_types['outcomeReference'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -203,7 +229,26 @@ class GoalTarget(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['measure'] = 'CodeableConcept'
+    _attribute_types['detailQuantity'] = 'Quantity'
+    _attribute_types['detailRange'] = 'Range'
+    _attribute_types['detailCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['detailString'] = 'str'
+    _attribute_types['detailBoolean'] = 'bool'
+    _attribute_types['detailInteger'] = 'int'
+    _attribute_types['detailRatio'] = 'Ratio'
+    _attribute_types['dueDate'] = 'FHIRDate'
+    _attribute_types['dueDuration'] = 'Duration'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

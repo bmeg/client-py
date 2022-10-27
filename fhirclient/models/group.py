@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Group) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/Group) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -34,7 +34,26 @@ class Group(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['active'] = 'bool'
+    _attribute_types['type'] = 'str'
+    _attribute_types['actual'] = 'bool'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['name'] = 'str'
+    _attribute_types['quantity'] = 'int'
+    _attribute_types['managingEntity'] = 'FHIRReference'
+    _attribute_types['characteristic'] = 'List[GroupCharacteristic]'
+    _attribute_types['member'] = 'List[GroupMember]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -141,7 +160,24 @@ class GroupCharacteristic(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['valueCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['valueBoolean'] = 'bool'
+    _attribute_types['valueQuantity'] = 'Quantity'
+    _attribute_types['valueRange'] = 'Range'
+    _attribute_types['valueReference'] = 'FHIRReference'
+    _attribute_types['exclude'] = 'bool'
+    _attribute_types['period'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -223,7 +259,19 @@ class GroupMember(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['entity'] = 'FHIRReference'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['inactive'] = 'bool'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

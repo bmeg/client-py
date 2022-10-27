@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RiskAssessment) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/RiskAssessment) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -40,7 +40,34 @@ class RiskAssessment(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['basedOn'] = 'FHIRReference'
+    _attribute_types['parent'] = 'FHIRReference'
+    _attribute_types['status'] = 'str'
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['encounter'] = 'FHIRReference'
+    _attribute_types['occurrenceDateTime'] = 'FHIRDate'
+    _attribute_types['occurrencePeriod'] = 'Period'
+    _attribute_types['condition'] = 'FHIRReference'
+    _attribute_types['performer'] = 'FHIRReference'
+    _attribute_types['reasonCode'] = 'List[CodeableConcept]'
+    _attribute_types['reasonReference'] = 'List[FHIRReference]'
+    _attribute_types['basis'] = 'List[FHIRReference]'
+    _attribute_types['prediction'] = 'List[RiskAssessmentPrediction]'
+    _attribute_types['mitigation'] = 'str'
+    _attribute_types['note'] = 'List[Annotation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -186,7 +213,24 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['outcome'] = 'CodeableConcept'
+    _attribute_types['probabilityDecimal'] = 'float'
+    _attribute_types['probabilityRange'] = 'Range'
+    _attribute_types['qualitativeRisk'] = 'CodeableConcept'
+    _attribute_types['relativeRisk'] = 'float'
+    _attribute_types['whenPeriod'] = 'Period'
+    _attribute_types['whenRange'] = 'Range'
+    _attribute_types['rationale'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

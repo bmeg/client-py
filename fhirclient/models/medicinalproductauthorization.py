@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductAuthorization) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/MedicinalProductAuthorization) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -35,7 +35,32 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['subject'] = 'FHIRReference'
+    _attribute_types['country'] = 'List[CodeableConcept]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['statusDate'] = 'FHIRDate'
+    _attribute_types['restoreDate'] = 'FHIRDate'
+    _attribute_types['validityPeriod'] = 'Period'
+    _attribute_types['dataExclusivityPeriod'] = 'Period'
+    _attribute_types['dateOfFirstAuthorization'] = 'FHIRDate'
+    _attribute_types['internationalBirthDate'] = 'FHIRDate'
+    _attribute_types['legalBasis'] = 'CodeableConcept'
+    _attribute_types['jurisdictionalAuthorization'] = 'List[MedicinalProductAuthorizationJurisdictionalAuthorization]'
+    _attribute_types['holder'] = 'FHIRReference'
+    _attribute_types['regulator'] = 'FHIRReference'
+    _attribute_types['procedure'] = 'MedicinalProductAuthorizationProcedure'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -168,7 +193,21 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(backboneelement.B
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['country'] = 'CodeableConcept'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['legalStatusOfSupply'] = 'CodeableConcept'
+    _attribute_types['validityPeriod'] = 'Period'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -235,7 +274,21 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['datePeriod'] = 'Period'
+    _attribute_types['dateDateTime'] = 'FHIRDate'
+    _attribute_types['application'] = 'List[MedicinalProductAuthorizationProcedure]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

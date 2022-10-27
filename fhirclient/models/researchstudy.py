@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ResearchStudy) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/ResearchStudy) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -50,7 +50,40 @@ class ResearchStudy(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'List[Identifier]'
+    _attribute_types['title'] = 'str'
+    _attribute_types['protocol'] = 'List[FHIRReference]'
+    _attribute_types['partOf'] = 'List[FHIRReference]'
+    _attribute_types['status'] = 'str'
+    _attribute_types['primaryPurposeType'] = 'CodeableConcept'
+    _attribute_types['phase'] = 'CodeableConcept'
+    _attribute_types['category'] = 'List[CodeableConcept]'
+    _attribute_types['focus'] = 'List[CodeableConcept]'
+    _attribute_types['condition'] = 'List[CodeableConcept]'
+    _attribute_types['contact'] = 'List[ContactDetail]'
+    _attribute_types['relatedArtifact'] = 'List[RelatedArtifact]'
+    _attribute_types['keyword'] = 'List[CodeableConcept]'
+    _attribute_types['location'] = 'List[CodeableConcept]'
+    _attribute_types['description'] = 'str'
+    _attribute_types['enrollment'] = 'List[FHIRReference]'
+    _attribute_types['period'] = 'Period'
+    _attribute_types['sponsor'] = 'FHIRReference'
+    _attribute_types['principalInvestigator'] = 'FHIRReference'
+    _attribute_types['site'] = 'List[FHIRReference]'
+    _attribute_types['reasonStopped'] = 'CodeableConcept'
+    _attribute_types['note'] = 'List[Annotation]'
+    _attribute_types['arm'] = 'List[ResearchStudyArm]'
+    _attribute_types['objective'] = 'List[ResearchStudyObjective]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -244,7 +277,19 @@ class ResearchStudyArm(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -301,7 +346,18 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""

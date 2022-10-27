@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceSpecification) on 2022-07-13.
+#  Generated from FHIR 4.0.1-9346c8cc45 (http://hl7.org/fhir/StructureDefinition/SubstanceSpecification) on 2022-10-13.
 #  2022, SMART Health IT.
 
 
@@ -39,7 +39,35 @@ class SubstanceSpecification(domainresource.DomainResource):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | domainresource.DomainResource.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['domain'] = 'CodeableConcept'
+    _attribute_types['description'] = 'str'
+    _attribute_types['source'] = 'List[FHIRReference]'
+    _attribute_types['comment'] = 'str'
+    _attribute_types['moiety'] = 'List[SubstanceSpecificationMoiety]'
+    _attribute_types['property'] = 'List[SubstanceSpecificationProperty]'
+    _attribute_types['referenceInformation'] = 'FHIRReference'
+    _attribute_types['structure'] = 'SubstanceSpecificationStructure'
+    _attribute_types['code'] = 'List[SubstanceSpecificationstr]'
+    _attribute_types['name'] = 'List[SubstanceSpecificationName]'
+    _attribute_types['molecularWeight'] = 'List[SubstanceSpecificationStructureIsotopeMolecularWeight]'
+    _attribute_types['relationship'] = 'List[SubstanceSpecificationRelationship]'
+    _attribute_types['nucleicAcid'] = 'FHIRReference'
+    _attribute_types['polymer'] = 'FHIRReference'
+    _attribute_types['protein'] = 'FHIRReference'
+    _attribute_types['sourceMaterial'] = 'FHIRReference'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -184,7 +212,24 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['role'] = 'CodeableConcept'
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['name'] = 'str'
+    _attribute_types['stereochemistry'] = 'CodeableConcept'
+    _attribute_types['opticalActivity'] = 'CodeableConcept'
+    _attribute_types['molecularFormula'] = 'str'
+    _attribute_types['amountQuantity'] = 'Quantity'
+    _attribute_types['amountString'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -272,7 +317,27 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['name'] = 'str'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['preferred'] = 'bool'
+    _attribute_types['language'] = 'List[CodeableConcept]'
+    _attribute_types['domain'] = 'List[CodeableConcept]'
+    _attribute_types['jurisdiction'] = 'List[CodeableConcept]'
+    _attribute_types['synonym'] = 'List[SubstanceSpecificationName]'
+    _attribute_types['translation'] = 'List[SubstanceSpecificationName]'
+    _attribute_types['official'] = 'List[SubstanceSpecificationNameOfficial]'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -368,7 +433,19 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['authority'] = 'CodeableConcept'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['date'] = 'FHIRDate'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -428,7 +505,23 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['category'] = 'CodeableConcept'
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['parameters'] = 'str'
+    _attribute_types['definingSubstanceReference'] = 'FHIRReference'
+    _attribute_types['definingSubstanceCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['amountQuantity'] = 'Quantity'
+    _attribute_types['amountString'] = 'str'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -514,7 +607,27 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['substanceReference'] = 'FHIRReference'
+    _attribute_types['substanceCodeableConcept'] = 'CodeableConcept'
+    _attribute_types['relationship'] = 'CodeableConcept'
+    _attribute_types['isDefining'] = 'bool'
+    _attribute_types['amountQuantity'] = 'Quantity'
+    _attribute_types['amountRange'] = 'Range'
+    _attribute_types['amountRatio'] = 'Ratio'
+    _attribute_types['amountString'] = 'str'
+    _attribute_types['amountRatioLowLimit'] = 'Ratio'
+    _attribute_types['amountType'] = 'CodeableConcept'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -627,7 +740,24 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['stereochemistry'] = 'CodeableConcept'
+    _attribute_types['opticalActivity'] = 'CodeableConcept'
+    _attribute_types['molecularFormula'] = 'str'
+    _attribute_types['molecularFormulaByMoiety'] = 'str'
+    _attribute_types['isotope'] = 'List[SubstanceSpecificationStructureIsotope]'
+    _attribute_types['molecularWeight'] = 'SubstanceSpecificationStructureIsotopeMolecularWeight'
+    _attribute_types['source'] = 'List[FHIRReference]'
+    _attribute_types['representation'] = 'List[SubstanceSpecificationStructureRepresentation]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -713,7 +843,21 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['identifier'] = 'Identifier'
+    _attribute_types['name'] = 'CodeableConcept'
+    _attribute_types['substitution'] = 'CodeableConcept'
+    _attribute_types['halfLife'] = 'Quantity'
+    _attribute_types['molecularWeight'] = 'SubstanceSpecificationStructureIsotopeMolecularWeight'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -780,7 +924,19 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(backboneelement.Back
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['method'] = 'CodeableConcept'
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['amount'] = 'Quantity'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -839,7 +995,19 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['type'] = 'CodeableConcept'
+    _attribute_types['representation'] = 'str'
+    _attribute_types['attachment'] = 'Attachment'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
@@ -897,7 +1065,21 @@ class SubstanceSpecificationstr(backboneelement.BackboneElement):
     @classmethod
     def attribute_docstrings(cls):
         """Get dict of attributes docstrings."""
-        return cls._attribute_docstrings
+        return cls._attribute_docstrings | backboneelement.BackboneElement.attribute_docstrings()
+
+    _attribute_types = {}
+    """ Dictionary of attribute types."""
+    _attribute_types['code'] = 'CodeableConcept'
+    _attribute_types['status'] = 'CodeableConcept'
+    _attribute_types['statusDate'] = 'FHIRDate'
+    _attribute_types['comment'] = 'str'
+    _attribute_types['source'] = 'List[FHIRReference]'
+
+    @classmethod
+    def attribute_types(cls):
+        """Get dict of attributes docstrings."""
+        return cls._attribute_types
+
 
     _attribute_enums = {}
     """ Dictionary of enum configuration."""
